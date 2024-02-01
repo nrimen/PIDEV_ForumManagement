@@ -1,0 +1,3 @@
+.section-header h2:after {
+  background: var(--color-primary);
+}
