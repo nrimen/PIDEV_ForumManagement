@@ -21,7 +21,7 @@ export class AddBlogComponent {
     this.postForm = this.fb.group({
       title: ['', Validators.required],
       content: ['', Validators.required],
-      image: ['', Validators.required],
+      image: [null, Validators.required],
       publishDate: ['', Validators.required],
       categorie: ['', Validators.required],
       comment: [''],
@@ -40,4 +40,14 @@ export class AddBlogComponent {
       console.error('Form is invalid');
     }
   }
+
+  onFileChange(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement && inputElement.files && inputElement.files.length > 0) {
+      const file = inputElement.files[0];
+      this.postForm.patchValue({ image: file.name });
+      this.postForm.get('image')?.updateValueAndValidity();
+    }
+  
+}
 }
