@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
 /**
 * Template Name: Nova
 * Updated: Jan 29 2024 with Bootstrap v5.3.2

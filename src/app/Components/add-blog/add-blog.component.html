@@ -1,0 +1,46 @@
+ <!-- ======= Breadcrumbs ======= -->
+ <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/blog-header.jpg');">
+  <div class="container position-relative d-flex flex-column align-items-center">
+
+    <h2>ADD BLOG</h2>
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li>ADD BLOG</li>
+    </ol>
+
+  </div>
+</div><!-- End Breadcrumbs -->
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Title:</label>
+            <input type="text" class="form-control" formControlName="title">
+          </div>
+          <div class="form-group">
+            <label>Content:</label>
+            <textarea class="form-control" formControlName="content" rows="5"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Image URL:</label>
+            <input type="text" class="form-control" formControlName="image">
+          </div>
+          <div class="form-group">
+            <label>Publish Date:</label>
+            <input type="date" class="form-control" formControlName="publishDate">
+          </div>
+          <div class="form-group">
+            <label>Category:</label>
+            <select class="form-control" formControlName="categorie">
+              <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+            </select>
+          </div>
+          <!-- Add comments section if needed -->
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
