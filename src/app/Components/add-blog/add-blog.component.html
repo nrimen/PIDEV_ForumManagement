@@ -10,7 +10,7 @@
 
   </div>
 </div><!-- End Breadcrumbs -->
-
+<p class="style">
 <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-8">
@@ -24,7 +24,7 @@
             <textarea class="form-control" formControlName="content" rows="5"></textarea>
           </div>
           <label for="image">Image</label>
-  <input type="file" id="image" (change)="onFileChange($event)" accept="image/*">
+              <input type="file" id="image" (change)="onFileChange($event)" accept="image/*">
 
           <div class="form-group">
             <label>Publish Date:</label>
@@ -36,10 +36,13 @@
               <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
             </select>
           </div>
+          
           <!-- Add comments section if needed -->
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>
+    
   </div>
+  
   
