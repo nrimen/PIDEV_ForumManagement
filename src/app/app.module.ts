@@ -14,6 +14,7 @@ import { ContactComponent } from './Components/contact/contact.component';
 import { ChatComponent } from './Components/chat/chat.component';
 import { AddBlogComponent } from './Components/add-blog/add-blog.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ChatComponent,
     AddBlogComponent,
     
+
   ],
   imports: [
     AppRoutingModule,
@@ -35,7 +37,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     RouterOutlet,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
