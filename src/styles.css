@@ -2007,7 +2007,7 @@ section {
 }
 
 .blog .comments .reply-form .btn-primary:hover {
-  background-color: rgba(27, 47, 69, 0.8);
+  background-color: rgba(208, 0, 0, 0.61);
 }
 
 /*--------------------------------------------------------------
@@ -2015,7 +2015,7 @@ section {
 --------------------------------------------------------------*/
 .blog .blog-pagination {
   margin-top: 30px;
-  color: #38618e;
+  color: #d00000;
 }
 
 .blog .blog-pagination ul {
@@ -2031,7 +2031,7 @@ section {
 }
 
 .blog .blog-pagination li a {
-  color: #2aa5df;
+  color: rgba(208, 0, 0, 0.85);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -2179,6 +2179,9 @@ section {
   font-size: 13px;
   color: var(--color-secondary);
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

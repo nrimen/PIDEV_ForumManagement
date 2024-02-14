@@ -1,0 +1,128 @@
+<!-- create-stand.component.html -->
+<section class="intro">
+  <div class="bg-image h-100">
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="filter-container">
+              <button class="mb-3 btn btn-danger" (click)="openAddEditEmpForm()">Add Stand</button>
+              <mat-icon class="mb-3 btn select-pack filter-icon">filter_alt</mat-icon>
+              <select class="mb-3 btn select-pack" [(ngModel)]="selectedPack" (change)="filterStandsByPack(selectedPack)">
+                <option value="">All-Packs</option>
+                <option value="DIAMOND">Diamond</option>
+                <option value="GOLD">Gold</option>
+                <option value="SILVER">Silver</option>
+                <option value="UNPAYED">Unpayed</option>
+              </select>
+<!--              <mat-select class="mb-3 select-pack" [(ngModel)]="selectedPack" (selectionChange)="filterStandsByPack(selectedPack)">-->
+<!--                <mat-select-trigger>-->
+<!--                  <span class="filter-label">All Packs</span>-->
+<!--                  <mat-icon class="filter-icon">filter_alt</mat-icon>-->
+<!--                </mat-select-trigger><mat-option value="">All Packs</mat-option>-->
+<!--                <mat-option value="DIAMOND">Diamond</mat-option>-->
+<!--                <mat-option value="GOLD">Gold</mat-option>-->
+<!--                <mat-option value="SILVER">Silver</mat-option>-->
+<!--                <mat-option value="UNPAYED">Unpayed</mat-option>-->
+<!--              </mat-select>-->
+
+            </div>
+
+            <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
+              <div class="card-body">
+                <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+                  <table class="table table-borderless mb-0">
+                    <thead>
+                    <tr>
+                      <th scope="col">
+                      </th>
+                      <th scope="col">STAND IMMATRICULE</th>
+                      <th scope="col">EXPONENT</th>
+                      <th scope="col">RESERVATION DATE</th>
+                      <th scope="col">PRICE</th>
+                      <th scope="col">PACK</th>
+                      <th scope="col">RESERVED</th>
+                      <th scope="col">FINISHED</th>
+                      <th scope="col">PARTNER</th>
+                      <th scope="col">ACTIONS</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let stand of filteredStands">
+                      <td>
+                        <div class="form-check">
+                        </div>
+                      </td>
+                      <td>{{ stand.immatriculationStand }}</td>
+                      <td [style.color]="stand.userStand ? 'black' : 'lightgrey'">
+                        {{ stand.exponent ? stand.exponent : 'No exhibitor' }}
+                      </td>
+
+                      <td [style.color]="stand.reservationDate ? 'black' : 'lightgrey'">
+                        {{ stand.reservationDate ? stand.reservationDate : 'Not Reserved yet !' }}
+                      </td>
+                      <td>{{ stand.price }}</td>
+                      <td>
+                        <ng-container *ngIf="stand.pack === 'DIAMOND'">
+                          <mat-icon class="diamond-icon" matTooltip="Diamond">diamond</mat-icon>
+
+                        </ng-container>
+                        <ng-container *ngIf="stand.pack === 'GOLD'" >
+                          <mat-icon class="gold-icon" matTooltip="Gold">star</mat-icon>
+                        </ng-container>
+                        <ng-container *ngIf="stand.pack === 'SILVER'" >
+                          <mat-icon class="silver-icon" matTooltip="Silver">grade</mat-icon>
+                        </ng-container>
+                        <ng-container *ngIf="stand.pack === 'UNPAYED'" >
+                          <mat-icon class="unpayed-icon" matTooltip="Unpayed">money_off</mat-icon>
+                        </ng-container>
+
+
+                      </td>
+
+
+                      <td>
+                            <span *ngIf="stand.isReserved; else notReserved">
+                              <mat-icon class="green-icon" matTooltip="Reserved">check_circle</mat-icon>
+                            </span>
+                            <ng-template #notReserved>
+                               <mat-icon class="red-icon"matTooltip="not Reserved">highlight_off</mat-icon>
+                            </ng-template>
+                      </td>
+                      <td>
+                            <span *ngIf="stand.isFinished; else notFinished">
+                              <mat-icon class="green-icon" matTooltip="Finished">check_circle</mat-icon>
+                            </span>
+                            <ng-template #notFinished>
+                              <mat-icon class="red-icon" matTooltip="not Finished">highlight_off</mat-icon>
+                            </ng-template>
+                      </td>
+                      <td>
+                            <span *ngIf="stand.isPartner; else notPartner">
+                              <mat-icon class="green-icon" matTooltip="Partner">check_circle</mat-icon>
+                            </span>
+                            <ng-template #notPartner>
+                              <mat-icon class="red-icon" matTooltip="not Partner">highlight_off</mat-icon>
+                            </ng-template>
+                      </td>
+                      <td>
+                        <button mat-icon-button color="primary" matTooltip="Update" (click)="openAddEditEmpForm()">
+                          <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn" (click)="delete(stand.idStand)" matTooltip="Delete">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </td>
+
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
