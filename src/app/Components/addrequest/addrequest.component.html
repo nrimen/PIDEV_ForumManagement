@@ -1,0 +1,55 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <h2>Add Request</h2>
+    <div class="form-group">
+        <label for="requestTitle">Request Title:</label>
+        <input type="text" class="form-control" id="requestTitle" formControlName="requestTitle"
+               [ngClass]="{'is-invalid': myForm.get('requestTitle')?.invalid && myForm.get('requestTitle')?.touched}">
+    
+        <!-- Display real-time error message if requestTitle is invalid -->
+        <div *ngIf="myForm.get('requestTitle')?.hasError('minlength') && myForm.get('requestTitle')?.touched" class="error-message">
+          Request Title must be at least 5 characters long.
+        </div>
+      </div>
+      
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <select class="form-control" id="location" formControlName="location">
+            <option>Ariana</option>
+            <option>Beja</option>
+            <option>Ben Arous</option>
+            <option>Bizerte</option>
+            <option>Gabes</option>
+            <option>Gafsa</option>
+            <option>Jendouba</option>
+            <option>Kairouan</option>
+            <option>Kasserine</option>
+            <option>Kebili</option>
+            <option>Kef</option>
+            <option>Mahdia</option>
+            <option>Manouba</option>
+            <option>Medenine</option>
+            <option>Monastir</option>
+            <option>Nabeul</option>
+            <option>Sfax</option>
+            <option>Sidi Bouzid</option>
+            <option>Siliana</option>
+            <option>Sousse</option>
+            <option>Tataouine</option>
+            <option>Tozeur</option>
+            <option>Tunis</option>
+            <option>Zaghouan</option>
+            <!-- Add more cities as needed -->
+          </select>
+        </div>
+      
+        <div class="form-group">
+          <label for="cv">CV:</label>
+          <input type="file" class="form-control-file" id="cv" formControlName="cv">
+        </div>
+      
+        <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+
+        
+      </form>
+      
+  

@@ -1,0 +1,33 @@
+
+<div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2>Requests</h2>
+  <div class="row">
+    <div class="col-sm-6" *ngFor="let request of requests">
+      <div class="card">
+        <div class="card-header">
+          {{ request.requestTitle }}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">ID: {{ request.idRequest }}</h5>
+          <p class="card-text">Posting Date: {{ request.postingDate }}</p>
+          <p class="card-text">Location: {{ request.location }}</p>
+          <p class="card-text">CV: {{ request.cv }}</p>
+
+          <!-- 
+          <div>
+              <button class="action-button" (click)="editApplication(application)">Edit</button>
+              <button class="delete-button" (click)="deleteApplication(application.idApplication)">Delete</button>
+          </div>
+          -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

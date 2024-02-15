@@ -1,0 +1,37 @@
+
+
+<div>
+ <br>
+    <h2>Applications</h2>
+    <div class="number-of-applications">Number of applications: {{ applications.length }}</div>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Discussion</th>
+          <th>Acceptance</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let application of applications">
+          <td>{{ application.idApplication }}</td>
+          <td>
+            <span *ngIf="application.discussion; else noDiscussion" class="check-mark">&#10004;</span>
+            <ng-template #noDiscussion><span class="cross-mark">&#10008;</span></ng-template>
+          </td>
+          <td>
+            <span *ngIf="application.accepted; else notAccepted" class="check-mark">&#10004;</span>
+            <ng-template #notAccepted><span class="cross-mark">&#10008;</span></ng-template>
+          </td>
+          
+
+          <td>
+            <button class="action-button" (click)="editApplication(application)">Edit</button>
+            <button class="delete-button" (click)="deleteApplication(application.idApplication)">Delete</button>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+</div>
