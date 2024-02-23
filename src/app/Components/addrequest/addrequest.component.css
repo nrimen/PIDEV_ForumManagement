@@ -1,55 +1,52 @@
-/* Add some padding and margin to the form */
+/* General container styling */
+.form-container {
+  background-color: rgb(46, 57, 85);
+  width: 50%;
+  margin:  20px auto 100px;; /* Auto margin to center horizontally */
+  padding: 30px;
+  border-radius: 2%;
+  height: fit-content;
+}
 
- /* Add some padding and margin to the form */
-form {
-    padding: 20px;
-    margin: 80px;
-    margin-top: 70px;
-  }
-  h2 {
-    text-align: center;
-    color: #333;
-  }
-  
-  /* Style the form group */
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  /* Style the labels */
-  label {
-    margin: 5px;
-    font-weight: bold;
-  }
-  
-  /* Style the file input */
-  .form-control-file {
-    display: block;
-    width: 100%;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-  }
-  
-  /* Style the submit button */
-  .btn-primary {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  
-  /* Add some hover effect to the button */
-  .btn-primary:hover {
-    background-color: #0056b3;
-  }
+
+
+/* Form group styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Label styling */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Optionally add bold font weight to labels */
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  font-size: 14px; /* Optionally adjust font size for error messages */
+}
+
+/* Textarea styling */
+.taller-textarea {
+  height: 150px;
+  resize: vertical; /* Allow vertical resizing */
+}
+
+/* Primary button styling */
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
 
   .is-invalid {
     border: 1px solid red;

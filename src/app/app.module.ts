@@ -13,11 +13,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApplicationComponent } from './Components/application/application.component';
 import { RequestComponent } from './Components/request/request.component';
 import { AddrequestComponent } from './Components/addrequest/addrequest.component';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RequestadminComponent } from './Components/requestadmin/requestadmin.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmapplicationComponent } from './Components/confirmapplication/confirmapplication.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,9 @@ import { ConfirmapplicationComponent } from './Components/confirmapplication/con
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatChipsModule,
+    FormsModule
   ],
   providers: [ 
     FormBuilder

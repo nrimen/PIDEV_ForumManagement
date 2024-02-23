@@ -1,7 +1,7 @@
 h2 {
     text-align: center;
     margin-bottom: 20px;
-  }
+}
 
 .card {
     border: 1px solid #ccc;
@@ -13,7 +13,54 @@ h2 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Add styles for buttons if needed */
-/*.action-button, .delete-button {
-    margin-right: 5px;
-}*/
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* search bar */
+
+.search-container {
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.search-icon {
+    cursor: pointer;
+    font-size: 24px;
+    transition: transform 0.3s, background-color 0.3s;
+    vertical-align: middle;
+}
+
+.search-icon:hover {
+    background-color: rgba(19, 19, 74, 0.2);
+    border-radius: 50%;
+    /* Faded background color on hover */
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 16px;
+    width: 0;
+    transition: width 0.5s, padding 0.5s;
+    border-radius: 5px;
+    background: rgba(2, 0, 36, 1);
+    background: linear-gradient(360deg, rgba(2, 0, 36, 1) 0%, rgba(54, 54, 167, 0.4459) 10%, rgba(251, 254, 255, 1) 100%);
+    /* Background color of the input field */
+    color: #fff;
+    vertical-align: middle;
+}
+
+.search-container.expanded .search-icon {
+    transform: translateX(-50%);
+}
+
+.search-container.expanded .search-input {
+    width: 200px;
+    /* or any desired width */
+    padding: 8px 12px;
+}

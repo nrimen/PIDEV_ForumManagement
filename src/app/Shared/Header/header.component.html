@@ -41,4 +41,15 @@
     </nav>
 
   </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+   <!-- Vendor JS Files -->
+   <script> const selectHeader = document.querySelector('#header');
+    if (selectHeader) {
+      document.addEventListener('scroll', () => {
+        window.scrollY > 100 ? selectHeader.classList.add('sticked') : selectHeader.classList.remove('sticked');
+      });
+    }
+   </script>
+  
 </header><!-- End Header -->

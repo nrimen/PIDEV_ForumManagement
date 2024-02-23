@@ -1,33 +1,51 @@
 
-<div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <h2>Requests</h2>
-  <div class="row">
-    <div class="col-sm-6" *ngFor="let request of requests">
-      <div class="card">
-        <div class="card-header">
-          {{ request.requestTitle }}
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">ID: {{ request.idRequest }}</h5>
-          <p class="card-text">Posting Date: {{ request.postingDate }}</p>
-          <p class="card-text">Location: {{ request.location }}</p>
-          <p class="card-text">CV: {{ request.cv }}</p>
 
-          <!-- 
-          <div>
-              <button class="action-button" (click)="editApplication(application)">Edit</button>
-              <button class="delete-button" (click)="deleteApplication(application.idApplication)">Delete</button>
-          </div>
-          -->
+   <main id="main">
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/about-header.jpg');">
+      <div class="container position-relative d-flex flex-column align-items-center">
 
-        </div>
+        <h2>Requests</h2>
+        <ol>
+          <li><a href="./requests">Requests</a></li>
+          
+        </ol>
+
       </div>
     </div>
-  </div>
-</div>
+    <div>
+      
+      <div class="container">
+      
+        <div class="search-container"  [class.expanded]="showSearch">
+          <i class="material-icons search-icon" (click)="toggleSearch()">search</i>
+          <input class="search-input" type="text" placeholder="Search..." *ngIf="showSearch" (keyup)="applyFilter($event)">
+        </div>
+      
+      
+      
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card" *ngFor="let request of filteredRequests">
+              <div class="card-header">
+                {{ request.requestTitle }}
+              </div>
+              <div class="card-body">
+                <p class="card-text">Content: {{ request.requestContent }}</p>
+                <p class="card-text">Posting Date: {{ request.postingDate }}</p>
+                <p class="card-text">Location: {{ request.location }}</p>
+                <p class="card-text">CV: {{ request.cv }}</p>
+                <p class="card-text">Field:</p>
+                <mat-chip-listbox aria-label="Field Selection">
+                  <mat-chip *ngFor="let field of transformRequestField(request)" color="primary">{{ field }}</mat-chip>
+                </mat-chip-listbox>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+   </main>   
+  
+ 
+

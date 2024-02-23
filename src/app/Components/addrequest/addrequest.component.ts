@@ -5,6 +5,7 @@ import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 
+
 @Component({
   selector: 'app-addrequest',
   templateUrl: './addrequest.component.html',
@@ -13,13 +14,16 @@ import { debounceTime } from 'rxjs/operators';
 export class AddrequestComponent {
   myForm: FormGroup;
   request: any;
+
   // requests: Request[] | undefined;
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient,private snackBar: MatSnackBar, private router: Router) {
     this.myForm = this.formBuilder.group({
       requestTitle: ['', [Validators.required, Validators.minLength(5)]],
+      requestContent: ['', [Validators.required, Validators.minLength(15)]],
       location: ['', Validators.required],
-      cv: ['', Validators.required]
+      cv: ['', Validators.required],
+      requestField: ['',]
     });
   }
   onSubmit() {
@@ -29,6 +33,7 @@ export class AddrequestComponent {
     // Check if formData is defined before proceeding
     if (formData) {
       formData.postingDate = new Date();
+      formData.requestField = formData.requestField.join(',');
       console.log('Form Data:', formData);
 
       // Make an HTTP POST request to your backend endpoint
@@ -57,6 +62,8 @@ export class AddrequestComponent {
       this.router.navigate(['/requests']);
     });
   }
+
+  
 }
  
  
