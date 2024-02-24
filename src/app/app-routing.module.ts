@@ -13,7 +13,7 @@ const r: Routes = [
 
   {path:'blog',component:BlogComponent},
   {path:'home',component:HomeComponent},
-  {path:'blog-details.html',component:BlogDetailsComponent},
+  {path:'blog-details/:id',component:BlogDetailsComponent},
   {path:'addblog',component:AddBlogComponent},
   {path:'chat',component:ChatComponent},
   {path:'contact',component:ContactComponent},

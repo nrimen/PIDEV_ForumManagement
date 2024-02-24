@@ -32,14 +32,34 @@ export class blogService {
 }
 
 
- /* addArticle(Blog: Blog) : Observable<any>{
-    return this.http.post(URL + "addB", Blog);
-}*/
 
 
-/*showArticle(articleId: string): Observable<Blog> {
-  const url = `${URL}show/${afficheB}`;
-  return this.http.get<Blog>(URL+"afficheB", Blog);*/
+
+getArticles(): Observable<Blog[]> {
+  return this.http.get<Blog[]>(URL + "afficheB").pipe(
+    tap(() => {
+      this._refresh$.next();
+    })
+  )
+}
+
+getArticleById(id: number): Observable<Blog> {
+  return this.http.get<Blog>(URL + `afficheB/${id}`).pipe(
+    tap(() => {
+      this._refresh$.next();
+    })
+  )
+}
+
+
+
+deleteArticle(idBlog: number): Observable<void> {
+  return this.http.delete<void>(URL + `deleteB/${idBlog}`).pipe(
+    tap(() => {
+      this._refresh$.next();
+    })
+  )
+}
 }
 
 

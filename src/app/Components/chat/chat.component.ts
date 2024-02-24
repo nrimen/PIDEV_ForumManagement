@@ -19,7 +19,7 @@ type Messaggio = {
 })
 export class ChatComponent implements OnInit,AfterViewChecked
 {
-  url = 'http://localhost:8080';
+  url = 'http://localhost:8089/ForumManagement';
   otherUser = {id:"1",nickname:"xx",firstName:"ss",propic:""}
   thisUser = {id:"2",nickname:"yy",firstName:"rr",propic:""}
   channelName?: string;
@@ -37,7 +37,7 @@ export class ChatComponent implements OnInit,AfterViewChecked
 
   ngOnInit(): void {
     this.connectToChat();
-    //this.el.nativeElement.querySelector("#chat").scrollIntoView();
+    this.el.nativeElement.querySelector("#chat").scrollIntoView();
     /*this.userService
       .getUserByNickname(this.route.snapshot.paramMap.get('user')!)
       .subscribe((data) => {
@@ -71,8 +71,9 @@ export class ChatComponent implements OnInit,AfterViewChecked
     }
     this.loadChat();
     console.log('connecting to chat...');
-    //this.socket = new SockJS(this.url + '/chat');
-    /*this.stompClient = Stomp.over(this.socket);
+   // this.socket = new SockJS(this.url + '/chaf');
+    
+   /* this.stompClient = Stomp.over(this.socket);
 
     this.stompClient.connect({}, (frame:any) => {
       //func = what to do when connection is established
@@ -87,7 +88,7 @@ export class ChatComponent implements OnInit,AfterViewChecked
     });*/
   }
 
-  /*sendMsg() {
+  sendMsg() {
     if (this.newMessage.value !== '') {
       this.stompClient!.send(
         '/app/chat/' + this.channelName,
@@ -101,7 +102,7 @@ export class ChatComponent implements OnInit,AfterViewChecked
       this.newMessage.setValue('');
     }
   }
-*/
+
   loadChat(){
     this.messages = this.http.post<Array<Messaggio>>(this.url+'/getMessages' ,  this.channelName);
     this.messages.subscribe(data => {
@@ -112,7 +113,7 @@ export class ChatComponent implements OnInit,AfterViewChecked
     console.log(this.messages);
   }
 
- /* whenWasItPublished(myTimeStamp: string) {
+  whenWasItPublished(myTimeStamp: string) {
     const endDate = myTimeStamp.indexOf('-');
     return (
       myTimeStamp.substring(0, endDate) +
@@ -120,7 +121,7 @@ export class ChatComponent implements OnInit,AfterViewChecked
       myTimeStamp.substring(endDate + 1)
     );
     }
-  */
+  
   }
 
 
