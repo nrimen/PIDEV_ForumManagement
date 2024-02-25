@@ -17,6 +17,7 @@ export class BlogComponent implements OnInit {
   options = ['...', 'Delete Article', 'Update Article', 'Report Article'];
   selectedOption = this.options[0];
   selectedArticle: Blog | null = null;
+  private supabase :any
   constructor(private blogservice: blogService) { }
 
   ngOnInit(): void {
@@ -42,17 +43,28 @@ export class BlogComponent implements OnInit {
     }
   }
 
-  deleteArticle() {
-    // Logic to delete the article
+  deleteArticle(id:number) {
+    console.log("uuuu")
+    this.blogservice.deleteArticle(id).subscribe() 
   }
 
   updateArticle() {
     // Logic to update the article
   }
 
-  displayImage(supabaseUrl: string) {
-    const imgElement = document.createElement('img');
-    imgElement.src = supabaseUrl;
-    document.body.appendChild(imgElement);
+  async getImageUrl(imageName: string): Promise<string> {
+    try {
+      const {data} = await this.supabase.storage
+        .from('images')
+        .getPublicUrl(imageName);
+      const imageUrl = data.publicUrl;
+      return imageUrl;
+    } catch (error) {
+      console.error('Failed to get image URL:', error);
+      throw new Error('Failed to get image URL');
+    }
   }
+
+
+
 }

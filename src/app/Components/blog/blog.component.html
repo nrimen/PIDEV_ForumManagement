@@ -28,24 +28,17 @@
             <div class="row gy-5 posts-list">
 
               <div class="col-lg-6" *ngFor="let article of articles" >
+                <nav id="navbar" class="navbar">
 
-                <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <li class="dropdown"><a ><span>...</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                   <ul>
-                    <li><a href="#">Dropdown 1</a></li>
-                    <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                      <ul>
-                        <li><a href="#">Deep Dropdown 1</a></li>
-                        <li><a href="#">Deep Dropdown 2</a></li>
-                        <li><a href="#">Deep Dropdown 3</a></li>
-                        <li><a href="#">Deep Dropdown 4</a></li>
-                        <li><a href="#">Deep Dropdown 5</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#">Dropdown 2</a></li>
-                    <li><a href="#">Dropdown 3</a></li>
-                    <li><a href="#">Dropdown 4</a></li>
+                    
+                    <li><button class="btn btn-primary" (click)="deleteArticle(article.idBlog)">Delete Article</button></li>
+                        <li><button class="btn btn-primary" (click)="updateArticle()">Update Article</button></li>
+                        <li><a href="#">report Dropdown 3</a></li>
                   </ul>
                 </li>
+                </nav>
                 <article class="d-flex flex-column">
 
                   <div class="post-img">
