@@ -25,5 +25,21 @@ export class BlogDetailsComponent implements OnInit {
     
   }
 
+  getImageUrl(imageName: string): string {
+    return "https://oawpdobopjoqcofbjedi.supabase.co/storage/v1/object/public/images/"+imageName;
+    /*
+    try {
+      const {data} = await supabase.storage
+        .from('images')
+        .getPublicUrl(imageName);
+      const imageUrl = data.publicUrl;
+      return "https://oawpdobopjoqcofbjedi.supabase.co/storage/v1/object/public/images/"+imageName;
+    } catch (error) {
+      console.error('Failed to get image URL:', error);
+      throw new Error('Failed to get image URL');
+    }*/
+  }
+
+
 
 }

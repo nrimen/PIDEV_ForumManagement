@@ -1,0 +1,116 @@
+/* Style for the blog section */
+.blog {
+    padding: 60px 0;
+  }
+  
+  /* Style for individual blog posts */
+  .posts-list .col-lg-6 {
+    margin-bottom: 30px;
+  }
+  
+  .posts-list .col-lg-6 nav {
+    margin-bottom: 15px;
+  }
+  
+  .posts-list .col-lg-6 nav ul {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .posts-list .col-lg-6 nav:hover ul {
+    display: block;
+  }
+  
+  .posts-list .col-lg-6 nav ul li {
+    list-style: none;
+  }
+  
+  .posts-list .col-lg-6 nav ul li a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    padding: 5px 0;
+  }
+  
+  .posts-list .col-lg-6 nav ul li a:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .posts-list .col-lg-6 article {
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #fff;
+  }
+  
+  .posts-list .col-lg-6 article img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  
+  .posts-list .col-lg-6 article h2.title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .posts-list .col-lg-6 article .meta-top {
+    margin-bottom: 10px;
+  }
+  
+  .posts-list .col-lg-6 article .meta-top ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .posts-list .col-lg-6 article .meta-top ul li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .posts-list .col-lg-6 article .content {
+    margin-bottom: 10px;
+  }
+  
+  .posts-list .col-lg-6 article .read-more {
+    text-align: right;
+  }
+  
+  /* Style for sidebar */
+  .sidebar {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .sidebar .sidebar-item {
+    margin-bottom: 20px;
+  }
+  
+  .sidebar .sidebar-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+  
+  .sidebar .sidebar-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar .sidebar-item ul li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar .sidebar-item ul li a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .sidebar .sidebar-item ul li a:hover {
+    color: #555;
+  }
+  

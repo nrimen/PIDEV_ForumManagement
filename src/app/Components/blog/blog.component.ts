@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Categorie } from '../../Core/Models/categorie';
-import { blogService, supabase } from 'src/app/Service/blog-service';
+import { blogService } from 'src/app/Service/blog-service';
 import { Blog } from 'src/app/Core/Models/blog';
+import { supabase } from 'src/app/utils/supabase';
 
 @Component({
   selector: 'app-blog',
@@ -11,13 +12,12 @@ import { Blog } from 'src/app/Core/Models/blog';
 })
 export class BlogComponent implements OnInit {
 
-  private supabaseUrl = 'https://oawpdobopjoqcofbjedi.supabase.co';
-  private supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9hd3Bkb2JvcGpvcWNvZmJqZWRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDgyMDE5MjEsImV4cCI6MjAyMzc3NzkyMX0.vJKpeDZyvPaeQvslK8VxXdlUfaciqFsET3TsRkC76js';
+
   articles: Blog[] = [];
   options = ['...', 'Delete Article', 'Update Article', 'Report Article'];
   selectedOption = this.options[0];
   selectedArticle: Blog | null = null;
-  private supabase :any
+
   constructor(private blogservice: blogService) { }
 
   ngOnInit(): void {
@@ -52,17 +52,19 @@ export class BlogComponent implements OnInit {
     // Logic to update the article
   }
 
-  async getImageUrl(imageName: string): Promise<string> {
+   getImageUrl(imageName: string): string {
+    return "https://oawpdobopjoqcofbjedi.supabase.co/storage/v1/object/public/images/"+imageName;
+    /*
     try {
-      const {data} = await this.supabase.storage
+      const {data} = await supabase.storage
         .from('images')
         .getPublicUrl(imageName);
       const imageUrl = data.publicUrl;
-      return imageUrl;
+      return "https://oawpdobopjoqcofbjedi.supabase.co/storage/v1/object/public/images/"+imageName;
     } catch (error) {
       console.error('Failed to get image URL:', error);
       throw new Error('Failed to get image URL');
-    }
+    }*/
   }
 
 

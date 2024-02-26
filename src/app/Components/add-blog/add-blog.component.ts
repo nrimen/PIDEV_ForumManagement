@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Categorie } from '../../Core/Models/categorie';
-import { blogService, supabase } from 'src/app/Service/blog-service';
+import { blogService } from 'src/app/Service/blog-service';
 import {createClient,SupabaseClient} from '@supabase/supabase-js';
+import { supabase } from 'src/app/utils/supabase';
 
 
 
@@ -15,8 +16,7 @@ import {createClient,SupabaseClient} from '@supabase/supabase-js';
 
 export class AddBlogComponent {
 [x: string]: any;
-private supabaseUrl = 'https://oawpdobopjoqcofbjedi.supabase.co'
-private supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9hd3Bkb2JvcGpvcWNvZmJqZWRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDgyMDE5MjEsImV4cCI6MjAyMzc3NzkyMX0.vJKpeDZyvPaeQvslK8VxXdlUfaciqFsET3TsRkC76js'
+
 private fileupload: File = {} as File;
 
   postForm!: FormGroup;
@@ -70,12 +70,11 @@ private fileupload: File = {} as File;
 
 
   async uploadFile(file: File) {
-    const supabase = createClient(this.supabaseUrl, this.supabaseKey);
-console.log("honi");
+   
+
     
 
     const { data, error } = await supabase.storage.from('images').upload(`${Date.now()}_${file.name}`, file, { cacheControl: '3600', upsert: false });
-  console.log("uuuu",file.name);
     if (error) {
       console.error(error);
       return;

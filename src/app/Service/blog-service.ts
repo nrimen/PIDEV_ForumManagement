@@ -3,16 +3,15 @@ import { tap } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Blog } from '../Core/Models/blog';
-import { createClient } from '@supabase/supabase-js'
 
 
 
-const supabaseUrl = 'https://gdvrodbdggjncgbhmooj.supabase.co'
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdkdnJvZGJkZ2dqbmNnYmhtb29qIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTM1NzA2MTUsImV4cCI6MjAwOTE0NjYxNX0.bY6nuW09os-Y8P2oBLlIDh9pDOIu0TspJ7owLlNqVw4' 
-export const supabase = createClient(supabaseUrl, supabaseKey)
-  // { bucket: 'your-bucket-name' })
 
-  const URL = "http://localhost:8089/ForumManagement/blog/" ;
+
+
+// { bucket: 'your-bucket-name' })
+
+const URL = "http://localhost:8089/ForumManagement/blog/" ;
 @Injectable({
   providedIn: 'root'
 })
@@ -20,6 +19,8 @@ export const supabase = createClient(supabaseUrl, supabaseKey)
 
 export class blogService {
   private _refresh$ = new Subject<void>();
+  
+    
 
   constructor(private http: HttpClient) { }
 
