@@ -34,12 +34,19 @@ export class BlogComponent implements OnInit {
           this.blogservice.deleteArticle(id).subscribe() 
         }
         break;
-      case 'Update Article':
-        this.updateArticle();
-        break;
-      default:
-        // Handle the default case or do nothing
-        break;
+        case 'Update Article':
+          if (this.selectedArticle) {
+            const updatedArticle: Blog = { ...this.selectedArticle, idBlog: id };
+            this.blogservice.updateArticle(updatedArticle).subscribe(
+              (response) => {
+                console.log('Article updated successfully:', response);
+              },
+              (error) => {
+                console.error('Failed to update article:', error);
+              }
+            );
+          }
+          break;
     }
   }
 
@@ -53,7 +60,7 @@ export class BlogComponent implements OnInit {
   }
 
    getImageUrl(imageName: string): string {
-    return "https://oawpdobopjoqcofbjedi.supabase.co/storage/v1/object/public/images/"+imageName;
+    return "https://gdvrodbdggjncgbhmooj.supabase.co/storage/v1/object/public/images/"+imageName;
     /*
     try {
       const {data} = await supabase.storage

@@ -33,6 +33,13 @@ export class blogService {
 }
 
 
+updateArticle(updatedBlog: Blog): Observable<any> {
+  return this.http.put(URL + "updateB", updatedBlog).pipe(
+    tap(() => {
+      this._refresh$.next();
+    })
+  );
+}
 
 
 

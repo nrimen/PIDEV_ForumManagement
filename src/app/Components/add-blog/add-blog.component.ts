@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Categorie } from '../../Core/Models/categorie';
 import { blogService } from 'src/app/Service/blog-service';
-import {createClient,SupabaseClient} from '@supabase/supabase-js';
+
 import { supabase } from 'src/app/utils/supabase';
 
 
@@ -29,8 +29,8 @@ private fileupload: File = {} as File;
 
   ngOnInit(): void {
     this.postForm = this.fb.group({
-      title: ['ss', ],
-      content: ['ss', ],
+      title: ['', ],
+      content: ['', ],
       image: ['',],
       publishDate: ['', ],
       categorie: ['', ],

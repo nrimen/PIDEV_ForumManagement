@@ -28,8 +28,11 @@
                   <a><button> + </button> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                   <ul>
                     <li><button class="btn btn-primary" (click)="deleteArticle(article.idBlog)">Delete Article</button></li>
-                    <li><button class="btn btn-primary" (click)="updateArticle()">Update Article</button></li>
-                    <li><a href="#">Report</a></li>
+                    <br>
+                    <button class="btn btn-primary" [routerLink]="['updateblog']">Update Article</button>
+                    <br>
+                    <br>
+                    <li><button class="btn btn-primary"> Report </button></li>
                   </ul>
                 </li>
               </nav>
@@ -124,10 +127,11 @@
                 <div *ngIf="article">
                   <!-- Display the image -->
                   <img [src]="getImageUrl(article.image)" alt="Article Image" class="img-fluid">
-                
+                <br>
                   <div>
                     <h4><a href="blog-post">{{article.title}}</a></h4>
                     <time datetime="2020-01-01">{{article.publishDate}}</time>
+                    <br>
                   </div>
                 </div><!-- End recent post item-->
                 <!-- Repeat recent post items -->
