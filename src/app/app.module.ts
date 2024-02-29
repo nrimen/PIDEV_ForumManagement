@@ -19,6 +19,13 @@ import { RequestadminComponent } from './Components/requestadmin/requestadmin.co
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmapplicationComponent } from './Components/confirmapplication/confirmapplication.component';
 import { MatChipsModule } from '@angular/material/chips';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ResumeComponent } from './resume/resume.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +36,8 @@ import { MatChipsModule } from '@angular/material/chips';
     RequestComponent,
     AddrequestComponent,
     RequestadminComponent,
-    ConfirmapplicationComponent
+    ConfirmapplicationComponent,
+    ResumeComponent
   ],
   imports: [
     AppRoutingModule,
@@ -43,7 +51,13 @@ import { MatChipsModule } from '@angular/material/chips';
     MatSnackBarModule,
     MatDialogModule,
     MatChipsModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule,
+    MatStepperModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDatepickerModule
+    
   ],
   providers: [ 
     FormBuilder

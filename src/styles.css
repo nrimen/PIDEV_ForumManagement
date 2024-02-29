@@ -111,7 +111,7 @@ section {
 
 .breadcrumbs:before {
   content: "";
-  background-color: rgba(27, 47, 69, 0.7);
+  background-color: #1b2f45b3;
   position: absolute;
   inset: 0;
 }
@@ -248,7 +248,7 @@ section {
 }
 
 .header.sticked {
-  background: rgba(27, 47, 69, 0.9);
+  background: rgba(246, 34, 34, 0.45);
   padding: 12px 0;
 }
 
@@ -498,7 +498,7 @@ section {
 .hero {
   width: 100%;
   min-height: 100vh;
-  background: url("./assets/img/hero-bg.jpg") top center;
+  background: url("./assets/img/esprit1.jpg") top center;
   background-size: cover;
   position: relative;
   padding: 120px 0;

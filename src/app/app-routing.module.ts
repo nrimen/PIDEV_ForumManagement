@@ -6,6 +6,7 @@ import {NotFoundComponent} from "./Shared/not-found/not-found.component";
 import { RequestComponent } from './Components/request/request.component';
 import { AddrequestComponent } from './Components/addrequest/addrequest.component';
 import { RequestadminComponent } from './Components/requestadmin/requestadmin.component';
+import { ResumeComponent } from './resume/resume.component';
 
 
 const r: Routes = [
@@ -15,6 +16,7 @@ const r: Routes = [
   {path:'requests',component:RequestComponent},
   {path:'requestsadmin',component:RequestadminComponent},
   {path:'addrequest',component:AddrequestComponent},
+  {path:'resume',component:ResumeComponent},
 
   {path:'**',component:NotFoundComponent},
 

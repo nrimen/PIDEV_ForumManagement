@@ -84,3 +84,9 @@ section {
 }
 
 
+.navbar .dropdown .material-icons {
+  font-size: 24px; /* Adjust the size as needed */
+  vertical-align: middle; /* Align the icon vertically */
+  margin-right: 5px; /* Add some spacing between the icon and the text */
+}
+

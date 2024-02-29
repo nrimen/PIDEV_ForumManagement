@@ -9,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class RequestComponent implements OnInit {
 
     requests:any;
+    p: number=1;
+    itemsPerPage: number=5;
+    totalRequests:any;
   constructor(private http: HttpClient) {
 
   }
@@ -17,6 +20,7 @@ export class RequestComponent implements OnInit {
     let response = this.http.get<Request[]>("http://localhost:8089/ForumManagement/request/retrieve-all-requests");
   response.subscribe((data) => {
     this.requests = data;
+    this.totalRequests = data.length;
     this.filteredRequests = this.requests; 
     console.log('Requests data:', data);
   });
