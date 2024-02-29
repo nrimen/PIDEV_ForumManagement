@@ -1,0 +1,38 @@
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/contact-header.jpg');">
+  <div class="container position-relative d-flex flex-column align-items-center">
+
+    <h2>Sign Up</h2>
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li>Sign up</li>
+    </ol>
+
+  </div>
+</div><!-- End Breadcrumbs -->
+
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let user of users">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">{{ user.firstName }} {{ user.lastName }}</h5>
+          <p class="card-text">Email: {{ user.email }}</p>
+          <p class="card-text">Birth Date: {{ user.birthDate }}</p>
+          <p class="card-text">Inscription Date: {{ user.inscriptionDate }}</p>
+          <p class="card-text">Address: {{ user.address }}</p>
+          <p class="card-text">Role: {{ user.role }}</p>
+          <p class="card-text">Immatriculation Number: {{ user.immatriculationNumber }}</p>
+          <p class="card-text">Sector of Activity: {{ user.sectorOfActivity }}</p>
+          <p class="card-text">Level of Studies: {{ user.levelOfStudies }}</p>
+          <p class="card-text">Domain of Studies: {{ user.domainOfStudies }}</p>
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-secondary" [routerLink]="['/edit-user', user.idUser]">Edit</button>
+            <button class="btn btn-danger" style="background-color: maroon;"(click)="deleteUser(user)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
