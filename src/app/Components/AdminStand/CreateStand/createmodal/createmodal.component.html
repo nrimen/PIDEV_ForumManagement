@@ -2,7 +2,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js"></script>
 <div class="wrapper">
   <div class="form-container">
-  <form [formGroup]="standForm" (ngSubmit)="onSubmit()" >
+  <form [formGroup]="standForm"  >
 <!--    <div>-->
 <!--      <label for="reservationDate">Reservation Date:</label>-->
 <!--      <input type="date" id="reservationDate" formControlName="reservationDate">-->
@@ -36,7 +36,7 @@
 
     <div>
       <label for="gallery">Gallery (Max 4 images):</label>
-      <input class="form-control" type="file" id="gallery" formControlName="gallery" (change)="onFileChange($event)" multiple />
+      <input class="form-control" type="file" id="gallery" formControlName="gallery" (change)="onFileChanged($event)" multiple />
     </div>
 
 
@@ -69,7 +69,13 @@
 <!--      <input type="text" id="userStand" formControlName="userStand">-->
 <!--    </div>-->
 
-    <button type="submit" >Submit</button>
+    <ng-container *ngIf="mode !== 'update'; else updateButton">
+      <button class="mb-3 btn btn-danger" (click)="onSubmit()">Add Stand</button>
+    </ng-container>
+    <ng-template #updateButton>
+      <button class="mb-3 btn btn-primary" (click)="onSubmit()">Update Stand</button>
+    </ng-template><div>
+      </div>
 
   </form>
 

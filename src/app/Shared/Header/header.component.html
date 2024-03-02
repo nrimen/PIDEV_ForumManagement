@@ -16,29 +16,39 @@
         <li><a class="active">Home</a></li>
         <li><a>About</a></li>
         <li><a>Services</a></li>
-        <li><a>Portfolio</a></li>
         <li><a>Team</a></li>
         <li><a>Blog</a></li>
-        <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+        <li class="dropdown"><a href="#"><span>Admin</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
           <ul>
-            <li><a href="#">Dropdown 1</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-              <ul>
-                <li><a href="#">Deep Dropdown 1</a></li>
-                <li><a href="#">Deep Dropdown 2</a></li>
-                <li><a href="#">Deep Dropdown 3</a></li>
-                <li><a href="#">Deep Dropdown 4</a></li>
-                <li><a href="#">Deep Dropdown 5</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Dropdown 2</a></li>
-            <li><a href="#">Dropdown 3</a></li>
-            <li><a href="#">Dropdown 4</a></li>
+            <li><a href="#">Stands</a></li>
+
+            <li><a href="#">users</a></li>
+            <li><a href="#">materials</a></li>
           </ul>
         </li>
-        <li><a href="contact.html">Contact</a></li>
+
+        <li class="dropdown">
+          <a href="#">
+            <i class="material-icons">person</i>
+            <i class="bi bi-chevron-down dropdown-indicator"></i>
+          </a>
+          <ul>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Logout</a></li>
+            <li><a href="#">Create Account</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
 
   </div>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- Vendor JS Files -->
+  <script> const selectHeader = document.querySelector('#header');
+  if (selectHeader) {
+    document.addEventListener('scroll', () => {
+      window.scrollY > 100 ? selectHeader.classList.add('sticked') : selectHeader.classList.remove('sticked');
+    });
+  }
+  </script>
 </header><!-- End Header -->

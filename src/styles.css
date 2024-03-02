@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 /**
 * Template Name: Nova
 * Updated: Jan 29 2024 with Bootstrap v5.3.2
@@ -248,7 +249,7 @@ section {
 }
 
 .header.sticked {
-  background: rgba(27, 47, 69, 0.9);
+  background: rgba(246, 34, 34, 0.45);
   padding: 12px 0;
 }
 
@@ -498,7 +499,7 @@ section {
 .hero {
   width: 100%;
   min-height: 100vh;
-  background: url("./assets/img/hero-bg.jpg") top center;
+  background: url("./assets/img/esprit1.jpg") top center;
   background-size: cover;
   position: relative;
   padding: 120px 0;

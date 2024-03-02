@@ -1,0 +1,195 @@
+
+<!--<div class="theatre">-->
+<!--  <div class="stands">-->
+<!--    <div class="packSilver left">-->
+<!--      <div class="row">-->
+<!--        <div class="seat"></div>-->
+<!--        <div class="seat"></div>-->
+
+<!--      </div>-->
+<!--      <div class="row">-->
+<!--        <div class="seat"></div>-->
+<!--        <div class="seat"></div>-->
+
+<!--      </div>-->
+<!--      &lt;!&ndash; Repeat rows as needed &ndash;&gt;-->
+<!--    </div>-->
+
+<!--    <div class="center">-->
+<!--      <div class="packUmpayed">-->
+<!--        <div class="row">-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Repeat rows as needed &ndash;&gt;-->
+<!--      </div>-->
+
+<!--      <div class="packGold">-->
+<!--        <div class="row">-->
+<!--          &lt;!&ndash; Repeat seats as per the required number in a row, max 8 &ndash;&gt;-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          &lt;!&ndash; ... &ndash;&gt;-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Repeat rows as needed &ndash;&gt;-->
+<!--      </div>-->
+
+<!--      <div class="packDiamond">-->
+<!--        <div class="row">-->
+<!--          &lt;!&ndash; Repeat seats as per the required number in a row, 8 seats only &ndash;&gt;-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+
+<!--          <div class="seat"></div>-->
+
+<!--          <div class="seat"></div>-->
+
+<!--          <div class="seat"></div>-->
+
+<!--          <div class="seat"></div>-->
+
+<!--          &lt;!&ndash; ... &ndash;&gt;-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--          &lt;!&ndash; Repeat seats as per the required number in a row, 8 seats only &ndash;&gt;-->
+<!--          <div class="seat"></div>-->
+<!--          <div class="seat"></div>-->
+
+<!--          <div class="seat"></div>-->
+
+<!--          <div class="seat"></div>-->
+
+<!--          <div class="seat"></div>-->
+
+<!--          <div class="seat"></div>-->
+
+<!--          &lt;!&ndash; ... &ndash;&gt;-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Repeat rows as needed &ndash;&gt;-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="packSilver right" >-->
+<!--      <div class="row">-->
+<!--        <div class="seat"></div>-->
+<!--        <div class="seat"></div>-->
+<!--      </div>-->
+<!--      <div class="row">-->
+<!--        <div class="seat"></div>-->
+<!--        <div class="seat"></div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; Repeat rows as needed &ndash;&gt;-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="stage">Porte</div>-->
+<!--</div>-->
+
+<!--<div class="theatre">-->
+<!--  <div class="stands">-->
+<!--    &lt;!&ndash; Iterate over stands &ndash;&gt;-->
+<!--    <div *ngFor="let stand of data.stands">-->
+<!--      &lt;!&ndash; Conditionally display based on pack type &ndash;&gt;-->
+<!--      <div *ngIf="stand.pack === 'SILVER'" class="packSilver">-->
+<!--        <div class="row" *ngFor="let row of stand.rows">-->
+<!--          <div class="seat" *ngFor="let seat of row.seats"></div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div *ngIf="stand.pack === 'GOLD'" class="packGold">-->
+<!--        <div class="row" *ngFor="let row of stand.rows">-->
+<!--          <div class="seat" *ngFor="let seat of row.seats"></div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div *ngIf="stand.pack === 'DIAMOND'" class="packDiamond">-->
+<!--        <div class="row" *ngFor="let row of stand.rows">-->
+<!--          <div class="seat" *ngFor="let seat of row.seats"></div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="stage">Porte</div>-->
+<!--</div>-->
+
+
+<div class="theatre">
+  <div class="stands">
+    <div class="packSilver left">
+      <!-- Silver stands on the left -->
+      <div class="row" *ngFor="let row of getRows(PackEnum.SILVER)">
+        <div class="seat" *ngFor="let seat of row" [matTooltip]="getTooltipText(seat)"></div>
+      </div>
+    </div>
+
+    <div class="center">
+      <div class="packUnpayed">
+        <div class="row" *ngFor="let row of getRows(PackEnum.UNPAYED)">
+          <div class="seat" *ngFor="let seat of row" (mouseenter)="showTooltip($event)" (mouseleave)="hideTooltip()"><div class="tooltip" *ngIf="isTooltipVisible">{{ getTooltipText(seat) }}</div></div>
+<!--          <app-stands-tooltips *ngIf="isTooltipVisible" [tooltipText]="tooltipText"></app-stands-tooltips>-->
+        </div>
+      </div>
+      <div class="packGold">
+        <div class="row" *ngFor="let row of getRows(PackEnum.GOLD)">
+          <div class="seat" *ngFor="let seat of row" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="packDiamond">
+        <div class="row" *ngFor="let row of getRows(PackEnum.DIAMOND)">
+          <div class="seat" *ngFor="let seat of row" [matTooltip]="getTooltipText(seat)"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="packSilver right">
+      <!-- Silver stands on the right -->
+      <div class="row" *ngFor="let row of getRows(PackEnum.SILVER)">
+        <div class="seat" *ngFor="let seat of row" [matTooltip]="getTooltipText(seat)"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">Porte</div>
+</div>
+<!--////////////////////////////////-->
+
+
+
+
+
+
+

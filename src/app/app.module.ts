@@ -20,7 +20,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DeleteConfirmationDialogComponentComponent } from './Components/AdminStand/CreateStand/delete-confirmation-dialog-component/delete-confirmation-dialog-component.component';
 import {MatSelectModule} from "@angular/material/select";
-
+import { ConfirmationModalComponent } from './Components/AdminStand/CreateStand/confirmation-modal/confirmation-modal.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatTableModule} from "@angular/material/table";
+import { OpenStandsCardDialogComponent } from './Components/AdminStand/CreateStand/open-stands-card-dialog/open-stands-card-dialog.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
 // import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 
 
@@ -32,6 +37,9 @@ import {MatSelectModule} from "@angular/material/select";
     CreateStandComponent,
     CreatemodalComponent,
     DeleteConfirmationDialogComponentComponent,
+    ConfirmationModalComponent,
+    OpenStandsCardDialogComponent,
+
 
   ],
   imports: [
@@ -51,6 +59,11 @@ import {MatSelectModule} from "@angular/material/select";
     MatTooltipModule,
     FormsModule,
     MatSelectModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatGridListModule,
+    MatCardModule,
+
 
   ],
   providers: [],

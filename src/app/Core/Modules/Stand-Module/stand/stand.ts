@@ -5,11 +5,12 @@ export class Stand {
   pack: PackEnum;
   price: number;
   gallery: string[];
-  isReserved: boolean;
-  isFinished: boolean;
-  isPartner: boolean;
+  reserved: boolean;
+  finished: boolean;
+  partner: boolean;
   immatriculationStand: string;
   userStand: string|null;
+  rows?: { seats: any[] }[];
 
   constructor(
     idStand: number,
@@ -17,9 +18,9 @@ export class Stand {
     pack: PackEnum,
     price: number,
     gallery: string[],
-    isReserved: boolean,
-    isFinished: boolean,
-    isPartner: boolean,
+    reserved: boolean,
+    finished: boolean,
+    partner: boolean,
     immatriculationStand: string,
     userStand: string|null
   ) {
@@ -28,9 +29,9 @@ export class Stand {
     this.pack = pack;
     this.price = price;
     this.gallery = gallery;
-    this.isReserved = isReserved;
-    this.isFinished = isFinished;
-    this.isPartner = isPartner;
+    this.reserved = reserved;
+    this.finished = finished;
+    this.partner = partner;
     this.immatriculationStand = immatriculationStand;
     this.userStand = userStand;
   }

@@ -10,7 +10,7 @@ export class StandServiceService {
 
   private standDataSubject = new Subject<Stand>();
 
-  private baseURL = 'http://localhost:8089/ForumManagement/stand/';
+  private baseURL = 'http://localhost:7777/StandManagement/stand/';
   constructor(private httpClient: HttpClient) { }
 
   standDataUpdated$ = this.standDataSubject.asObservable();
