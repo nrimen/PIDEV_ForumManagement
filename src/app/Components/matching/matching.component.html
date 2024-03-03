@@ -1,0 +1,35 @@
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/contact-header.jpg');">
+  <div class="container position-relative d-flex flex-column align-items-center">
+
+    <h2>OFFERS</h2>
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li>OFFERS</li>
+    </ol>
+
+  </div>
+</div><!-- End Breadcrumbs -->
+
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let offer of offers">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">{{ offer.offerTitle }}</h5>
+          <p class="card-text">Posting Date: {{ offer.postingDate }}</p>
+          <p class="card-text">Closing Date: {{ offer.closingDate }}</p>
+          <p class="card-text">Location: {{offer.location }}</p>
+          <p class="card-text">Contract Type: {{ offer.employementType }}</p>
+          <p class="card-text">Status: {{ offer.offerStatus }}</p>
+          <p class="card-text">Description: {{ offer.offerDescription }}</p>
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-secondary" [routerLink]="['/edit-offer', offer.idOffer]">Edit</button>
+            <button class="btn btn-danger" style="background-color: maroon;"(click)="deleteOffer(offer)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

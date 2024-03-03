@@ -1,0 +1,80 @@
+<style>
+  #header {
+    background-color: rgba(27, 47, 69, 0.8); /* Couleur de fond avec une opacité de 0.8 */
+    transition: background-color 0.3s ease; /* Ajouter une transition pour une animation fluide */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999; /* Assurez-vous que le header est au-dessus de tout autre contenu */
+  }
+
+  /* Ajouter un style pour le header lorsque le scrolling est effectué */
+  #header.stuck {
+    background-color: rgba(27, 47, 69, 1); /* Fond entièrement opaque lorsque scrolling */
+  }
+</style>
+<header id="header" class="header d-flex align-items-center fixed-top">
+  <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+    <a href="index.html" class="logo d-flex align-items-center">
+      <!-- Uncomment the line below if you also wish to use an image logo -->
+      <img class="d-flex align-items-center" ngSrc="assets/img/logo.png" alt="" height="117" width="286">
+      <!--<h1 class="d-flex align-items-center">Nova</h1>-->
+    </a>
+
+    <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+    <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="active">Home</a></li>
+        <li><a>About</a></li>
+        <li><a>Services</a></li>
+        <li><a>Team</a></li>
+        <li><a>Blog</a></li>
+        <li class="dropdown"><a href="#"><span>Admin</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <ul>
+            <li><a href="#">Stands</a></li>
+
+            <li><a href="#">users</a></li>
+            <li><a href="#">materials</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#">
+            <i class="material-icons">person</i>
+            <i class="bi bi-chevron-down dropdown-indicator"></i>
+          </a>
+          <ul>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Logout</a></li>
+            <li><a href="#">Create Account</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- Vendor JS Files -->
+  <script>
+    let lastScrollTop = 0;
+    const header = document.querySelector('#header');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScroll > lastScrollTop) {
+        // Faites défiler vers le bas
+        header.classList.add('stuck');
+      } else {
+        // Faites défiler vers le haut
+        header.classList.remove('stuck');
+      }
+
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Assurez-vous que lastScrollTop ne devienne pas négatif
+    });
+  </script>
+</header><!-- End Header -->

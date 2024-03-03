@@ -1,0 +1,81 @@
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/contact-header.jpg');">
+  <div class="container position-relative d-flex flex-column align-items-center">
+    <h2>EDIT OFFER</h2>
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li>Edit Offer</li>
+    </ol>
+  </div>
+</div><!-- End Breadcrumbs -->
+
+<!-- ======= Edit Offer Section ======= -->
+<section id="edit-offer" class="edit-offer">
+  <div class="container position-relative" data-aos="fade-up">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-body">
+
+            <form class="col-sm-12 form-content" *ngIf="offerForm" [formGroup]="offerForm" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <label for="offerTitle" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Offer Title</label>
+                <input type="text" class="form-control" id="offerTitle" formControlName="offerTitle" required>
+                <div *ngIf="offerForm.get('offerTitle')?.errors?.['required'] && (offerForm.get('offerTitle')?.touched)" class="text-danger">
+                  Offer Title is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="postingDate" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Posting Date</label>
+                <input type="date" class="form-control" id="postingDate" formControlName="postingDate" required>
+                <div *ngIf="offerForm.get('postingDate')?.errors?.['required'] && (offerForm.get('postingDate')?.touched)" class="text-danger">
+                  Posting Date is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="closingDate" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Closing Date</label>
+                <input type="date" class="form-control" id="closingDate" formControlName="closingDate" required>
+                <div *ngIf="offerForm.get('closingDate')?.errors?.['required'] && (offerForm.get('closingDate')?.touched)" class="text-danger">
+                  Closing Date is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="location" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Location</label>
+                <input type="text" class="form-control" id="location" formControlName="location" required>
+                <div *ngIf="offerForm.get('location')?.errors?.['required'] && (offerForm.get('location')?.touched)" class="text-danger">
+                  Location is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="employementType" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Employment Type</label>
+                <select type="text" class="form-control" id="employementType" formControlName="employementType" required>
+                  <option value="fulltimejob">FullTimeJob</option>
+                  <option value="parttimejob">PartTimeJob</option>
+                  <option value="internship">Internship</option>
+                </select>
+                <div *ngIf="offerForm.get('employementType')?.errors?.['required'] && (offerForm.get('employementType')?.touched)" class="text-danger">
+                  Employment Type is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="offerStatus" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Offer Status</label>
+                <input type="text" class="form-control" id="offerStatus" formControlName="offerStatus" required>
+                <div *ngIf="offerForm.get('offerStatus')?.errors?.['required'] && (offerForm.get('offerStatus')?.touched)" class="text-danger">
+                  Offer Status is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="offerDescription" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Offer Description</label>
+                <textarea class="form-control" id="offerDescription" rows="4" formControlName="offerDescription" required></textarea>
+                <div *ngIf="offerForm.get('offerDescription')?.errors?.['required'] && (offerForm.get('offerDescription')?.touched)" class="text-danger">
+                  Offer Description is required.
+                </div>
+              </div>
+              <button type="submit" class="btn btn-secondary">Edit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

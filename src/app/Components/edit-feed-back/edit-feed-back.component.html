@@ -1,0 +1,71 @@
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/contact-header.jpg');">
+  <div class="container position-relative d-flex flex-column align-items-center">
+    <h2>EDIT FEEDBACK</h2>
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li>Edit FeedBack</li>
+    </ol>
+  </div>
+</div><!-- End Breadcrumbs -->
+
+<!-- ======= Edit FeedBack Section ======= -->
+<section id="edit-feed-back" class="edit-feed-back">
+  <div class="container position-relative" data-aos="fade-up">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-body">
+
+            <form class="col-sm-12 form-content" *ngIf="feedbackForm" [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <label for="submitedDate" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Submitted Date</label>
+                <input type="date" class="form-control" id="submitedDate" formControlName="submitedDate" required>
+                <div *ngIf="feedbackForm.get('submitedDate')?.errors?.['required'] && (feedbackForm.get('submitedDate')?.touched)" class="text-danger">
+                  Submitted Date is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="feedBackContent" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Feedback Content</label>
+                <textarea class="form-control" id="feedBackContent" formControlName="feedBackContent" required></textarea>
+                <div *ngIf="feedbackForm.get('feedBackContent')?.errors?.['required'] && (feedbackForm.get('feedBackContent')?.touched)" class="text-danger">
+                  Feedback Content is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="rating" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Rating</label>
+                <input type="text" class="form-control" id="rating" formControlName="rating" required>
+                <div *ngIf="feedbackForm.get('rating')?.errors?.['required'] && (feedbackForm.get('rating')?.touched)" class="text-danger">
+                  Rating is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="feedBackType" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Feedback Type</label>
+                <select type="text" class="form-control" id="feedBackType" formControlName="feedBackType" required>
+                  <option value="General_FeedBack">General Feedback</option>
+                  <option value="Bug_Report">Bug Report</option>
+                  <option value="Feature_Request">Feature Request</option>
+                </select>
+                <div *ngIf="feedbackForm.get('feedBackType')?.errors?.['required'] && (feedbackForm.get('feedBackType')?.touched)" class="text-danger">
+                  Feedback Type is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="priority" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Priority</label>
+                <select type="text" class="form-control" id="priority" formControlName="priority" required>
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </select>
+                <div *ngIf="feedbackForm.get('priority')?.errors?.['required'] && (feedbackForm.get('priority')?.touched)" class="text-danger">
+                  Priority is required.
+                </div>
+              </div>
+              <button type="submit" class="btn btn-secondary">Edit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
