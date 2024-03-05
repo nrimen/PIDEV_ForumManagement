@@ -53,6 +53,10 @@
     width: 98%;
     margin: 5px 0 0 2%;
   }
+
+  .chat-content {
+    margin-left: 20px; /* Adjust the value as needed to move it to the right */
+  }
   
   .chat-message {
     width: 80%;

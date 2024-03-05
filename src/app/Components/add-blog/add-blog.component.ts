@@ -30,11 +30,11 @@ private fileupload: File = {} as File;
 
   ngOnInit(): void {
     this.postForm = this.fb.group({
-      title: ['', ],
-      content: ['', ],
-      image: ['',],
-      publishDate: ['', ],
-      categorie: ['', ],
+      title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+    content: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(1000)]],
+    image: ['', [Validators.required]],
+    publishDate: ['', [Validators.required]],
+    categorie: ['', [Validators.required]],
       comment: [null],
     });
   }

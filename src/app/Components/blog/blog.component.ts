@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Categorie } from '../../Core/Models/categorie';
 import { blogService } from 'src/app/Service/blog-service';
 import { Blog } from 'src/app/Core/Models/blog';
-import { supabase } from 'src/app/utils/supabase';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blog',
@@ -20,13 +20,13 @@ export class BlogComponent implements OnInit {
   selectedOption = this.options[0];
   selectedArticle: Blog | null = null;
 
-  constructor(private formBuilder : FormBuilder,private blogservice: blogService) {
+  constructor(private formBuilder : FormBuilder,private blogservice: blogService,) {
     this.searchForm = this.formBuilder.group({
       title: [''],
       Categorie: ['']
     });
    }
-
+   
   ngOnInit(): void {
     this.getData()
     this.searchArticles()
