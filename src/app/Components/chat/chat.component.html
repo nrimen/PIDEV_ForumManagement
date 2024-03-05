@@ -1,63 +1,85 @@
-
-<main id="main">
-
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/blog-header.jpg');">
-      <div class="container position-relative d-flex flex-column align-items-center">
-
-        <h2>Send Message</h2>
-        <ol>
-          <li><a href="index">Home</a></li>
-          <li>Messanging</li>
-        </ol>
-
-      </div>
-    </div><!-- End Breadcrumbs -->
-
-<header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="/chat">Chat app</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarsExample04">
-          <ul class="navbar-nav mr-auto">
-          </ul>
-        </div>
-      </nav>
-</header>
-
-<main class="chat">
-    <div class="container">
-        <div class="chat-content">
-            <div class="card">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item" *ngFor="let chatMessage of webSocketService.chatMessages">
-                        <strong> Jhon</strong>
-                        <span>uuuu</span>
-                        
-                    </li>
-                    <li class ="list-group-item">
-                        <strong> mohsen</strong>
-                        <span> oooo</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <form (ngSubmit)="sendMessage(sendForm)" #sendForm="ngForm">
-            <div class="chat-send row">
-                <div class="col-2">
-                    <input type="text" class="form-control" name="user" id="input-user" ngModel>
-                </div>
-                <div class="col-8">
-                    <input type="text" class="form-control" name="message" id="input-message" ngModel>
-                </div>
-                <div class="col-2">
-                    <button type="submit" class="btn btn-primary">Send</button>
-                </div>
-            </div>
-        </form>
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+<div class="component">
+  <div class="container-fluid h-100">
+    <div class="row justify-content-center h-100">
+      <div class="card-footer"></div>
     </div>
+  </div>
+  <div class="col-md-8 col-xl-6 chat">
+    <div class="card">
+      <div class="card-header msg_head">
+        <div class="d-flex bd-highlight">
+          <div class="img_cont">
+            <img [src]="otherUser?.propic" class="rounded-circle user_img" />
+          </div>
+          <div class="user_info">
+            <span>Chat con {{ otherUser?.firstName }}</span>
+          </div>
+        </div>
+      </div>
+      <div #chat id="chat" class="card-body msg_card_body">
+        <!--messages - start> -->
+        <div *ngFor="let msg of messages | async">
+          <div
+            class="d-flex justify-content-start mb-4"
+            *ngIf="msg.sender === otherUser!.nickname; else thisUserMsg"
+          >
+            <div class="img_cont_msg">
+              <img
+                [src]="otherUser!.propic"
+                class="rounded-circle user_img_msg"
+              />
+            </div>
+            <div class="msg_cotainer">
+              {{ msg.content }}
+              <span class="msg_time">{{
+                whenWasItPublished(msg.t_stamp)
+              }}</span>
+            </div>
+          </div>
 
-</main>
+          <ng-template #thisUserMsg>
+            <div class="d-flex justify-content-end mb-4">
+              <div class="msg_cotainer_send">
+                {{ msg.content }}
+                <span class="msg_time_send">{{
+                  whenWasItPublished(msg.t_stamp)
+                }}</span>
+              </div>
+              <div class="img_cont_msg">
+                <img
+                  [src]="thisUser.propic"
+                  class="rounded-circle user_img_msg"
+                />
+              </div>
+            </div>
+          </ng-template>
+        </div>
+        <!--messages - end-->
+      </div>
+      <div class="card-footer">
+        <div class="input-group">
+          <div class="input-group-append">
+            <span class="input-group-text attach_btn"
+              ><i class="fas fa-paperclip"></i
+            ></span>
+          </div>
+          <!-- <textarea
+            [formControl]="newMessage"
+            name=""
+            class="form-control type_msg"
+            placeholder="Type your message..."
+          ></textarea> -->
+          <div class="input-group-append">
+            <span (click)="sendMsg()" class="input-group-text send_btn"
+              ><i class="material-icons" style="font-size: 36px">send</i></span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

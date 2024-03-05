@@ -26,8 +26,8 @@
 
               <div *ngIf="article">
                 <!-- Display the image -->
-                <img [src]="getImageUrl(article.image)" alt="Article Image" class="img-fluid">
-              </div>
+                <img [src]="getImageUrl(article.image)" alt="" class="img-fluid">
+                </div>
 
               <h2 class="title">{{article?.title}}</h2>
 
@@ -59,7 +59,7 @@
 
                 <h3>{{article?.categorie}}.</h3>
                 <p>
-                  Education plays a pivotal role in shaping individuals and societies. It goes far beyond the simple acquisition of knowledge; it is a transformative force that empowers individuals, unlocks their potential, and paves the way for a brighter future. This article explores the profound impact of education, highlighting its key benefits and discussing the challenges and opportunities it presents.
+                  {{article?.categorie}} plays a pivotal role in shaping individuals and societies. It goes far beyond the simple acquisition of knowledge; it is a transformative force that empowers individuals, unlocks their potential, and paves the way for a brighter future. This article explores the profound impact of education, highlighting its key benefits and discussing the challenges and opportunities it presents.
 
 Empowering Individuals:
 Education empowers individuals by equipping them with knowledge, skills, and critical thinking abilities. It fosters personal development, enhances self-confidence, and nurtures a sense of curiosity and lifelong learning. Education empowers individuals to pursue their passions, make informed decisions, and adapt to an ever-changing world.

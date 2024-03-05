@@ -17,8 +17,10 @@
 
   <!-- Blog Section -->
   <section id="blog" class="blog">
+    
     <div class="container" data-aos="fade-up">
       <div class="row g-5">
+        
         <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
           <div class="row gy-5 posts-list">
             <!-- Loop through articles -->
@@ -99,13 +101,15 @@
         <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
           <div class="sidebar ps-lg-4">
             <!-- Sidebar Search Form -->
-            <div class="sidebar-item search-form">
-              <h3 class="sidebar-title">Search</h3>
-              <form action="" class="mt-3">
-                <input type="text">
-                <button type="submit"><i class="bi bi-search"></i></button>
-              </form>
-            </div><!-- End sidebar search formn-->
+<div class="sidebar-item search-form">
+  <h3 class="sidebar-title">Search</h3>
+  <form [formGroup]="searchForm" (click)="searchArticles()" class="mt-3">
+    <input type="text" id="title" formControlName="title" type="text" id="categorie" formControlName="categorie" placeholder="Search by ">
+    <button type="submit"><i class="bi bi-search"></i></button>
+  </form>
+</div>
+<!-- End sidebar search form -->
+
 
             <!-- Sidebar Categories -->
             <div class="sidebar-item categories">

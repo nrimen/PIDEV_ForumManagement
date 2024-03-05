@@ -12,27 +12,39 @@ import { supabase } from 'src/app/utils/supabase';
 })
 export class BlogComponent implements OnInit {
 
+  searchForm: FormGroup;
 
   articles: Blog[] = [];
+  filteredArticles: Blog[] = [];
   options = ['...', 'Delete Article', 'Update Article', 'Report Article'];
   selectedOption = this.options[0];
   selectedArticle: Blog | null = null;
 
-  constructor(private blogservice: blogService) { }
+  constructor(private formBuilder : FormBuilder,private blogservice: blogService) {
+    this.searchForm = this.formBuilder.group({
+      title: [''],
+      Categorie: ['']
+    });
+   }
 
   ngOnInit(): void {
-    this.blogservice.getArticles().subscribe(articles => {
-      this.articles = articles;
-    });
+    this.getData()
+    this.searchArticles()
   }
-
+  getData() {
+  this.blogservice.getArticles().subscribe(articles => {
+    this.articles = articles;
+    console.log("refreshing");
+    this.searchArticles()
+  });
+}
   onSelectOption(id: number) {
     console.log(this.selectedOption)
     switch (this.selectedOption) {
       case 'Delete Article':
         if (this.selectedArticle) {
           this.blogservice.deleteArticle(id).subscribe() 
-        }
+                  }
         break;
         case 'Update Article':
           if (this.selectedArticle) {
@@ -53,6 +65,7 @@ export class BlogComponent implements OnInit {
   deleteArticle(id:number) {
     console.log("uuuu")
     this.blogservice.deleteArticle(id).subscribe() 
+    setTimeout(()=>(this.getData()),1000)
   }
 
   updateArticle() {
@@ -74,6 +87,21 @@ export class BlogComponent implements OnInit {
     }*/
   }
 
+
+  searchArticles(): void {
+    const title = this.searchForm.get('title')?.value.trim().toLowerCase();
+    const category = this.searchForm.get('categorie')?.value.trim().toLowerCase(); 
+    console.log('title:', title);
+    console.log('categorie:', Categorie);
+    // Filter articles based on search criteria
+    this.filteredArticles = this.articles.filter(article => {
+      const matchesTitle = !title || article.title.toLowerCase().includes(title);
+      const matchesCategory = !category || article.categorie.toLowerCase() === category;
+      return matchesTitle && matchesCategory;
+    });
+  }
+  
+  
 
 
 }

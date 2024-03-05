@@ -1,6 +1,7 @@
 import { Blog } from "./blog";
 
 export interface User {
+nickname: any;
     idUser: number;
   firstName: string;
   lastName: string;
@@ -15,6 +16,7 @@ export interface User {
   levelOfStudies: string;
   domainOfStudies: string;
   blogs: Blog[];
+  propic:string;
 
   
 }

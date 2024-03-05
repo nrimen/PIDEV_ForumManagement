@@ -4,6 +4,7 @@ import { Categorie } from '../../Core/Models/categorie';
 import { blogService } from 'src/app/Service/blog-service';
 
 import { supabase } from 'src/app/utils/supabase';
+import { Router } from '@angular/router';
 
 
 
@@ -23,8 +24,8 @@ private fileupload: File = {} as File;
   categories = Object.values(Categorie);
 
 
-  constructor(private fb: FormBuilder,private blogservice:blogService) { 
-    
+  constructor(private fb: FormBuilder,private blogservice:blogService,private router: Router) { 
+    //private snackBar: MatSnackBar
   }
 
   ngOnInit(): void {
@@ -61,6 +62,7 @@ private fileupload: File = {} as File;
       article.image = filename;
       console.log(article)
       this.blogservice.addArticle(article).subscribe();
+      this.router.navigate(['/blog']);
       
     } else {
       // Form validation failed
