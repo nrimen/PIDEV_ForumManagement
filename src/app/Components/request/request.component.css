@@ -1,178 +1,240 @@
 h2 {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.card {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the cards horizontally */
+  align-items: center; /* Center the cards vertically */
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+.card{
+  width: 25rem;
+  height: auto;
+  margin-right: 115px;
+  margin-left: 75px;
+  margin-bottom: 15px;
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  overflow: hidden;
+  position: relative;
 }
+
+.card-img-holder{
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.card-img-holder img{
+  width: 100%;
+  height: auto;
+  max-height: 15rem;
+  object-fit: cover;
+  border-radius: 1.5rem;
+}
+
+.blog-title{
+  color: #22215B;
+  padding: 1rem 0;
+  font-size: 1.5rem;
+  align-content: center;
+}
+
+.description{
+  padding: 1rem 0;
+  color: #22215B80;
+  font-size: 1rem;
+}
+
+.blog-time{
+  font-size: .8rem;
+  color: #22215B;
+}
+
+.options{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+
+.options span{
+  font-weight: 600;
+  color: #22215B;
+}
+
+.btn{
+  font-size: 1rem;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  font-weight: 400;
+  background: #EEF7FE;
+  color: #22215B;
+  cursor: pointer;
+}
+
 
 /* search bar */
 
 .search-container {
-    text-align: center;
-    overflow: hidden;
-    position: relative;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
 }
 
 .search-icon {
-    cursor: pointer;
-    font-size: 24px;
-    transition: transform 0.3s, background-color 0.3s;
-    vertical-align: middle;
+  cursor: pointer;
+  font-size: 24px;
+  transition: transform 0.3s, background-color 0.3s;
+  vertical-align: middle;
 }
 
 .search-icon:hover {
-    background-color: rgba(19, 19, 74, 0.2);
-    border-radius: 50%;
-    /* Faded background color on hover */
+  background-color: rgba(19, 19, 74, 0.2);
+  border-radius: 50%;
+  /* Faded background color on hover */
 }
 
 .search-input {
-    border: none;
-    outline: none;
-    padding: 8px;
-    font-size: 16px;
-    width: 0;
-    transition: width 0.5s, padding 0.5s;
-    border-radius: 5px;
-    background: rgba(2, 0, 36, 1);
-    background: linear-gradient(360deg, rgba(2, 0, 36, 1) 0%, rgba(54, 54, 167, 0.4459) 10%, rgba(251, 254, 255, 1) 100%);
-    /* Background color of the input field */
-    color: #fff;
-    vertical-align: middle;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 16px;
+  width: 0;
+  transition: width 0.5s, padding 0.5s;
+  border-radius: 5px;
+  background: rgba(2, 0, 36, 1);
+  background: linear-gradient(360deg, rgba(2, 0, 36, 1) 0%, rgba(54, 54, 167, 0.4459) 10%, rgba(251, 254, 255, 1) 100%);
+  /* Background color of the input field */
+  color: #fff;
+  vertical-align: middle;
 }
 
 .search-container.expanded .search-icon {
-    transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 .search-container.expanded .search-input {
-    width: 200px;
-    /* or any desired width */
-    padding: 8px 12px;
+  width: 200px;
+  /* or any desired width */
+  padding: 8px 12px;
 }
 
 
 .ngx-pagination {
-    margin-left: 0 !important;
-    margin-bottom: 1rem !important;
-    line-height: 20px !important;
-    padding: 7px 15px 7px !important;
-    font-size: 12px !important;
-  }
- 
-  
-  .ngx-pagination::after {
-    clear: both !important;
-  }
-  
-  .ngx-pagination li {
-    -moz-user-select: none !important;
-    -webkit-user-select: none !important;
-    -ms-user-select: none !important;
-    margin-right: 0.2rem !important;
-    border-radius: 50% !important;
-  }
-  
-  .ngx-pagination li {
+  margin-left: 0 !important;
+  margin-bottom: 1rem !important;
+  line-height: 20px !important;
+  padding: 7px 15px 7px !important;
+  font-size: 12px !important;
+}
+
+
+.ngx-pagination::after {
+  clear: both !important;
+}
+
+.ngx-pagination li {
+  -moz-user-select: none !important;
+  -webkit-user-select: none !important;
+  -ms-user-select: none !important;
+  margin-right: 0.2rem !important;
+  border-radius: 50% !important;
+}
+
+.ngx-pagination li {
+  display: inline-block !important;
+  border-radius: 50% !important;
+}
+
+.ngx-pagination a,
+.ngx-pagination button {
+  color: #0a0a0a !important;
+  display: block !important;
+  background-color: rgb(248, 248, 248) !important;
+  color: black !important;
+  border: 2px solid #8b8b8b !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 9% !important;
+}
+
+.ngx-pagination a:hover,
+.ngx-pagination button:hover {
+  background: #788b8d88 !important;
+  border-radius: 50% !important;
+}
+
+.ngx-pagination .current {
+  padding: 0.1875rem 0.625rem !important;
+  background: #2199e8 !important;
+  color: #fefefe !important;
+  cursor: default !important;
+  border: 2px solid #8b8b8b !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 9% !important;
+}
+
+.ngx-pagination .disabled {
+  padding: 0.1875rem 0.625rem !important;
+  color: #cacaca00 !important;
+  cursor: default !important;
+}
+
+.ngx-pagination .disabled:hover {
+  background: transparent !important;
+}
+
+.ngx-pagination a,
+.ngx-pagination button {
+  cursor: pointer !important;
+}
+
+.ngx-pagination .pagination-previous a::before,
+.ngx-pagination .pagination-previous.disabled::before {
+  font-family: FontAwesome;
+  content: "\f053" !important;
+  display: inline-block !important;
+  margin-right: 0rem !important;
+}
+
+.ngx-pagination .pagination-next a::after,
+.ngx-pagination .pagination-next.disabled::after {
+  font-family: FontAwesome !important;
+  content: "\f054" !important;
+  display: inline-block !important;
+  margin-left: 0rem !important;
+}
+
+.ngx-pagination .show-for-sr {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+}
+
+.ngx-pagination .small-screen {
+  display: none !important;
+}
+
+@media screen and (max-width: 601px) {
+  .ngx-pagination.responsive .small-screen {
     display: inline-block !important;
-    border-radius: 50% !important;
-  }
-  
-  .ngx-pagination a,
-  .ngx-pagination button {
-    color: #0a0a0a !important;
-    display: block !important;
-    background-color: rgb(248, 248, 248) !important;
     color: black !important;
+    background-color: rgb(248, 248, 248) !important;
     border: 2px solid #8b8b8b !important;
     padding: 0.5rem 1rem !important;
     border-radius: 9% !important;
   }
-  
-  .ngx-pagination a:hover,
-  .ngx-pagination button:hover {
-    background: #788b8d88 !important;
-    border-radius: 50% !important;
-  }
-  
-  .ngx-pagination .current {
-    padding: 0.1875rem 0.625rem !important;
-    background: #2199e8 !important;
-    color: #fefefe !important;
-    cursor: default !important;
-    border: 2px solid #8b8b8b !important;
-    padding: 0.5rem 1rem !important;
-    border-radius: 9% !important;
-  }
-  
-  .ngx-pagination .disabled {
-    padding: 0.1875rem 0.625rem !important;
-    color: #cacaca00 !important;
-    cursor: default !important;
-  }
-  
-  .ngx-pagination .disabled:hover {
-    background: transparent !important;
-  }
-  
-  .ngx-pagination a,
-  .ngx-pagination button {
-    cursor: pointer !important;
-  }
-  
-  .ngx-pagination .pagination-previous a::before,
-  .ngx-pagination .pagination-previous.disabled::before {
-    font-family: FontAwesome;
-    content: "\f053" !important;
-    display: inline-block !important;
-    margin-right: 0rem !important;
-  }
-  
-  .ngx-pagination .pagination-next a::after,
-  .ngx-pagination .pagination-next.disabled::after {
-    font-family: FontAwesome !important;
-    content: "\f054" !important;
-    display: inline-block !important;
-    margin-left: 0rem !important;
-  }
-  
-  .ngx-pagination .show-for-sr {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-  }
-  
-  .ngx-pagination .small-screen {
+
+  .ngx-pagination.responsive li:not(.small-screen):not(.pagination-previous):not(.pagination-next) {
     display: none !important;
   }
-  
-  @media screen and (max-width: 601px) {
-    .ngx-pagination.responsive .small-screen {
-      display: inline-block !important;
-      color: black !important;
-      background-color: rgb(248, 248, 248) !important;
-      border: 2px solid #8b8b8b !important;
-      padding: 0.5rem 1rem !important;
-      border-radius: 9% !important;
-    }
-    .ngx-pagination.responsive
-      li:not(.small-screen):not(.pagination-previous):not(.pagination-next) {
-      display: none !important;
-    }
-  }
+}

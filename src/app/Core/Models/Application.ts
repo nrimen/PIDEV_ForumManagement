@@ -5,6 +5,8 @@ export class Application {
     idApplication!: number;
     discussion: boolean = false;
     accepted: boolean = false;
+    applicationCV: string | undefined;
+    notes: string | undefined;
 
     //offerApplication?: Offer; 
     //interviewApplication?: Interview; 

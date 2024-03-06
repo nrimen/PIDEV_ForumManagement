@@ -1,0 +1,32 @@
+<main id="main">
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/about-header.jpg');">
+      <div class="container position-relative d-flex flex-column align-items-center">
+
+        <h2>Application</h2>
+        <ol>
+          <li><a href="./requests">Offers</a></li>
+          
+        </ol>
+
+      </div>
+    </div>
+    <div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <label for="notes">Notes:</label>
+            <textarea id="notes" formControlName="notes"></textarea>
+            <div *ngIf="form.get('notes')?.hasError('minlength') && form.get('notes')?.touched" class="error-message">
+              Request Title must be at least 5 characters long.
+            </div>
+        
+            <label for="cv">CV:</label>
+            <input type="file" class="form-control-file" id="applicationCV" formControlName="applicationCV">
+        
+            <button type="submit" [disabled]="!form.valid">Submit</button>
+        </form>
+  
+  
+      
+    </div>
+  
+   </main> 

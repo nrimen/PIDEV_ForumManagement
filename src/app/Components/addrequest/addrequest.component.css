@@ -189,13 +189,11 @@
   }
 }
 
-/* Add your other styles as needed */
 
 
 
 
 
-
-.is-invalid {
+.error-message {
   border: 1px solid red;
 }

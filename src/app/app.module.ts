@@ -19,12 +19,13 @@ import { RequestadminComponent } from './Components/requestadmin/requestadmin.co
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmapplicationComponent } from './Components/confirmapplication/confirmapplication.component';
 import { MatChipsModule } from '@angular/material/chips';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { ResumeComponent } from './resume/resume.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ApplyComponent } from './Components/apply/apply.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     AddrequestComponent,
     RequestadminComponent,
     ConfirmapplicationComponent,
-    ResumeComponent
+    ResumeComponent,
+    ApplyComponent
   ],
   imports: [
     AppRoutingModule,
@@ -57,9 +59,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatInputModule,
     MatButtonModule,
     MatDatepickerModule
-    
+
   ],
-  providers: [ 
+  providers: [
     FormBuilder
   ],
   bootstrap: [AppComponent]
