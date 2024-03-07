@@ -10,6 +10,7 @@ import { Stand } from "../../../../Core/Modules/Stand-Module/stand/stand";
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { PageEvent } from '@angular/material/paginator';
 import {OpenStandsCardDialogComponent} from "../open-stands-card-dialog/open-stands-card-dialog.component";
+import {AddMultipleStandsDialogComponent} from "../add-multiple-stands-dialog/add-multiple-stands-dialog.component";
 
 @Component({
   selector: 'app-create-stand',
@@ -18,7 +19,7 @@ import {OpenStandsCardDialogComponent} from "../open-stands-card-dialog/open-sta
 })
 export class CreateStandComponent implements OnInit, AfterViewInit  {
 
-  stands: any[] = [];
+  stands: Stand[] = [];
   filteredStands: any[] = [];
   selectedPack: string = '';
   dataSource = new MatTableDataSource<any>([]);
@@ -49,12 +50,6 @@ export class CreateStandComponent implements OnInit, AfterViewInit  {
   openAddEditEmpForm() {
     const dialogRef = this._dialog.open(CreatemodalComponent);
   }
-
-  // openUpdateEmpForm(stand: Stand) {
-  //   const dialogRef = this._dialog.open(CreatemodalComponent, {
-  //     data: { mode: 'update', stand } // Pass the selected row data
-  //   });
-  // }
 
   delete(standId: number) {
     const dialogRef = this._dialog.open(DeleteConfirmationDialogComponentComponent);
@@ -114,11 +109,13 @@ export class CreateStandComponent implements OnInit, AfterViewInit  {
   openStandsCardDialog(): void {
     this._dialog.open(OpenStandsCardDialogComponent, {
       width: '50%',
-      height: '45%',
       panelClass: 'stands-card-dialog',
       data: { stands: this.filteredStands } // Pass the filtered stands data to the dialog
     });
   }
+  openAddMultipleStandsDialog(): void {
+    const dialogRef = this._dialog.open(AddMultipleStandsDialogComponent);
 
+  }
 
 }

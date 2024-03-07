@@ -2,83 +2,45 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js"></script>
 <div class="wrapper">
   <div class="form-container">
-  <form [formGroup]="standForm"  >
-<!--    <div>-->
-<!--      <label for="reservationDate">Reservation Date:</label>-->
-<!--      <input type="date" id="reservationDate" formControlName="reservationDate">-->
-<!--      <div class="error-message" *ngIf="standForm.get('reservationDate')?.invalid && standForm.get('reservationDate')?.touched">-->
-<!--        <span *ngIf="standForm.get('reservationDate')?.errors?.['required']">* Reservation Date is required.</span>-->
-<!--      </div>-->
-<!--    </div>-->
+    <h2>Add Stand</h2>
 
-    <div>
-      <label for="pack">Pack:</label>
-      <select id="pack" formControlName="pack">
-        <option value="DIAMOND">Diamond</option>
-        <option value="GOLD">Gold</option>
-        <option value="SILVER">Silver</option>
-        <option value="UNPAYED">Unpayed</option>
-      </select>
-      <div class="error-message" *ngIf="standForm.get('pack')?.invalid && standForm.get('pack')?.touched">
-        <span *ngIf="standForm.get('pack')?.errors?.['required']">* Pack is required.</span>
-      </div>
-    </div>
+    <form [formGroup]="standForm"  >
 
-    <div>
-      <label for="price">Price:</label>
-      <input type="number" id="price" formControlName="price" [disabled]="standForm.valid">
-      <div class="error-message" *ngIf="standForm.get('price')?.invalid && standForm.get('price')?.touched">
-        <span *ngIf="standForm.get('price')?.errors?.['required']">* Price is required.</span>
-      </div>
-    </div>
-
-
-
-    <div>
-      <label for="gallery">Gallery (Max 4 images):</label>
-      <input class="form-control" type="file" id="gallery" formControlName="gallery" (change)="onFileChanged($event)" multiple />
-    </div>
-
-
-
-    <!--    <div>-->
-<!--      <label for="isReserved">Is Reserved:</label>-->
-<!--      <input type="checkbox" id="isReserved" formControlName="isReserved">-->
-<!--    </div>-->
-
-<!--    <div>-->
-<!--      <label for="isFinished">Is Finished:</label>-->
-<!--      <input type="checkbox" id="isFinished" formControlName="isFinished">-->
-<!--    </div>-->
-
-<!--    <div>-->
-<!--      <label for="isPartner">Is Partner:</label>-->
-<!--      <input type="checkbox" id="isPartner" formControlName="isPartner">-->
-<!--    </div>-->
-
-<!--    <div>-->
-<!--      <label for="immatriculationStand">Immatriculation Stand:</label>-->
-<!--      <input type="text" id="immatriculationStand" formControlName="immatriculationStand">-->
-<!--      <div class="error-message" *ngIf="standForm.get('immatriculationStand')?.invalid && standForm.get('immatriculationStand')?.touched">-->
-<!--        <span *ngIf="standForm.get('immatriculationStand')?.errors?.['required']">* Immatriculation Stand is required.</span>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <div>-->
-<!--      <label for="userStand">User Stand:</label>-->
-<!--      <input type="text" id="userStand" formControlName="userStand">-->
-<!--    </div>-->
-
-    <ng-container *ngIf="mode !== 'update'; else updateButton">
-      <button class="mb-3 btn btn-danger" (click)="onSubmit()">Add Stand</button>
-    </ng-container>
-    <ng-template #updateButton>
-      <button class="mb-3 btn btn-primary" (click)="onSubmit()">Update Stand</button>
-    </ng-template><div>
+      <div>
+        <label for="pack">Pack:</label>
+        <select id="pack" formControlName="pack">
+          <option value="DIAMOND">Diamond</option>
+          <option value="GOLD">Gold</option>
+          <option value="SILVER">Silver</option>
+          <option value="UNPAYED">Unpayed</option>
+        </select>
+        <div class="error-message" *ngIf="standForm.get('pack')?.invalid && standForm.get('pack')?.touched">
+          <span *ngIf="standForm.get('pack')?.errors?.['required']">* Pack is required.</span>
+        </div>
       </div>
 
-  </form>
+      <div>
+        <label for="price">Price:</label>
+        <input type="number" id="price" formControlName="price" [disabled]="standForm.valid">
+        <div class="error-message" *ngIf="standForm.get('price')?.invalid && standForm.get('price')?.touched">
+          <span *ngIf="standForm.get('price')?.errors?.['required']">* Price is required.</span>
+        </div>
+      </div>
 
+      <div>
+        <label for="gallery">Gallery (Max 4 images):</label>
+        <input class="form-control" type="file" id="gallery" formControlName="gallery" (change)="onFileChanged($event)" multiple />
+      </div>
 
-</div>
+      <ng-container *ngIf="mode !== 'update'; else updateButton">
+        <button class="mb-3 btn btn-danger" (click)="onSubmit()">Add Stand</button>
+      </ng-container>
+      <ng-template #updateButton>
+        <button class="mb-3 btn btn-primary" (click)="onSubmit()">Update Stand</button>
+      </ng-template><div>
+        </div>
+
+    </form>
+
+  </div>
 </div>

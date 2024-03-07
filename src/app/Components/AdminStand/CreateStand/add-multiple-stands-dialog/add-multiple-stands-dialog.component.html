@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <div class="form-container">
+    <div class="dialog-content">
+      <h2>Add Multiple Stands</h2>
+      <form [formGroup]="standForm" (ngSubmit)="addMultipleStands()">
+        <div class="form-group">
+          <label for="packType">Pack Type:</label>
+          <select id="packType" formControlName="packType">
+            <option value="" disabled>Select pack type</option>
+            <option *ngFor="let pack of packOptions" [value]="pack">{{ pack }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" formControlName="quantity" placeholder="Enter quantity">
+        </div>
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <input type="number" id="price" formControlName="price" readonly>
+        </div>
+        <div class="form-group">
+          <label for="photos">Gallery:</label>
+          <input type="file" id="photos" formControlName="photos" multiple>
+        </div>
+        <button type="submit" class="mb-3 btn btn-danger">Add Stands</button>
+      </form>
+    </div>
+  </div>
+</div>

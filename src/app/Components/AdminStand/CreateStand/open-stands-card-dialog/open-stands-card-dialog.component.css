@@ -35,13 +35,7 @@
   margin: 5px;
 }
 
-.seat {
-  width: 20px;
-  height: 20px;
-  margin: 5px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-}
+
 
 .stage {
   background-color: #666;
@@ -98,12 +92,7 @@
   justify-content: center;
 }
 
-.seat {
-  width: 30px; /* Seat size */
-  height: 30px;
-  margin: 5px;
-  background-color: #ccc; /* Seat color */
-}
+
 
 .stage {
   width: 100%;
@@ -157,11 +146,13 @@
   display: flex;
 }
 
+
 .seat {
-  width: 30px; /* Adjust seat size as needed */
+  width: 20px;
   height: 30px;
   margin: 5px;
-  background-color: #ccc; /* Adjust seat color as needed */
+  background-color: #fff;
+  border: 2px solid #888585;
 }
 
 .packSilver.left,
@@ -194,6 +185,8 @@
 .seat:hover .tooltip {
   visibility: visible;
 }
+/**************************/
+
 
 
 

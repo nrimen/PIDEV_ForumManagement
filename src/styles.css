@@ -23,7 +23,7 @@
 /* Colors */
 :root {
   --color-default: #2b180d;
-  --color-primary: rgba(208, 0, 0, 0.85);
+  --color-primary: rgba(208, 0, 0, 0.9);
   --color-secondary: rgba(208, 0, 0, 0.61);
 }
 

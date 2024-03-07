@@ -26,6 +26,12 @@ import {MatTableModule} from "@angular/material/table";
 import { OpenStandsCardDialogComponent } from './Components/AdminStand/CreateStand/open-stands-card-dialog/open-stands-card-dialog.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import {OverlayModule} from "@angular/cdk/overlay";
+import { ReserverStandComponent } from './Components/reserver-stand/reserver-stand.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import { AddMultipleStandsDialogComponent } from './Components/AdminStand/CreateStand/add-multiple-stands-dialog/add-multiple-stands-dialog.component';
+import { EventCreationComponent } from './Components/AdminStand/event-creation/event-creation.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 // import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 
 
@@ -39,7 +45,9 @@ import { MatCardModule } from '@angular/material/card';
     DeleteConfirmationDialogComponentComponent,
     ConfirmationModalComponent,
     OpenStandsCardDialogComponent,
-
+    ReserverStandComponent,
+    AddMultipleStandsDialogComponent,
+    EventCreationComponent,
 
   ],
   imports: [
@@ -50,10 +58,10 @@ import { MatCardModule } from '@angular/material/card';
     RouterOutlet,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule, // Add BrowserAnimationsModule
-    MatButtonModule, // Add MatButtonModule
-    MatIconModule, // Add MatIconModule
-    MatInputModule, // Add MatInputModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
     MatDialogModule,
     HttpClientModule,
     MatTooltipModule,
@@ -63,8 +71,9 @@ import { MatCardModule } from '@angular/material/card';
     MatTableModule,
     MatGridListModule,
     MatCardModule,
-
-
+    OverlayModule,
+    MatStepperModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,7 +10,7 @@ export class StandServiceService {
 
   private standDataSubject = new Subject<Stand>();
 
-  private baseURL = 'http://localhost:7777/StandManagement/stand/';
+  private baseURL = 'http://localhost:8089/ForumManagement/stand/';
   constructor(private httpClient: HttpClient) { }
 
   standDataUpdated$ = this.standDataSubject.asObservable();
@@ -37,4 +37,5 @@ export class StandServiceService {
   deleteStand(id: number): Observable<any> {
     return this.httpClient.delete(`${this.baseURL}remove-stand/${id}`);
   }
+
 }

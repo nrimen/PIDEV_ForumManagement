@@ -1,0 +1,137 @@
+<div class="reservate">
+  <div class="sidebar header" style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ccc; background-image: url('./assets/img/esprit1.jpg')">
+    <div class="color-overlay"></div>
+    <div class="logo">
+      <img src="./assets/img/logo.png" alt="Logo">
+    </div>
+    <ul class="menu" style="margin-top: 20px; padding-top: 10px; border-top: 1px solid #ccc;">
+      <li>
+
+        <div class="info" style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ccc;">
+          <span>Event : </span><br>
+          <span><strong>{{createdEvent?.description}}</strong></span>
+        </div>
+
+        <div class="info" style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ccc;">
+          <span>Location: </span><br>
+          <span><strong>{{createdEvent?.location}}</strong></span>
+        </div>
+
+        <div class="info" style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ccc;">
+        <span>Date: </span><br>
+        <span><strong>{{createdEvent?.debutDate}}</strong> - <strong>{{createdEvent?.lastDate}}</strong></span>
+        </div>
+
+      </li>
+
+    </ul>
+  </div>
+
+<div class="sideRight">
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+  <mat-step >
+    <ng-template matStepLabel>Reservation</ng-template>
+
+    <div class="main-wrapper__title">
+
+      <div class="placeselection">
+        Select your seats
+      </div>
+    </div>
+    <div class="theatre">
+      <div class="stands">
+        <div class="packSilver left" matTooltip="Silver Stands">
+          <!-- Silver stands on the left -->
+          <div class="row" *ngFor="let row of getRows(PackEnum.SILVER)">
+            <button class="seat" *ngFor="let seat of row" (click)="openStandsDetailsDialog()">
+              <div style="align-content: center; margin-top: 3px; margin-left: -7px;">{{seat.idStand}}
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div class="center">
+          <div class="packUnpayed" matTooltip="Unpayed Stands">
+
+            <div class="row" *ngFor="let row of getRows(PackEnum.UNPAYED)">
+              <button class="seat" *ngFor="let seat of row" (click)="handleSeatClick(seat)"  >
+                <div style="align-content: center; margin-top: 3px; margin-left: -7px;">{{seat.idStand}}
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div class="packGold" matTooltip="Gold Stands">
+            <div class="row" *ngFor="let row of getRows(PackEnum.GOLD)">
+              <button class="seat" *ngFor="let seat of row" (click)="handleSeatClick(seat)" >
+                <div style="align-content: center; margin-top: 3px; margin-left: -7px;">{{seat.idStand}}
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div class="packDiamond" matTooltip="Diamond Stands">
+            <div class="row" *ngFor="let row of getRows(PackEnum.DIAMOND)">
+              <button class="seat" *ngFor="let seat of row" (click)="handleSeatClick(seat)" >
+                <div style="align-content: center; margin-top: 3px; margin-left: -7px;"> {{seat.idStand}}</div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="packSilver right" matTooltip="Silver Stands">
+          <!-- Silver stands on the right -->
+          <div class="row" *ngFor="let row of getRows(PackEnum.SILVER)">
+            <button class="seat" *ngFor="let seat of row" >
+              <div style="align-content: center; margin-top: 3px; margin-left: -7px;">{{seat.idStand}}
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage">door</div>
+    </div>
+    <div class="bottom">
+      <div class="seats">
+        <div class="seat-container">
+          <div mat-button class="Reservedseat"></div>
+          <div class="tag">Reserved seat</div>
+        </div>
+
+        <div class="seat-container">
+          <div mat-button class="availableseat"></div>
+          <div class="tag">Available seat</div>
+        </div>
+
+        <div class="seat-container">
+          <div mat-button class="myseat"></div>
+          <div class="tag">Myseat</div>
+        </div>
+      </div>
+
+      <button mat-button matStepperNext class="next-button">Next</button>
+    </div>
+
+  </mat-step>
+
+  <mat-step >
+    <ng-template matStepLabel>Details</ng-template>
+
+    <div>
+        <button mat-button matStepperPrevious class="back-button">Back</button>
+        <button mat-button matStepperNext class="next-button">Next</button>
+      </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+</div>
+</div>
