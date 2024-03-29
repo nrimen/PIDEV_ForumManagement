@@ -67,50 +67,54 @@ export class CreatemodalComponent implements OnInit {
     });
   }
 
-  onFileChanged = (event :any) => {
-    console.log("here")
-    const file = event.target.files[0];
-    this.fileupload = file;
-    //this.uploadFile(file);
-  }
-  async uploadFile(file: File) {
+  onFileChanged = (event: any) => {
+    const files: FileList = event.target.files;
+    const filenames: string[] = [];
 
+    for (let i = 0; i < files.length; i++) {
+      filenames.push(files[i].name);
+    }
+
+    this.galleryFiles = Array.from(files); // Save files for upload
+    this.standForm.get('gallery')?.setValue(filenames); // Update form control with file names
+  }
+
+  async uploadFile(file: File): Promise<string | undefined> {
     const { data, error } = await supabase.storage.from('images').upload(`${Date.now()}_${file.name}`, file, { cacheControl: '3600', upsert: false });
     if (error) {
       console.error(error);
-      return;
-    }
-    else
-    {
+      return undefined;
+    } else {
       return data.path;
     }
-
-
   }
 
-
-  onSubmit() {
+  async onSubmit() {
     if (this.standForm.valid) {
-      let stand = this.standForm.value;
-      let filename = this.uploadFile(this.fileupload);
-      stand.image = filename;
-      console.log('Form is valid. Stand data:', stand);
-      this.standService.createStand(stand).subscribe(
-        (createdStand: Stand) => {
-          console.log('Stand data saved successfully');
-          this.standService.notifyStandDataUpdated(createdStand); // Notify subscribers that stand data is updated with the created stand object
-          this.dialogRef.close(); // Close the dialog after the stand is added
-        },
-        (error) => {
-          console.error('Error saving stand data:', error);
-        }
-      );
+      const galleryPaths = await Promise.all(this.galleryFiles.map(file => this.uploadFile(file)));
+
+      if (galleryPaths.every(path => path)) {
+        let stand = this.standForm.value;
+        stand.gallery = galleryPaths; // Assign file paths to the gallery property
+
+        console.log('Form is valid. Stand data:', stand);
+
+        this.standService.createStand(stand).subscribe(
+          (createdStand: Stand) => {
+            console.log('Stand data saved successfully');
+            this.standService.notifyStandDataUpdated(createdStand);
+            this.dialogRef.close();
+          },
+          (error) => {
+            console.error('Error saving stand data:', error);
+          }
+        );
+      } else {
+        console.error('Error uploading gallery files');
+      }
     } else {
       console.error('Form is invalid');
-      // Log the validation status of each form control
       console.log('Form validity status:', this.standForm.status);
-
-      // Log the errors associated with each form control
       Object.keys(this.standForm.controls).forEach(field => {
         const control = this.standForm.get(field);
         console.log('Validation errors for ' + field + ':', control?.errors);
@@ -118,7 +122,6 @@ export class CreatemodalComponent implements OnInit {
       this.standForm.markAllAsTouched();
     }
   }
-
 
 
 }

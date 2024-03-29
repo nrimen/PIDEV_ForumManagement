@@ -4,8 +4,18 @@
     <div class="logo">
       <img src="./assets/img/logo.png" alt="Logo">
     </div>
+    <div class="selected-seats-info">
+      <h2>Selected Seats Information</h2>
+      <p>Total selected seats: <strong>{{ selectedSeats.length }}</strong></p>
+      <div *ngFor="let seat of selectedSeats">
+        <div class="seat-info">
+          <span>Immatriculation: </span><strong>{{ seat.immatriculationStand }}</strong><br>
+        </div>
+      </div>
+    </div>
+
     <ul class="menu" style="margin-top: 20px; padding-top: 10px; border-top: 1px solid #ccc;">
-      <li>
+         <li>
 
         <div class="info" style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ccc;">
           <span>Event : </span><br>
@@ -18,78 +28,79 @@
         </div>
 
         <div class="info" style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ccc;">
-        <span>Date: </span><br>
-        <span><strong>{{createdEvent?.debutDate}}</strong> - <strong>{{createdEvent?.lastDate}}</strong></span>
+          <span>Date: </span><br>
+          <span><strong>{{createdEvent?.debutDate}}</strong> - <strong>{{createdEvent?.lastDate}}</strong></span>
         </div>
 
-      </li>
 
+
+      </li>
     </ul>
   </div>
 
-<div class="sideRight">
+
+  <div class="sideRight">
 
 <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
   <mat-step >
     <ng-template matStepLabel>Reservation</ng-template>
-
-    <div class="main-wrapper__title">
-
-      <div class="placeselection">
-        Select your seats
-      </div>
-    </div>
-    <div class="theatre">
-      <div class="stands">
-        <div class="packSilver left" matTooltip="Silver Stands">
-          <!-- Silver stands on the left -->
-          <div class="row" *ngFor="let row of getRows(PackEnum.SILVER)">
-            <button class="seat" *ngFor="let seat of row" (click)="openStandsDetailsDialog()">
-              <div style="align-content: center; margin-top: 3px; margin-left: -7px;">{{seat.idStand}}
-              </div>
-            </button>
-          </div>
+      <div class="main-wrapper__title">
+        <div class="placeselection">
+          Select your seats
         </div>
+      </div>
+      <div class="theatre">
+        <div class="stands">
+          <div class="packSilver left">
+            <!-- Silver stands on the left -->
+            <div class="row" *ngFor="let row of getRows(PackEnum.SILVER)">
+              <button class="seat" *ngFor="let seat of row" (click)="toggleSeatSelection(seat)" [class.selected-seat]="seatSelected(seat)">
+                <div style="align-content: center; margin-top: 3px; margin-left: -7px;">{{seat.idStand}}</div>
+              </button>
+            </div>
 
-        <div class="center">
-          <div class="packUnpayed" matTooltip="Unpayed Stands">
 
-            <div class="row" *ngFor="let row of getRows(PackEnum.UNPAYED)">
-              <button class="seat" *ngFor="let seat of row" (click)="handleSeatClick(seat)"  >
+          </div>
+
+          <div class="center">
+            <div class="packUnpayed">
+
+              <div class="row" *ngFor="let row of getRows(PackEnum.UNPAYED)">
+                <button class="seat" *ngFor="let seat of row" (click)="toggleSeatSelection(seat)" [class.selected-seat]="seatSelected(seat)" >
+                  <div style="align-content: center; margin-top: 3px; margin-left: -7px;">{{seat.idStand}}
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <div class="packGold">
+              <div class="row" *ngFor="let row of getRows(PackEnum.GOLD)">
+                <button class="seat" *ngFor="let seat of row" (click)="toggleSeatSelection(seat)" [class.selected-seat]="seatSelected(seat)">
+                  <div style="align-content: center; margin-top: 3px; margin-left: -7px;">{{seat.idStand}}
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <div class="packDiamond">
+              <div class="row" *ngFor="let row of getRows(PackEnum.DIAMOND)">
+                <button class="seat" *ngFor="let seat of row" (click)="toggleSeatSelection(seat)" [class.selected-seat]="seatSelected(seat)">
+                  <div style="align-content: center; margin-top: 3px; margin-left: -7px;"> {{seat.idStand}}</div>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="packSilver right">
+            <!-- Silver stands on the right -->
+            <div class="row" *ngFor="let row of getRows(PackEnum.SILVER)">
+              <button class="seat" *ngFor="let seat of row" (click)="toggleSeatSelection(seat)" [class.selected-seat]="seatSelected(seat)">
                 <div style="align-content: center; margin-top: 3px; margin-left: -7px;">{{seat.idStand}}
                 </div>
               </button>
             </div>
           </div>
-
-          <div class="packGold" matTooltip="Gold Stands">
-            <div class="row" *ngFor="let row of getRows(PackEnum.GOLD)">
-              <button class="seat" *ngFor="let seat of row" (click)="handleSeatClick(seat)" >
-                <div style="align-content: center; margin-top: 3px; margin-left: -7px;">{{seat.idStand}}
-                </div>
-              </button>
-            </div>
-          </div>
-
-          <div class="packDiamond" matTooltip="Diamond Stands">
-            <div class="row" *ngFor="let row of getRows(PackEnum.DIAMOND)">
-              <button class="seat" *ngFor="let seat of row" (click)="handleSeatClick(seat)" >
-                <div style="align-content: center; margin-top: 3px; margin-left: -7px;"> {{seat.idStand}}</div>
-              </button>
-            </div>
-          </div>
         </div>
-
-        <div class="packSilver right" matTooltip="Silver Stands">
-          <!-- Silver stands on the right -->
-          <div class="row" *ngFor="let row of getRows(PackEnum.SILVER)">
-            <button class="seat" *ngFor="let seat of row" >
-              <div style="align-content: center; margin-top: 3px; margin-left: -7px;">{{seat.idStand}}
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
 
       <div class="stage">door</div>
     </div>
@@ -116,22 +127,85 @@
 
   </mat-step>
 
-  <mat-step >
+  <mat-step>
     <ng-template matStepLabel>Details</ng-template>
 
-    <div>
-        <button mat-button matStepperPrevious class="back-button">Back</button>
-        <button mat-button matStepperNext class="next-button">Next</button>
+    <div class="main-wrapper__title">
+      <div class="placeselection">
+        Seats details
       </div>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    You are now done.
+    </div>
+    <div class="seat-details-container">
+      <ng-container *ngIf="selectedSeats.length > 0; else noSeatSelected">
+        <div class="seat-details" *ngFor="let seat of selectedSeats">
+          <div class="card">
+            <div class="card-body">
+              <p><strong>Stand Id:</strong> {{ seat.idStand }}</p>
+              <p><strong>Immatriculation:</strong> {{ seat.immatriculationStand }}</p>
+              <p><strong>Pack:</strong> {{ seat.pack }}</p>
+              <p><strong>Price:</strong> {{ seat.price }}</p>
+              <p><button class="card-button" (click)="openStandDetailsDialog(seat)" >Gallery</button></p>
+
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noSeatSelected>
+        <div class="no-seat-selected">
+          <p>No seat selected. Please go back and select a seat.</p>
+        </div>
+      </ng-template>
+    </div>
+
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button matStepperPrevious class="back-button">Back</button>
+      <button mat-button matStepperNext class="next-button">Next</button>
     </div>
   </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <div class="done-section">
+
+      <div *ngIf="selectedSeats.length > 0" class="summary">
+        <div class="main-wrapper__title">
+          <div class="placeselection">
+            Selected Seats
+          </div>
+        </div>
+
+        <table class="selected-seats-table">
+          <thead>
+          <tr>
+            <th>Stand</th>
+            <th>Immatriculation</th>
+            <th>Pack</th>
+            <th>Price</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let seat of selectedSeats">
+            <td>{{ seat.idStand }}</td>
+            <td>{{ seat.immatriculationStand }}</td>
+            <td>{{ seat.pack }}</td>
+            <td>{{ seat.price }}</td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="quote">
+          <p>Total Seats: {{ selectedSeats.length }}</p>
+          <p>Total Price: {{ calculateTotalPrice() }}</p> <!-- Assuming you have a method to calculate total price -->
+        </div>
+      </div>
+
+      <!-- End of quote section -->
+      <div>
+        <button mat-button matStepperPrevious class="back-button">Back</button>
+        <button mat-button class="next-button">Reservate</button>
+      </div>
+    </div>
+  </mat-step>
+
 </mat-horizontal-stepper>
 </div>
 </div>

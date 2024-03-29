@@ -38,4 +38,11 @@ export class StandServiceService {
     return this.httpClient.delete(`${this.baseURL}remove-stand/${id}`);
   }
 
+  // getStandWithPhotos(id: number): Observable<any> {
+  //   return this.httpClient.get<any>(`${this.baseURL}${id}`);
+  // }
+
+  getStandImages(standId: number): Observable<string[]> {
+    return this.httpClient.get<string[]>(`${this.baseURL}stand/${standId}/images`);
+  }
 }

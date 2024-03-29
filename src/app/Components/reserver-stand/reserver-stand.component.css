@@ -433,5 +433,176 @@
 .reserved-seat {
   background-color: red;
 }
+/***********************************************/
+
+.indicator {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/*************************/
+.selected-seat {
+  background-color: rgba(17, 162, 97, 0.79);
+}
+/*************************/
+.selected-seats-info {
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.selected-seats-info h2 {
+  margin-top: 0;
+}
+
+.selected-seats-info p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.seat-info {
+  margin-bottom: 10px;
+}
+
+.seat-info span {
+  font-weight: bold;
+}
+
+.seat-info strong {
+  margin-left: 5px;
+}
+/*************************/
+.seat-details-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.seat-details {
+  width: calc(33.33% - 10px); /* Adjust as needed */
+  margin-bottom: 20px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.no-seat-selected {
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+  color: #999;
+}
+
+.card-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: rgba(208, 0, 0, 0.85); /* Button background color */
+  color: #fff; /* Button text color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card-button:hover {
+  background-color: rgba(208, 0, 0, 0.65); /* Hover background color */
+}
+.done-section {
+  text-align: center;
+}
+
+.done-section h2 {
+  margin-bottom: 10px;
+}
+
+.summary {
+  margin-bottom: 20px;
+}
+
+.summary ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.summary li {
+  margin-bottom: 10px;
+}
+
+.quote {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.quote h3 {
+  margin-top: 0;
+}
+
+.quote p {
+  margin-bottom: 5px;
+}
+/********************table******************/
+.summary {
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.main-wrapper__title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.placeselection {
+  font-size: 24px;
+}
+
+.selected-seats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.selected-seats-table th, .selected-seats-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.selected-seats-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: left;
+}
+
+.selected-seats-table td {
+  background-color: #fff;
+}
+
+.quote {
+  margin-top: 20px;
+}
+
+.quote h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.quote p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
 
 

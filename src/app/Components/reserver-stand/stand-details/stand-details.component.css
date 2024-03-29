@@ -1,0 +1,23 @@
+/* stand-details.component.css */
+
+.stand-details-container {
+  display: flex;
+  justify-content: center;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gallery-item {
+  flex: 1 1 50%; /* Adjusts the width of each image item */
+  max-width: 50%; /* Ensures each image takes up a maximum of 50% of the dialog width */
+  padding: 5px; /* Adds padding between images */
+}
+
+.photo {
+  width: 100%; /* Ensures images fill their container */
+  height: auto; /* Maintains aspect ratio */
+}

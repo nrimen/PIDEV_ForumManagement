@@ -29,8 +29,9 @@
 
       <div>
         <label for="gallery">Gallery (Max 4 images):</label>
-        <input class="form-control" type="file" id="gallery" formControlName="gallery" (change)="onFileChanged($event)" multiple />
+        <input class="form-control" type="file" id="gallery" (change)="onFileChanged($event)" multiple />
       </div>
+
 
       <ng-container *ngIf="mode !== 'update'; else updateButton">
         <button class="mb-3 btn btn-danger" (click)="onSubmit()">Add Stand</button>

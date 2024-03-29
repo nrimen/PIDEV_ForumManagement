@@ -1,4 +1,5 @@
 import { PackEnum } from './pack.enum';
+import {UserModuleModule} from "../../user-module/user-module.module";
 export class Stand {
   idStand?: number;
   reservationDate: Date|null;
@@ -9,7 +10,7 @@ export class Stand {
   finished: boolean;
   partner: boolean;
   immatriculationStand: string;
-  userStand: string|null;
+  userStand: UserModuleModule|null;
   rows?: { seats: any[] }[];
 
   constructor(
@@ -22,7 +23,7 @@ export class Stand {
     finished: boolean,
     partner: boolean,
     immatriculationStand: string,
-    userStand: string|null
+    userStand: UserModuleModule|null
   ) {
     this.idStand = idStand;
     this.reservationDate = reservationDate;

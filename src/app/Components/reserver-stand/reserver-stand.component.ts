@@ -9,6 +9,8 @@ import {
 import {MatDialog} from "@angular/material/dialog";
 import {EventServiceService} from "../../Core/Services/EventServices/event-service.service";
 import {Event} from "../../Core/Modules/Event-Model/event/event";
+import {StandDetailsComponent} from "./stand-details/stand-details.component";
+import { Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-reserver-stand',
@@ -21,8 +23,14 @@ export class ReserverStandComponent implements OnInit{
   selectedStand: Stand | null = null;
   stands: Stand[] = [];
   createdEvent: Event | null = null;
+  selectedSeatIds: number[] = [];
 
-  constructor(private _dialog: MatDialog,private _formBuilder: FormBuilder, private standService: StandServiceService,private eventService: EventServiceService) { }
+
+  constructor(private _dialog: MatDialog,
+              private _formBuilder: FormBuilder,
+              private standService: StandServiceService,
+              private eventService: EventServiceService,
+              private renderer: Renderer2) { }
 
   ngOnInit() {
     this.eventService.getEventsList().subscribe(
@@ -84,14 +92,82 @@ export class ReserverStandComponent implements OnInit{
 
   handleSeatClick(stand: Stand) {
     this.selectedStand = stand;
-    this.openStandsDetailsDialog();
+    this.openStandDetailsDialog(stand);
   }
 
-  openStandsDetailsDialog(): void {
-    this._dialog.open(OpenStandsCardDialogComponent, {
-      width: '50%',
-      panelClass: 'stands-card-dialog',
-      data: { stands: this.selectedStand } // Pass the filtered stands data to the dialog
-    });
+  openStandDetailsDialog(stand: Stand) {
+    console.log('Stand object:', stand);
+    if (stand && stand.idStand !== undefined) {
+      // Call the stand service to get stand with photos
+      this.standService.getStandImages(stand.idStand).subscribe(
+        (imageNames: string[]) => {
+          // Combine the stand object and the image names into a single object
+          const data = { stand: stand, imageNames: imageNames };
+          // Open the dialog with the retrieved data
+          this._dialog.open(StandDetailsComponent, {
+            width: '50%',
+            data: data // Pass the combined data to the dialog
+          });
+        },
+        (error) => {
+          console.error('Error fetching stand with photos:', error);
+        }
+      );
+    } else {
+      console.error('Invalid stand or stand ID is undefined:', stand);
+    }
   }
+  calculateTotalPrice(): number {
+    let totalPrice = 0;
+    for (const seat of this.selectedSeats) {
+      totalPrice += seat.price;
+    }
+    return totalPrice;
+  }
+
+
+
+
+  hoveredStand: string | null = null;
+
+  showIndicator(standId: string) {
+    this.hoveredStand = standId;
+  }
+
+  hideIndicator(standId: string) {
+    this.hoveredStand = null;
+  }
+
+  selectedSeats: Stand[] = [];
+
+  handleSeatClick2(seat: Stand) {
+    const index = this.selectedSeats.findIndex(selectedSeat => selectedSeat.idStand === seat.idStand);
+    if (index !== -1) {
+      // Deselect seat if already selected
+      this.selectedSeats.splice(index, 1);
+    } else {
+      // Select seat if not already selected
+      this.selectedSeats.push(seat);
+    }
+  }
+
+  seatSelected(seat: Stand): boolean {
+    return this.selectedSeats.some(selectedSeat => selectedSeat.idStand === seat.idStand);
+  }
+
+  toggleSeatSelection(seat: Stand) {
+    const index = this.selectedSeats.findIndex(selectedSeat => selectedSeat.idStand === seat.idStand);
+    if (index !== -1) {
+      this.selectedSeats.splice(index, 1); // Deselect seat if already selected
+    } else {
+      this.selectedSeats.push(seat); // Select seat if not already selected
+    }
+  }
+
+
+
+
+
+
+
 }

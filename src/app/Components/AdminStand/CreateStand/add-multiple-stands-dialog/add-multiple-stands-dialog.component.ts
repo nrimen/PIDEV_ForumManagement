@@ -6,6 +6,7 @@ import { Observable, forkJoin } from "rxjs";
 import { StandServiceService } from "../../../../Core/Services/StandServices/stand-service.service";
 import { supabase } from "../../../../utils/supabase";
 import { PackEnum } from "../../../../Core/Modules/Stand-Module/stand/pack.enum";
+import { switchMap } from 'rxjs/operators'; // Import switchMap operator
 
 @Component({
   selector: 'app-add-multiple-stands-dialog',
@@ -35,13 +36,11 @@ export class AddMultipleStandsDialogComponent implements OnInit {
       packType: ['', Validators.required],
       quantity: ['', [Validators.required, Validators.min(1)]],
       price: [''], // Price field
-      photos: [''],
+      photos: [''], // Gallery field
     });
     // Listen to changes in the pack type field and update the price field accordingly
     this.standForm.get('packType')?.valueChanges.subscribe(packType => {
       this.standForm.get('price')?.setValue(this.packPrices[packType]);
-      const immatriculation = `stand${packType.toUpperCase()}${this.nextID}`;
-      this.standForm.get('immatriculationStand')?.setValue(immatriculation);
     });
   }
 
@@ -49,7 +48,7 @@ export class AddMultipleStandsDialogComponent implements OnInit {
     const quantity = this.standForm.get('quantity')?.value;
     const packType = this.standForm.get('packType')?.value;
     const price = this.standForm.get('price')?.value;
-    const gallery = this.standForm.get('photos')?.value;
+    const photos = this.standForm.get('photos')?.value;
 
     const standsToAdd: Stand[] = [];
 
@@ -65,24 +64,38 @@ export class AddMultipleStandsDialogComponent implements OnInit {
         userStand: null,
         pack: packType,
         price: price,
-        gallery: gallery
+        gallery: []
       };
       standsToAdd.push(stand);
     }
 
-    // Call the service to create multiple stands
-    const observables: Observable<any>[] = standsToAdd.map(stand => this.standService.createStand(stand));
-
-    forkJoin(observables).subscribe(
-      (results) => {
-        console.log('Stands added successfully:', results);
-        this.dialogRef.close(); // Close the dialog after stands are added
+    // Upload gallery files and get their paths
+    this.uploadFiles(photos).then(
+      (uploadedPaths: string[]) => {
+        // Assign uploaded paths to the gallery property of each stand
+        standsToAdd.forEach(stand => {
+          stand.gallery = [...uploadedPaths]; // Make a copy of the array to avoid reference issues
+        });
+        // Create an array of observables for each stand creation
+        const observables: Observable<any>[] = standsToAdd.map(stand => this.standService.createStand(stand));
+        // Wait for all observables to complete using forkJoin
+        forkJoin(observables).subscribe(
+          (results: any[]) => {
+            console.log('Stands added successfully:', results);
+            this.dialogRef.close(); // Close the dialog after stands are added
+          },
+          (error) => {
+            console.error('Error adding stands:', error);
+          }
+        );
       },
       (error) => {
-        console.error('Error adding stands:', error);
+        console.error('Error uploading files:', error);
       }
     );
   }
+
+
 
   async uploadFiles(files: FileList): Promise<string[]> {
     const uploadedPaths: string[] = [];
@@ -102,9 +115,15 @@ export class AddMultipleStandsDialogComponent implements OnInit {
     return uploadedPaths;
   }
 
-  onPhotosSelected(event: any): void {
-    const files = event.target.files;
-    this.uploadFiles(files);
+
+  onPhotosSelected(files: FileList): void {
+    const filenames: string[] = [];
+
+    for (let i = 0; i < files.length; i++) {
+      filenames.push(files[i].name);
+    }
+
+    this.standForm.get('photos')?.setValue(filenames);
   }
 
 }

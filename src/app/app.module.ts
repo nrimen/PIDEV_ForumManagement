@@ -32,6 +32,7 @@ import {MatStepperModule} from "@angular/material/stepper";
 import { AddMultipleStandsDialogComponent } from './Components/AdminStand/CreateStand/add-multiple-stands-dialog/add-multiple-stands-dialog.component';
 import { EventCreationComponent } from './Components/AdminStand/event-creation/event-creation.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { StandDetailsComponent } from './Components/reserver-stand/stand-details/stand-details.component';
 // import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 
 
@@ -48,6 +49,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     ReserverStandComponent,
     AddMultipleStandsDialogComponent,
     EventCreationComponent,
+    StandDetailsComponent,
 
   ],
   imports: [
