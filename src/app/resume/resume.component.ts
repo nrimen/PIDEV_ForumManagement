@@ -13,20 +13,10 @@ export class ResumeComponent implements OnInit {
   @ViewChild(MatStepper) matStepper!: MatStepper;
 
   resumeForm!: FormGroup;
-  educations: FormControl[] = [];
+  experiences: FormControl[] = [];
+  skills: FormControl[] = [];
+  languages: FormControl[] = [];
 
-  // Define properties to store form data
-  fullName: string = "";
-  phoneNumber: string = "";
-  profileUrl: string = "";
-  email: string = "";
-  //educationInfo: any[] = [{ schoolName: "" }];
-  experiences: any[] = [{ company: { name: "" } }];
-  skills: string = "";
-  achievements: any[] = [{ name: "" }];
-  //educationInfo: any;
-
-  
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -36,16 +26,27 @@ export class ResumeComponent implements OnInit {
       phoneNumber: new FormControl(''),
       profileUrl: new FormControl(''),
       email: new FormControl(''),
-      educations: this.fb.array([]),
-      companyNames: this.fb.array([]),
-      skills: new FormControl(''),
-      achievements: this.fb.array([]),
+      about: new FormControl(''),
+      schoolName: new FormControl(''),
+      startDate: new FormControl(''),
+      endDate: new FormControl(''),
+      studyField: new FormControl(''),
+      degree: new FormControl(''),
+      experienceTitle: new FormControl(''),
+      companyName: new FormControl(''),
+      expstartDate: new FormControl(''),
+      expendDate: new FormControl(''),
+      experienceField: new FormControl(''),
+      //experiences: this.fb.array([]),
+      skills: this.fb.array([]),
+      languages: this.fb.array([])
     });
 
     // Add initial form controls for education, experience, and achievements
-    this.addEducation();
-    this.addExperience();
-    this.addAchievement();
+   // this.addEducation();
+   // this.addExperience();
+    this.addSkill();
+    this.addLanguage();
   }
 
 
@@ -61,101 +62,173 @@ export class ResumeComponent implements OnInit {
     }
   }
 
-  // Add a new education control to the form
-  addEducation(): void {
+  addSkill(): void {
     const control = this.fb.control('');
-    this.educations.push(control);
+    this.skills.push(control);
   }
 
-  areAllEducationsValid(): boolean {
-    return this.educations.every(education => education.valid);
+  areAllSkillsValid(): boolean {
+    return this.experiences.every(skill => skill.valid);
   }
 
- 
-    
-
-  // Add a new experience control to the form
-  addExperience(): void {
+  addLanguage(): void {
     const control = this.fb.control('');
-    this.companyNames.push(control);
+    this.languages.push(control);
   }
 
-  // Add a new achievement control to the form
-  addAchievement(): void {
-    const control = this.fb.control('');
-    this.achievements.push(control);
+  areAllLanguagesValid(): boolean {
+    return this.languages.every(language => language.valid);
   }
 
-  // Getters for form arrays
-  
 
-  get companyNames(): FormArray {
-    return this.resumeForm.get('companyNames') as FormArray;
-  }
+  wrapTextSimple(text: string, maxWidth: number) {
+    if (text.length <= maxWidth) {
+        return text;
+    } else {
+        let wrappedText = '';
+        for (let i = 0; i < text.length; i += maxWidth) {
+            wrappedText += text.substring(i, i + maxWidth) + '\n';
+        }
+        return wrappedText;
+    }
+}
 
-  get achievementsFormArray(): FormArray {
-    return this.resumeForm.get('achievements') as FormArray;
-  }
 
   // Submit form
   generateResumePDF(): void {
+    // Create a new instance of jsPDF
     const doc = new jsPDF();
+
+    const imagePath = 'assets/img/templates/template(vert).png';
+
+// Add the PNG image to the PDF document
+    doc.addImage(imagePath, 'PNG', 0, 0, doc.internal.pageSize.width, doc.internal.pageSize.height);
+
+
     const fullName = this.resumeForm.get('fullName')?.value ?? '';
     const phoneNumber = this.resumeForm.get('phoneNumber')?.value ?? '';
     const profileUrl = this.resumeForm.get('profileUrl')?.value ?? '';
     const email = this.resumeForm.get('email')?.value ?? '';
-  
-    // Add contact information
-    doc.text(`Name: ${fullName}`, 10, 10);
-    doc.text(`Phone Number: ${phoneNumber}`, 10, 20);
-    doc.text(`LinkedIn Profile URL: ${profileUrl}`, 10, 30);
-    doc.text(`Email: ${email}`, 10, 40);
-    doc.text('----------------------------------', 10, 50);
-  
-    // Initialize the vertical position for education and experience sections
-    let verticalPosition = 60;
-  
-    // Add education information
-    this.educations.forEach((education, index) => {
-      const schoolName = education.get('schoolName')?.value ?? '';
-      const startDate = education.get('startDate')?.value ?? '';
-      const endDate = education.get('endDate')?.value ?? '';
-      const studyField = education.get('studyField')?.value ?? '';
-      const degree = education.get('degree')?.value ?? '';
-    
+    const wrappedabout = this.wrapTextSimple(this.resumeForm.get('about')?.value ?? '', 65);
 
-      doc.text(`Education #${index + 1}`, 10, 60 + index * 80);
-      doc.text(`School Name: ${education.value}`, 20, 70 + index * 80);
-      doc.text(`Start Date: ${education.value}`, 20, 80 + index * 80);
-      doc.text(`End Date: ${education.value}`, 20, 90 + index * 80);
-      doc.text(`Study Field: ${education.value}`, 20, 100 + index * 80);
-      doc.text(`Degree: ${education.value}`, 20, 110 + index * 80);
+    // const schoolName = this.resumeForm.get('schoolName')?.value ?? '';    
+    // const studyField = this.resumeForm.get('studyField')?.value ?? '';
+    // const degree = this.resumeForm.get('degree')?.value ?? '';
+    // const experienceTitle =this.resumeForm.get('experienceTitle')?.value ?? '';
+    // const experienceField =this.resumeForm.get('experienceField')?.value ?? '';
+    const startDate = this.resumeForm.get('startDate')?.value ?? '';
+    const endDate = this.resumeForm.get('endDate')?.value ?? '';
+    const edstartYear = startDate.substring(0, 4);
+    const edendYear = endDate.substring(0, 4);
+
+    const wrappedschoolName = this.wrapTextSimple(this.resumeForm.get('schoolName')?.value ?? '', 30);
+    const wrappedstudyField = this.wrapTextSimple(this.resumeForm.get('studyField')?.value ?? '', 30);
+    const wrappeddegree = this.wrapTextSimple(this.resumeForm.get('degree')?.value ?? '', 30);
+    
+    const expstartDate = this.resumeForm.get('expstartDate')?.value ?? '';
+    const expendDate = this.resumeForm.get('expendDate')?.value ?? '';
+    const exstartYear = expstartDate.substring(0, 4);
+    const exendYear = expendDate.substring(0, 4);
+
+    const wrappedexperienceTitle = this.wrapTextSimple(this.resumeForm.get('experienceTitle')?.value ?? '', 30);
+    const wrappedcompanyName = this.wrapTextSimple(this.resumeForm.get('companyName')?.value ?? '', 30);
+
+    const wrappedexperienceField = this.wrapTextSimple(this.resumeForm.get('experienceField')?.value ?? '', 30);
+    // Add contact information
+    doc.setFontSize(14); // Set font size to 14
+    doc.setTextColor(255, 255, 255); // Set text color to white
+    doc.text(`Name: ${fullName}`, 10, 15);
+    doc.text(`Phone Number: ${phoneNumber}`, 10, 25);
+    doc.text(`LinkedIn Profile: ${profileUrl}`, 10, 35);
+    doc.text(`Email: ${email}`, 10, 45);
+  
+  
+      let xPosition = 90;
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(14);
+      doc.text(`About Me:`, xPosition, 70);
+      doc.setTextColor(0, 0, 0);
+      doc.setFontSize(10);
+      doc.text(`${wrappedabout}`, xPosition+5, 80);
+
+      const lineHeight = 4; // Assuming each line of text occupies 10 units vertically
+
+      // Calculate the height occupied by the wrapped text
+      const wrappedaboutHeight = wrappedabout.split('\n').length * lineHeight;
+
+      // Adjust educationPosition based on the wrappedabout height
+      let educationPosition =  wrappedaboutHeight + 85; 
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(14); // Set text color to black
+      doc.text(`Education: `, xPosition, educationPosition );
+      doc.setTextColor(0, 0, 0);
+      doc.setFontSize(10);
+      doc.text(`School Name: ${wrappedschoolName} (${edstartYear}-${edendYear})`, xPosition+5, educationPosition+10);
+
+      doc.text(`Study Field: ${wrappedstudyField}`, xPosition+5, educationPosition+20);
+      doc.text(`Degree: ${wrappeddegree}`, xPosition+5, educationPosition+30);
     
       // Add other education fields as needed
-      doc.text('----------------------------------', 10, 120 + index * 80);
+      
     
       // Increment the vertical position for the next section
-      verticalPosition += 140; // Adjust as needed
-    });
-  
-    // Add experience information
-    this.experiences.forEach((experience, index) => {
-     // const companyName = experience.get('company.name')?.value ?? '';
-  
-      doc.text(`Experience #${index + 1}`, 10, verticalPosition);
-     // doc.text(`Company Name: ${companyName}`, 20, verticalPosition + 10);
-      // Add other experience fields as needed
-      doc.text('----------------------------------', 10, verticalPosition + 20);
-  
-      // Increment the vertical position for the next section
-      verticalPosition += 30; // Adjust as needed
-    });
+      let  experiencePosition = educationPosition+40; // Adjust as needed
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(14); // Set text color to black
+      doc.text(`Experience:`, xPosition, experiencePosition);
+      doc.setTextColor(0, 0, 0);
+      doc.setFontSize(10);
+      doc.text(`Experience Title: ${wrappedexperienceTitle} (${exstartYear}-${exendYear})`, xPosition+5, experiencePosition+10);
+      doc.text(`Company Name: ${wrappedcompanyName}`, xPosition+5, experiencePosition+20);
+      doc.text(`Experience Field: ${wrappedexperienceField}`, xPosition+5, experiencePosition+30);
+      
+    
+      let skillPosition = 70;
+      let SkillDisplayed = false;
+    
+      this.skills.forEach((skill, index) => {
+        const skillTitle = skill.get('skillTitle')?.value ?? '';
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(14);
+
+        if (!SkillDisplayed) {
+          doc.text(`Skills:`, 10, skillPosition);
+          SkillDisplayed = true;
+        }
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(10);
+        doc.text(`° ${skill.value}`, 15, skillPosition+10);
+        
+        skillPosition += 5; 
+      });
+    
+      let languagePosition= skillPosition+20;
+      let languageDisplayed = false;
+      this.languages.forEach((language, index) => {
+        const languageName = language.get('languageName')?.value ?? '';
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(14);
+        if (!languageDisplayed) {
+          doc.text(`Languages:`, 10, languagePosition);
+          languageDisplayed = true;
+        }
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(10);
+        doc.text(`° ${language.value}`, 15, languagePosition + 10);
+        
+        languagePosition += 5; 
+      });
   
   
     // Save the PDF
     doc.save((this.resumeForm.get('fullName')?.value ?? '') + 'Resume.pdf');
     console.log('Form Values:', this.resumeForm.value);
   }
+  
+  
+  
+  
+  
   
   
 

@@ -1,13 +1,13 @@
 /* apply.component.css */
 
 form {
-    max-width: 400px;
+    max-width: 600px;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    background-color: #27334561;
   }
   
   label {
@@ -23,10 +23,11 @@ form {
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.069);
   }
   
   button {
-    background-color: #4caf50;
+    background-color: #333533;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -37,8 +38,13 @@ form {
   button:hover {
     background-color: #45a049c6;
   }
+
+  button[disabled]:hover {
+    background-color: red;
+  }
   .error-message {
-    border: 1px solid red;
+    color: red;
+    margin-bottom: 10px;
   }
 
   /* Add media query for responsiveness */

@@ -16,10 +16,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       integrity="sha512-e0F6OvBkdpsIf3pT3DwXoJLSr9lBVZL0dCfxqXr8Y2jkEuh6q8R+FTtBXs2CQ8HPfRF7aqqgNSHH1FzFgTOYBg=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 
     <div class="search-container" [class.expanded]="showSearch">
-      <i class="material-icons search-icon" (click)="toggleSearch()">search</i>
-      <input class="search-input" type="text" placeholder="Search..." *ngIf="showSearch" (keyup)="applyFilter($event)">
+      <input class="search-input" type="text" placeholder="Search...🔎" *ngIf="showSearch" (keyup)="applyFilter($event)">
     </div>
 
     <div class="content">
@@ -32,7 +35,7 @@
 
           <span class="blog-time">{{ request.postingDate }}</span>
           <span class="blog-time">
-            <i class="fa-solid fa-map-pin"></i>{{ request.location }}
+            📍{{ request.location }}
           </span>
           <p class="description">
             {{ request.requestContent }}
@@ -46,7 +49,7 @@
             <span>
               See cv
             </span>
-            <button class="btn">Blog</button>
+            <!-- <button class="btn">Blog</button> -->
           </div>
         </div>
       </div>
@@ -54,13 +57,12 @@
 
     </div>
 
-    <button routerLink="/addrequest"
-      style="width: 200px; background-color: rgba(222, 49, 49, 0.94); border-radius: 10px; display: flexbox;"> Add Your
-      Request</button>
+    <button class="add" routerLink="/addrequest"> Add Your Request</button>
+      
 
     <!--Paginator-->
 
-    <div class="ngx-pagination">
+    <div class="ngx-pagination" >
       <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
     </div>

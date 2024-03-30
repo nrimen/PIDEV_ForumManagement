@@ -16,7 +16,7 @@ export class ApplyComponent {
   constructor(private fb: FormBuilder, private http: HttpClient, private snackBar: MatSnackBar, private router: Router) {
     // Initialize the form in the constructor
     this.form = this.fb.group({
-      notes: [null, [Validators.required, Validators.minLength(6)]],
+      notes: ['', [Validators.required, Validators.minLength(10)]],
       applicationCV: ['', Validators.required],
     });
   }

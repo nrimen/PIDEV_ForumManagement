@@ -10,7 +10,7 @@ export class RequestComponent implements OnInit {
 
     requests:any;
     p: number=1;
-    itemsPerPage: number=5;
+    itemsPerPage: number=6;
     totalRequests:any;
   constructor(private http: HttpClient) {
 
@@ -35,7 +35,7 @@ export class RequestComponent implements OnInit {
   }
   
   filteredRequests: any;
-  showSearch: boolean = false;
+  showSearch: boolean = true;
 
  applyFilter(event: KeyboardEvent) {
   const filterValue = (event.target as HTMLInputElement).value;
@@ -45,9 +45,7 @@ export class RequestComponent implements OnInit {
   );
 }
 
-  toggleSearch() {
-    this.showSearch = !this.showSearch;
-  }
+  
 
 
 

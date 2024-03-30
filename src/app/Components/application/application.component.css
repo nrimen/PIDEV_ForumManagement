@@ -19,9 +19,9 @@ div {
 
 /* Style the table */
 table {
-    width: 100%;
+    width: 80%;
     border-collapse: collapse;
-    margin-top: 10px;
+    margin: 10px auto;
     border-radius: 10%;
 }
 
@@ -33,7 +33,7 @@ thead {
 th,
 td {
     padding: 10px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #ddd;
 }
 

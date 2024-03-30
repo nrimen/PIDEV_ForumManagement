@@ -1,7 +1,7 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 .container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 50px auto;
     padding: 20px;
     box-sizing: border-box;
@@ -36,7 +36,7 @@
   /* Style the submit button */
   button {
     padding: 12px;
-    background-color: #007bff;
+    background-color:rgba(208, 0, 0, 0.85);
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -61,14 +61,14 @@
     margin-left: 5px;
     cursor: pointer;
     border: none;
-    background-color: #007bff;
+    background-color: rgba(208, 0, 0, 0.85);
     color: #fff;
     border-radius: 4px;
     transition: background-color 0.3s;
   }
   
   .add-button:hover {
-    background-color: #0056b3;
+    background-color:rgba(208, 0, 0, 0.85);
   }
 
   .stepper-navigation {
@@ -83,6 +83,6 @@
   }
   .stepper-navigation-button:hover {
     border-radius: 50px;
-    background: #0e0c46;
+    background: rgba(208, 0, 0, 0.85);;
     font-size: 1.5em; /* Adjust as needed */
   }

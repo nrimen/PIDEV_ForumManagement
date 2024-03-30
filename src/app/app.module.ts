@@ -26,6 +26,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ApplyComponent } from './Components/apply/apply.component';
+import { EditrequestComponent } from './Components/editrequest/editrequest.component';
+import { ZegocloudComponent } from './zegocloud/zegocloud.component';
+
 
 
 @NgModule({
@@ -39,7 +42,9 @@ import { ApplyComponent } from './Components/apply/apply.component';
     RequestadminComponent,
     ConfirmapplicationComponent,
     ResumeComponent,
-    ApplyComponent
+    ApplyComponent,
+    EditrequestComponent,
+    ZegocloudComponent
   ],
   imports: [
     AppRoutingModule,

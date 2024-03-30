@@ -3,6 +3,9 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { EditrequestComponent } from '../editrequest/editrequest.component';
+
+import { Request } from 'src/app/Core/Models/Request';
 
 @Component({
   selector: 'app-requestadmin',
@@ -12,8 +15,7 @@ import { Router } from '@angular/router';
 export class RequestadminComponent {
 
   requests:any;
-  dialog: any;
-  constructor(private http: HttpClient,private snackBar: MatSnackBar, private router: Router) {
+  constructor(private http: HttpClient,private snackBar: MatSnackBar, private router: Router,private dialog: MatDialog) {
 
   }
 //--------FETCH----------//
@@ -79,6 +81,78 @@ export class RequestadminComponent {
       this.router.navigate(['/requestsadmin']);
     });
   }
+
+  showEditSuccessSnackbar() {
+    const snackBarRef: MatSnackBarRef<any> = this.snackBar.open('Request edited successfully!', 'X', {
+      duration: 4000,
+      panelClass: ['snackbar-success'],
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+    });
   
+    // Subscribe to the afterDismissed observable
+    snackBarRef.afterDismissed().subscribe(() => {
+      // Redirect to the requests page after the snackbar is dismissed
+      this.router.navigate(['/requestsadmin']);
+    });
+  }
+  
+  transformRequestField(request: any): string[] {
+    if (request && request.requestField) {
+      return request.requestField.split(',').map((value: string) => value.trim());
+    }
+    return [];
+  }
+
+  editRequest(req: Request): void {
+    // Open a dialog to get new values
+    const dialogRef = this.dialog.open(EditrequestComponent, {
+      data: {
+        Title: req.requestTitle,
+        Cont: req.requestContent,
+        Res: req.cv,
+        Field: req.requestField
+        // loc: request.location,
+
+      }
+    });
+  
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        // User confirmed, proceed with edit
+        console.log('Edit request with ID:', req.idRequest);
+  
+        // Assuming you have an 'edit' endpoint
+        let editEndpoint = `http://localhost:8089/ForumManagement/request/modify-request`;
+  
+        // Append the new values to the application object
+        const updatedRequest = {
+          ...req,
+        requestTitle: result.Title,
+        requestContent: result.Cont,
+        cv: result.Res,
+        requestfield: result.Field
+        // location: result.loc,
+        
+        };
+  
+        // Send an HTTP request to the 'edit' endpoint
+        this.http.put(editEndpoint, updatedRequest).subscribe(() => {
+          console.log(result);
+  
+          // Show success snackbar
+          this.showEditSuccessSnackbar();
+  
+          // After editing, refresh the applications
+          this.ngOnInit();
+        }, error => {
+          console.error('Error editing request:', error);
+        });
+      } else {
+        // User clicked "Cancel" or closed the dialog
+        console.log('Edit canceled.');
+      }
+    });
+  }
 
 }

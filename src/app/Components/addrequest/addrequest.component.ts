@@ -28,25 +28,25 @@ export class AddrequestComponent {
     });
   }
 
-  onFileChanged = (event :any) => {
-    console.log("here")
-     const file = event.target.files[0];
-     this.fileupload = file;
-     this.uploadFile(file);
-   }
-   async uploadFile(file: File) {
-     const { data, error } = await this.supabase.storage.from('cv').upload(`${Date.now()}_${file.name}`, file, { cacheControl: '3600', upsert: false });
+  // onFileChanged = (event :any) => {
+  //   console.log("here")
+  //    const file = event.target.files[0];
+  //    this.fileupload = file;
+  //    this.uploadFile(file);
+  //  }
+  //  async uploadFile(file: File) {
+  //    const { data, error } = await this.supabase.storage.from('images').upload(`${Date.now()}_${file.name}`, file, { cacheControl: '3600', upsert: false });
    
-     console.log('Upload Data:', data);
-     console.error('Upload Error:', error);
+  //    console.log('Upload Data:', data);
+  //    console.error('Upload Error:', error);
    
-     if (error) {
-       console.error(error);
-       return;
-     } else {
-       return data.path;
-     }
-   }
+  //    if (error) {
+  //      console.error(error);
+  //      return;
+  //    } else {
+  //      return data.path;
+  //    }
+  //  }
  
 
   async onSubmit() {
@@ -54,18 +54,18 @@ export class AddrequestComponent {
     if ( this.myForm.valid) {
 
       let formData = this.myForm.value;
-     this.uploadFile(this.fileupload)
-  .then((filename: string | undefined) => {
-    if (filename) {
-      formData.cv = filename;
-      // Continue with any additional logic using the updated formData
-    } else {
-      console.error('File upload failed.');
-    }
-  })
-  .catch(error => {
-    console.error('Error during file upload:', error);
-  });
+  //    this.uploadFile(this.fileupload)
+  // .then((filename: string | undefined) => {
+  //   if (filename) {
+  //     formData.cv = filename;
+  //     // Continue with any additional logic using the updated formData
+  //   } else {
+  //     console.error('File upload failed.');
+  //   }
+  // })
+  // .catch(error => {
+  //   console.error('Error during file upload:', error);
+  // });
       formData.postingDate = new Date();
       // Add the "Other" field value to the requestField array
       if (formData.otherField) {
@@ -74,6 +74,7 @@ export class AddrequestComponent {
 
       // Directly use the array as a comma-separated string
       formData.requestField = formData.requestField.join(',');
+
 
       this.http.post('http://localhost:8089/ForumManagement/request/add-request', formData)
         .subscribe(response => {

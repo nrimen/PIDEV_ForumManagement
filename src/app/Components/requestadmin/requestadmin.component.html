@@ -1,7 +1,9 @@
-<p>requestadmin works!</p>
-<p>request works!</p>
-<div>
+
+<div class="all">
   <h2>Requests</h2>
+      
+
+  <div class="number-of-requests">Number of requests: {{ requests.length }}</div>
   <div class="row">
     <div class="col-sm-6" *ngFor="let request of requests">
       <div class="card">
@@ -13,8 +15,15 @@
           <p class="card-text">Posting Date: {{ request.postingDate }}</p>
           <p class="card-text">Location: {{ request.location }}</p>
           <p class="card-text">CV: {{ request.cv }}</p>
+          <p class="card-text">Field:</p>
+          <mat-chip-listbox aria-label="Field Selection">
+            <mat-chip *ngFor="let field of transformRequestField(request)" color="primary">{{ field }}</mat-chip>
+          </mat-chip-listbox>
 
-          <button class="delete-button" (click)="deleteRequest(request.idRequest)">Delete</button>
+          <button class="delete-button" (click)="deleteRequest(request.idRequest)">🗑</button>
+          
+            <button class="edit-button" (click)="editRequest(request)">✏</button>
+          
 
 
         </div>

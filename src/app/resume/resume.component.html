@@ -32,57 +32,109 @@
         
                   <label for="email">Email:</label>
                   <input type="text" id="email" name="email" formControlName="email">
+
+                  <label for="about">About Me:</label>
+                  <textarea id="about" name="about" formControlName="about"></textarea>
                 </div>
                 <div class="stepper-navigation">
                     <button matStepperNext class="stepper-navigation-button">→</button>
-                  </div>
+                </div>
+              </mat-step>
+
+              <mat-step label="Education">
+                <div>
+                  <label for="schoolName">School Name:</label>
+                  <input type="text" id="schoolName" name="schoolName" formControlName="schoolName">
+
+                  <label for="startDate">Start Date:</label>
+                  <input type="date" id="startDate" name="startDate" formControlName="startDate">
+
+                  <label for="endDate">End Date:</label>
+                  <input type="date" id="endDate" name="endDate" formControlName="endDate">
+
+                  <label for="studyField">Study Field:</label>
+                  <input type="text" id="studyField" name="studyField" formControlName="studyField">
+
+                  <label for="degree">Degree:</label>
+                  <input type="text" id="degree" name="degree" formControlName="degree">
+                 
+                  <hr>
+                </div>
+             
+              <div class="stepper-navigation">
+                  <button matStepperPrevious class="stepper-navigation-button">←</button>
+                  <!-- <button class="stepper-navigation-button" (click)="addEducation()" [disabled]="!areAllEducationsValid()" >+</button> -->
+                  <button matStepperNext class="stepper-navigation-button" >→</button>
+              </div>
+                  
               </mat-step>
         
-              <!-- Step 2: Education -->
-              <mat-step label="Education">
-                <div formArrayName="educations">
-                  <div *ngFor="let education of educations; let i = index">
-                    <label for="schoolName">School Name:</label>
-                    <input type="text" id="schoolName" name="schoolName" [formControl]="education">
+              <mat-step label="Experience">
+                <div>
+                  <label for="experienceTitle">Experience Title:</label>
+                  <input type="text" id="experienceTitle" name="experienceTitle" formControlName="experienceTitle">
 
-                    <label for="startDate">Start Date:</label>
-                    <input type="date" id="startDate" name="startDate" [formControl]="education">
+                  <label for="companyName">Company Name:</label>
+                  <input type="text" id="companyName" name="companyName" formControlName="companyName">
 
-                    <label for="endDate">End Date:</label>
-                    <input type="date" id="endDate" name="endDate" [formControl]="education">
+                  <label for="expstartDate">Start Date:</label>
+                  <input type="date" id="expstartDate" name="expstartDate" formControlName="expstartDate">
 
-                    <label for="studyField">Study Field:</label>
-                    <input type="text" id="studyField" name="studyField" [formControl]="education">
+                  <label for="expendDate">End Date:</label>
+                  <input type="date" id="expendDate" name="expendDate" formControlName="expendDate">
 
-                    <label for="degree">Degree:</label>
-                    <input type="text" id="degree" name="degree" [formControl]="education">
-                    <!-- Add other education fields as needed -->
+                  <label for="experienceField">Experience Field:</label>
+                  <input type="text" id="experienceField" name="experienceField" formControlName="experienceField">
+                 
+                  <hr>
+                </div>
+             
+              <div class="stepper-navigation">
+                  <button matStepperPrevious class="stepper-navigation-button">←</button>
+                  <!-- <button class="stepper-navigation-button" (click)="addEducation()" [disabled]="!areAllEducationsValid()" >+</button> -->
+                  <button matStepperNext class="stepper-navigation-button" >→</button>
+              </div>
+                  
+              </mat-step>
+
+              <mat-step label="Skill">
+                <div formArrayName="skills">
+                  <div *ngFor="let skill of skills; let i = index">
+                    <label for="skillTitle">Skill:</label>
+                    <input type="text" id="skillTitle" name="skillTitle" [formControl]="skill">
+
                     <hr>
                   </div>
                 </div>
                 <div class="stepper-navigation">
                     <button matStepperPrevious class="stepper-navigation-button">←</button>
-                    <button class="stepper-navigation-button" (click)="addEducation()" [disabled]="!areAllEducationsValid()" >+</button>
-                    <button matStepperNext class="stepper-navigation-button">→</button>
-                  </div>
+                    <button class="stepper-navigation-button" (click)="addSkill()" [disabled]="!areAllSkillsValid()" >+</button>
+                    <button matStepperNext class="stepper-navigation-button" >→</button>
+                </div>
               </mat-step>
 
+              <mat-step style="background-color: rgba(208, 0, 0, 0.85);" label="Language">
+                <div formArrayName="languages">
+                  <div *ngFor="let language of languages; let i = index">
+                    <label for="languageName">Language:</label>
+                    <input type="text" id="languageName" name="languageName" [formControl]="language">
+
+                    <hr>
+                  </div>
+                </div>
+                <div class="stepper-navigation">
+                    <button matStepperPrevious class="stepper-navigation-button">←</button>
+                    <button class="stepper-navigation-button" (click)="addLanguage()" [disabled]="!areAllLanguagesValid()" >+</button>
+                    <button type="submit" mat-button (click)="generateResumePDF()">Generate PDF</button>
+                </div>
+              </mat-step> 
              
               
         
-              <!-- Step 3: Experience -->
-              <!-- Add other steps as needed -->
-        
               <!-- Final Step -->
-              <mat-step label="Generate PDF">
-                <div>
-                  <!-- Display summary or confirmation of the entered data -->
-                  <!-- Add a button to generate the PDF -->
-                  <button type="submit" mat-button (click)="generateResumePDF()">Generate PDF</button>
-                </div>
-              </mat-step>
+             
             </mat-horizontal-stepper>
-          </form>
+        </form>
   
     </div>
 

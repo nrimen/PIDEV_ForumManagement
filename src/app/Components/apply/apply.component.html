@@ -16,7 +16,7 @@
             <label for="notes">Notes:</label>
             <textarea id="notes" formControlName="notes"></textarea>
             <div *ngIf="form.get('notes')?.hasError('minlength') && form.get('notes')?.touched" class="error-message">
-              Request Title must be at least 5 characters long.
+              Application note must be at least 10 characters long.
             </div>
         
             <label for="cv">CV:</label>
