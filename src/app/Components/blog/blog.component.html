@@ -34,7 +34,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <li><a class="dropdown-item" routerLink="/addblog">Ajouter Article</a></li>
                       <li><a class="dropdown-item" (click)="deleteArticle(article.idBlog)">Delete Article</a></li>
-                      <li><a class="dropdown-item" routerLink="/updateblog">Update Article</a></li>
+                      <li><a class="dropdown-item" [routerLink]="['/updateblog',article.idBlog]">Update Article</a></li>
                       <li><a class="dropdown-item"> Report </a></li>
                     </ul>
                   </li>
@@ -44,7 +44,7 @@
                 <div>
                   <img [src]="getImageUrl(article.image)" alt="Image from Supabase" />
                 </div>
-                <h2 class="title"><a routerLink="/blog-details">{{article.title}}</a></h2>
+                <h2 class="title"><a [routerLink]="['/blog-details',article.idBlog]">{{article.title}}</a></h2>
                 <div class="meta-top">
                   <ul>
                     <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a routerLink="blog-details">John Doe</a></li>

@@ -12,7 +12,7 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <form  (ngSubmit)="onSubmit()">
+      <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label>Title:</label>
           <input type="text" class="form-control" formControlName="title">
@@ -21,10 +21,10 @@
           <label>Content:</label>
           <textarea class="form-control" formControlName="content" rows="5"></textarea>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label>Image:</label>
           <input type="file" (change)="onFileChanged($event)" formControlName="image">
-        </div>
+        </div> -->
         <div class="form-group">
           <label>Publish Date:</label>
           <input type="date" class="form-control" formControlName="publishDate">
@@ -32,7 +32,7 @@
         <div class="form-group">
           <label>Category:</label>
           <select class="form-control" formControlName="categorie">
-            <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+             <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
           </select>
         </div>
         

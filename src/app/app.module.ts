@@ -29,6 +29,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { DatePipe } from '@angular/common';
+import { UpdateBlogComponent } from './Components/update-blog/update-blog.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +44,8 @@ import { DatePipe } from '@angular/common';
     LoginComponent,
     RoomlistComponent,
     AddroomComponent,
-    ChatroomComponent
-
+    ChatroomComponent,
+    UpdateBlogComponent
     
     
 
@@ -59,7 +60,6 @@ import { DatePipe } from '@angular/common';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
     MatInputModule,
     MatIconModule,
     MatCardModule,

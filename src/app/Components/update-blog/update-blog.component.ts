@@ -41,12 +41,13 @@ export class UpdateBlogComponent implements OnInit {
     });
   }
 
-  async fetchBlogDetails(idBlog: string) {
+   fetchBlogDetails(idBlog: string) {
     const blogId = Number(idBlog); // Convert idBlog to a number
   
     // Assuming you have a method in blogService to fetch blog details by ID
     this.blogservice.getArticleById(blogId).subscribe((blogDetails: any) => {
       // Populate the form fields with the existing blog data
+      console.log(blogDetails)
       this.postForm.patchValue({
         title: blogDetails.title,
         content: blogDetails.content,
@@ -60,10 +61,10 @@ export class UpdateBlogComponent implements OnInit {
   async onSubmit() {
     if (this.postForm.valid) {
       let updatedArticle = this.postForm.value;
-      if (this.fileupload) {
-        const filename = await this.uploadFile(this.fileupload);
-        updatedArticle.image = filename;
-      }
+      // if (this.fileupload) {
+      //   const filename = await this.uploadFile(this.fileupload);
+      //   updatedArticle.image = filename;
+      // }
       console.log(updatedArticle);
       // Assuming you have a method in blogService to update the article
       this.blogservice.updateArticle(updatedArticle).subscribe();
@@ -72,21 +73,21 @@ export class UpdateBlogComponent implements OnInit {
     }
   }
 
-  async uploadFile(file: File) {
-    const { data, error } = await supabase.storage
-      .from('images')
-      .upload(`${Date.now()}_${file.name}`, file, { cacheControl: '3600', upsert: false });
-    if (error) {
-      console.error(error);
-      return;
-    } else {
-      return data.path;
-    }
-  }
+  // async uploadFile(file: File) {
+  //   const { data, error } = await supabase.storage
+  //     .from('images')
+  //     .upload(`${Date.now()}_${file.name}`, file, { cacheControl: '3600', upsert: false });
+  //   if (error) {
+  //     console.error(error);
+  //     return;
+  //   } else {
+  //     return data.path;
+  //   }
+  // }
 
-  onFileChanged(event: any) {
-    const file = event.target.files[0];
-    this.fileupload = file;
-  }
+  // onFileChanged(event: any) {
+  //   const file = event.target.files[0];
+  //   this.fileupload = file;
+  // }
 
 }
