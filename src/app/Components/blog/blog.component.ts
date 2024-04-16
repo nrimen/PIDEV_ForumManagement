@@ -89,16 +89,17 @@ export class BlogComponent implements OnInit {
 
 
   searchArticles(): void {
-    const title = this.searchForm.get('title')?.value.trim().toLowerCase();
-    const category = this.searchForm.get('categorie')?.value.trim().toLowerCase(); 
+    const title = this.searchForm.get('title')?.value.trim();
+    const category = this.searchForm.get('Categorie')?.value.trim(); 
     console.log('title:', title);
-    console.log('categorie:', Categorie);
+    console.log('categorie:', category);
     // Filter articles based on search criteria
     this.filteredArticles = this.articles.filter(article => {
-      const matchesTitle = !title || article.title.toLowerCase().includes(title);
-      const matchesCategory = !category || article.categorie.toLowerCase() === category;
+      const matchesTitle = !title || article.title.includes(title);
+      const matchesCategory = !category || article.categorie === category;
       return matchesTitle && matchesCategory;
     });
+    this.articles = this.filteredArticles;
   }
   
   

@@ -71,7 +71,7 @@
                 <div> 
                   <img [src]="getImageUrl(article.image)" alt="Image from Supabase" />
                 </div>
-                <h2 class="title"><a routerLink="blog-details">{{article.title}}</a></h2>
+                <h2 class="title"><a [routerLink]="['/blog-details',article.idBlog]">{{article.title}}</a></h2>
                 <div class="meta-top">
                   <ul>
                     <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details">John Doe</a></li>
@@ -83,7 +83,7 @@
                   <p>{{ article.content.split(' ').slice(0, 30).join(' ') + '...' }}</p>
                 </div>
                 <div class="read-more mt-auto align-self-end">
-                  <a href="blog-details">Read More <i class="bi bi-arrow-right"></i></a>
+                  <a [routerLink]="['/blog-details',article.idBlog]">Read More <i class="bi bi-arrow-right"></i></a>
                 </div>
               </article>
             </div><!-- End post list item -->
@@ -105,9 +105,9 @@
             <!-- Sidebar Search Form -->
 <div class="sidebar-item search-form">
   <h3 class="sidebar-title">Search</h3>
-  <form [formGroup]="searchForm" (click)="searchArticles()" class="mt-3"> 
-    <input type="text" id="title" formControlName="title" type="text" id="categorie" formControlName="categorie" placeholder="Search by ">
-    <button type="submit"><i class="bi bi-search"></i></button>
+  <form [formGroup]="searchForm"  class="mt-3"> 
+    <input type="text" id="title" formControlName="title" type="text" id="categorie"  placeholder="Search by ">
+    <button type="submit" (click)="searchArticles()"><i class="bi bi-search"></i></button>
   </form>
 </div>
 <!-- End sidebar search form -->
@@ -135,7 +135,7 @@
                   <img [src]="getImageUrl(article.image)" alt="Article Image" class="img-fluid">
                 <br>
                   <div>
-                    <h4><a href="blog-post">{{article.title}}</a></h4>
+                    <h4><a [routerLink]="['/blog-details',article.idBlog]">{{article.title}}</a></h4>
                     <time datetime="2020-01-01">{{article.publishDate}}</time>
                     <br>
                   </div>
