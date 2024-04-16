@@ -30,6 +30,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { DatePipe } from '@angular/common';
 import { UpdateBlogComponent } from './Components/update-blog/update-blog.component';
+import { ChatbotComponent } from './Components/chatbot/chatbot.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { UpdateBlogComponent } from './Components/update-blog/update-blog.compon
     RoomlistComponent,
     AddroomComponent,
     ChatroomComponent,
-    UpdateBlogComponent
+    UpdateBlogComponent,
+    ChatbotComponent
     
     
 

@@ -12,6 +12,7 @@ import { RoomlistComponent } from './Components/roomlist/roomlist.component';
 import { AddroomComponent } from './Components/addroom/addroom.component';
 import { ChatroomComponent } from './Components/chatroom/chatroom.component';
 import { UpdateBlogComponent } from './Components/update-blog/update-blog.component';
+import { ChatbotComponent } from './Components/chatbot/chatbot.component';
 
 
 const r: Routes = [
@@ -29,6 +30,7 @@ const r: Routes = [
   { path: 'roomlist', component: RoomlistComponent },
   { path: 'addroom', component: AddroomComponent },
   { path: 'chatroom/:nickname/:roomid', component: ChatroomComponent },
+  { path: 'chatbot', component:ChatbotComponent},
   {path:'**',component:NotFoundComponent}
   
 
