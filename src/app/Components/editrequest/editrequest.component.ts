@@ -19,6 +19,8 @@ export class EditrequestComponent {
     this.editForm = this.formBuilder.group({
       Title: [data.Title, Validators.required],
       Cont: [data.Cont, Validators.required],
+      Res: [data.Res, Validators.required],
+      Field: [data.Field, Validators.required],
     });
   }
 

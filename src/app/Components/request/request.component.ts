@@ -37,16 +37,19 @@ export class RequestComponent implements OnInit {
   filteredRequests: any;
   showSearch: boolean = true;
 
- applyFilter(event: KeyboardEvent) {
-  const filterValue = (event.target as HTMLInputElement).value;
-  this.filteredRequests = this.requests.filter((request: any) =>
-    request.requestTitle.toLowerCase().includes(filterValue.toLowerCase()) ||
-    this.transformRequestField(request).some((field: any) => field.toLowerCase().includes(filterValue.toLowerCase()))
-  );
-}
+  applySearch(event: KeyboardEvent) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    console.log("Input value:", filterValue);
+    this.filteredRequests = this.requests.filter((request: any) =>
+  request.requestTitle && request.requestTitle.toLowerCase().includes(filterValue.toLowerCase())
+);
 
+  }
+
+
+  toggleSearch() {
+    this.showSearch = !this.showSearch;
+  }
   
-
-
 
 }

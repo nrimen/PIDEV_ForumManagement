@@ -33,11 +33,13 @@ export class ZegocloudComponent {
 
   ngAfterViewInit() {
       const roomID = getUrlParams().get('roomID') || randomID(5);
+      const userID = Math.floor(Math.random() * 10000) + "";
+      const userName = "userName" + userID;
 
      // generate Kit Token
       const appID = 1860619454 ;
       const serverSecret = "4e7209aa2be67e3f9f7a545d86874ab6";
-      const kitToken =  ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID,  randomID(5),  randomID(5));
+      const kitToken =  ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, randomID(5), userName );
 
       // Create instance object from Kit Token.
       const zp = ZegoUIKitPrebuilt.create(kitToken);
@@ -58,6 +60,7 @@ export class ZegocloudComponent {
         scenario: {
           mode: ZegoUIKitPrebuilt.GroupCall, // To implement 1-on-1 calls, modify the parameter here to [ZegoUIKitPrebuilt.OneONoneCall].
         },
+        
       });
   }
 }

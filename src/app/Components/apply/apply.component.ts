@@ -4,6 +4,8 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Application } from 'src/app/Core/Models/Application';
+
 
 @Component({
   selector: 'app-apply',
@@ -30,14 +32,22 @@ export class ApplyComponent {
 
     if (formData) {
 
-      this.http.post('http://localhost:8089/ForumManagement/application/add-application', formData)
+      const applicationData: Application = {
+        discussion: false, // Assuming these properties are not user-inputted
+        accepted: false, // and should be set based on business logic
+        applicationCV: this.form.get('applicationCV')?.value,
+        notes: this.form.get('notes')?.value,
+        
+      };
 
-      this.showSuccessSnackbar();
-      console.log('Form submitted:', this.form.value);
-
-    } else {
-      console.error('Form data is undefined.');
-    }
+      this.http.post('http://localhost:8089/ForumManagement/application/add-application', applicationData)
+      .subscribe(response => {
+        console.log('Response from server:', response);
+        this.showSuccessSnackbar();
+      });
+  } else {
+    console.error('Form data is undefined.');
+  }
   }
 
   showSuccessSnackbar() {

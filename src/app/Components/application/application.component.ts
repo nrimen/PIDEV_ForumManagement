@@ -5,6 +5,8 @@ import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmapplicationComponent } from '../confirmapplication/confirmapplication.component';
+import { Interview } from 'src/app/Core/Models/Interview';
+import { MakeinterviewComponent } from '../makeinterview/makeinterview.component';
 
 @Component({
   selector: 'app-application',
@@ -116,6 +118,75 @@ export class ApplicationComponent implements OnInit {
     }
   }
   
+
+  showAddSuccessSnackbar() {
+    const snackBarRef: MatSnackBarRef<any> = this.snackBar.open('Interview Added successfully!', 'X', {
+      duration: 4000,
+      panelClass: ['snackbar-success'],
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+    });
+  
+    // Subscribe to the afterDismissed observable
+    snackBarRef.afterDismissed().subscribe(() => {
+      // Redirect to the requests page after the snackbar is dismissed
+      this.router.navigate(['/requestsadmin']);
+    });
+  }
+
+  addInterview(interview : Interview): void {
+    // Open a dialog to get new values
+    const dialogRef = this.dialog.open(MakeinterviewComponent, {
+      data: {
+        Type: interview.interviewType,
+        Date: interview.interviewDate,
+         Class: interview.classRoom,
+         Link: interview.link,
+         //application: interview.idApplication
+         // loc: request.location,
+
+       }
+     }
+    );
+  
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        // User confirmed, proceed with edit
+        
+  
+        // Assuming you have an 'edit' endpoint
+        let addEndpoint = `http://localhost:8089/ForumManagement/interview/add-interview`;
+  
+        // Append the new values to the application object
+        const addedInterview = {
+          ...interview,
+          interviewType: result.Type,
+          interviewDate: result.Date,
+          classRoom: result.Class,
+          link: result.Link,
+          applicationId: result.idApplication,
+
+        
+        };
+  
+        // Send an HTTP request to the 'edit' endpoint
+        this.http.post(addEndpoint, addedInterview).subscribe(() => {
+          console.log(result);
+  
+          // Show success snackbar
+          this.showAddSuccessSnackbar();
+  
+          // After editing, refresh the applications
+          this.ngOnInit();
+        }, error => {
+          console.error('Error adding interview:', error);
+        });
+      } else {
+        // User clicked "Cancel" or closed the dialog
+        console.log('Add Finished.');
+      }
+    });
+  }
   }
   
 

@@ -21,13 +21,15 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 />
 
-    <div class="search-container" [class.expanded]="showSearch">
-      <input class="search-input" type="text" placeholder="Search...🔎" *ngIf="showSearch" (keyup)="applyFilter($event)">
+   
+
+    <div class="search-container"  [class.expanded]="showSearch">
+      <input class="search-input" type="text" placeholder="Search..." *ngIf="showSearch" (keyup)="applySearch($event)">
     </div>
 
     <div class="content">
 
-      <div class="row position-relative d-flex align-items-center ">
+      <div class="row position-relative  align-items-center ">
         <div class="card"
           *ngFor="let request of filteredRequests | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
 
@@ -54,12 +56,10 @@
         </div>
       </div>
 
-
+<button class="button" routerLink="/addrequest"> Add Your Request</button>
     </div>
 
-    <button class="add" routerLink="/addrequest"> Add Your Request</button>
-      
-
+    
     <!--Paginator-->
 
     <div class="ngx-pagination" >

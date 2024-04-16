@@ -49,25 +49,26 @@ tbody tr:hover {
 
 /* CSS */
 /* Common styling for both buttons */
-.action-button {
-    background-color: #c2fbd7;
-    border-radius: 100px;
-    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
-    color: green;
-    cursor: pointer;
-    display: inline-block;
-    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
-    padding: 7px 20px;
-    text-align: center;
-    text-decoration: none;
-    transition: all 250ms;
-    border: 0;
-    font-size: 16px;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    margin-right: 10px; /* Adjust the spacing as needed */
-  }
+.edit-button {
+  background-color: #c2fbd7;
+  border-radius: 50%; /* Making it a circle */
+  box-shadow: rgba(44, 187, 99, .2) 0 -12px 9px -7px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+  padding: 7px; /* Adjust the padding to make it smaller */
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 10px; /* Decreased font size */
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-right: 10px; /* Adjust the spacing as needed */
+}
+
   
   /* Styling specific to the delete button */
   .delete-button { background-color: #ed443bc8;
@@ -77,20 +78,39 @@ tbody tr:hover {
     cursor: pointer;
     display: inline-block;
     font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
-    padding: 7px 20px;
+    padding: 7px; 
     text-align: center;
     text-decoration: none;
     transition: all 250ms;
     border: 0;
-    font-size: 16px;
+    font-size: 10px; 
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    margin-right: 10px;
-  }
-  
+    margin-right: 10px; 
+    }
+
+  .interview-button { background-color: #e8cf12c8;
+    border-radius: 100px;
+    box-shadow: rgba(221, 207, 10) 0 -25px 18px -14px inset, rgb(227, 214, 39) 0 1px 2px, rgb(207, 199, 85, 0.15) 0 2px 4px, rgba(221, 207, 10, 0.332) 0 4px 8px, rgba(230, 215, 16, 0.15) 0 8px 16px, rgba(237, 222, 12, 0.15) 0 16px 32px;
+    color: rgb(221, 123, 10);
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+    padding: 7px; 
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 10px; 
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-right: 10px; 
+    }
+    
   /* Hover effect for both buttons */
-  .action-button:hover, .delete-button:hover {
+  .edit-button:hover, .delete-button:hover, .interview-button:hover {
     box-shadow: rgba(23, 26, 25, 0.35) 0 -25px 18px -14px inset, rgba(24, 26, 25, 0.25) 0 1px 2px, rgba(31, 33, 32, 0.25) 0 2px 4px, rgba(22, 23, 22, 0.25) 0 4px 8px, rgba(34, 37, 35, 0.25) 0 8px 16px, rgba(29, 30, 29, 0.25) 0 16px 32px;
     transform: scale(1.05) rotate(-1deg);
   }

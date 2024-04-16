@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from "./Shared/Header/header.component";
 import { FooterComponent } from "./Shared/footer/footer.component";
@@ -27,7 +26,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ApplyComponent } from './Components/apply/apply.component';
 import { EditrequestComponent } from './Components/editrequest/editrequest.component';
-import { ZegocloudComponent } from './zegocloud/zegocloud.component';
+import { ZegocloudComponent } from './Components/zegocloud/zegocloud.component';
+import { MakeinterviewComponent } from './Components/makeinterview/makeinterview.component';
 
 
 
@@ -44,7 +44,8 @@ import { ZegocloudComponent } from './zegocloud/zegocloud.component';
     ResumeComponent,
     ApplyComponent,
     EditrequestComponent,
-    ZegocloudComponent
+    ZegocloudComponent,
+    MakeinterviewComponent,
   ],
   imports: [
     AppRoutingModule,

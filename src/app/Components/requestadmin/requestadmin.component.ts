@@ -131,7 +131,7 @@ export class RequestadminComponent {
         requestTitle: result.Title,
         requestContent: result.Cont,
         cv: result.Res,
-        requestfield: result.Field
+        requestField: result.Field
         // location: result.loc,
         
         };
@@ -150,7 +150,7 @@ export class RequestadminComponent {
         });
       } else {
         // User clicked "Cancel" or closed the dialog
-        console.log('Edit canceled.');
+        console.log('Edit Finished.');
       }
     });
   }

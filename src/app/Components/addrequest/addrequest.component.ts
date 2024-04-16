@@ -34,38 +34,56 @@ export class AddrequestComponent {
   //    this.fileupload = file;
   //    this.uploadFile(file);
   //  }
-  //  async uploadFile(file: File) {
-  //    const { data, error } = await this.supabase.storage.from('images').upload(`${Date.now()}_${file.name}`, file, { cacheControl: '3600', upsert: false });
+   async uploadFile(file: File) {
+     const { data, error } = await this.supabase.storage.from('resumes').upload(`${Date.now()}_${file.name}`, file, { cacheControl: '3600', upsert: false });
    
-  //    console.log('Upload Data:', data);
-  //    console.error('Upload Error:', error);
+     console.log('Upload Data:', data);
+     console.error('Upload Error:', error);
    
-  //    if (error) {
-  //      console.error(error);
-  //      return;
-  //    } else {
-  //      return data.path;
-  //    }
-  //  }
+     if (error) {
+       console.error(error);
+       return;
+     } else {
+       return data.path;
+     }
+   }
  
 
   async onSubmit() {
    
     if ( this.myForm.valid) {
 
+
+
       let formData = this.myForm.value;
-  //    this.uploadFile(this.fileupload)
-  // .then((filename: string | undefined) => {
-  //   if (filename) {
-  //     formData.cv = filename;
-  //     // Continue with any additional logic using the updated formData
-  //   } else {
-  //     console.error('File upload failed.');
-  //   }
-  // })
-  // .catch(error => {
-  //   console.error('Error during file upload:', error);
-  // });
+      let filename = await this.uploadFile(this.fileupload);
+      formData.cv = filename;
+      console.log(formData)
+      // this.blogservice.addArticle(article).subscribe();
+      // this.router.navigate(['/blog']);
+      
+    // } else {
+    //   // Form validation failed
+    //   console.error('Form is invalid');
+    // }
+    
+
+
+      // let formData = this.myForm.value;
+      //   this.uploadFile(this.fileupload)
+      // .then((filename: string | undefined) => {
+      //   if (filename) {
+      //     formData.cv = filename;
+      //     // Continue with any additional logic using the updated formData
+      //   } else {
+      //     console.error('File upload failed.');
+      //   }
+      // })
+      // .catch(error => {
+      //   console.error('Error during file upload:', error);
+      // });
+
+
       formData.postingDate = new Date();
       // Add the "Other" field value to the requestField array
       if (formData.otherField) {
@@ -107,6 +125,13 @@ export class AddrequestComponent {
     snackBarRef.afterDismissed().subscribe(() => {
       this.router.navigate(['/requests']);
     });
+  }
+
+  onFileChanged = (event :any) => {
+    console.log("here")
+    const file = event.target.files[0];
+    this.fileupload = file;
+    //this.uploadFile(file);
   }
 
   // async AddCV(cv: ReqCV)

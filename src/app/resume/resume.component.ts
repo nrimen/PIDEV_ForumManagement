@@ -94,6 +94,7 @@ export class ResumeComponent implements OnInit {
 }
 
 
+
   // Submit form
   generateResumePDF(): void {
     // Create a new instance of jsPDF
@@ -223,10 +224,21 @@ export class ResumeComponent implements OnInit {
     // Save the PDF
     doc.save((this.resumeForm.get('fullName')?.value ?? '') + 'Resume.pdf');
     console.log('Form Values:', this.resumeForm.value);
+
+
+    //     const pdfUrl = 'C:/Users/MSI/Downloads/${fullName}Resume.pdf'; // URL or file path to your PDF
+
+    // pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
+    //     pdfPageToImage(pdf, 1, function(imageDataUrl) {
+    //         console.log('Image data URL:', imageDataUrl);
+    //         // Now you can use imageDataUrl as the source for an <img> element or for other purposes
+    //     });
+    // });
   }
   
+
   
-  
+ 
   
   
   

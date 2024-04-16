@@ -8,7 +8,7 @@ import { AddrequestComponent } from './Components/addrequest/addrequest.componen
 import { RequestadminComponent } from './Components/requestadmin/requestadmin.component';
 import { ResumeComponent } from './resume/resume.component';
 import { ApplyComponent } from './Components/apply/apply.component';
-import { ZegocloudComponent } from './zegocloud/zegocloud.component';
+import { ZegocloudComponent } from './Components/zegocloud/zegocloud.component';
 
 
 const r: Routes = [
@@ -20,7 +20,7 @@ const r: Routes = [
   { path: 'addrequest', component: AddrequestComponent },
   { path: 'resume', component: ResumeComponent },
   { path: 'apply', component: ApplyComponent },
-  {path: 'videocall', component: ZegocloudComponent},
+  { path: 'videocall', component: ZegocloudComponent },
 
   { path: '**', component: NotFoundComponent },
 

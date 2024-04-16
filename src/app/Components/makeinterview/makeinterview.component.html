@@ -1,0 +1,37 @@
+<h2>Add Interview</h2>
+<form [formGroup]="addForm">
+    <div class="checkbox-wrapper">
+        <label for="Type">Interview Type:</label>
+        <select id="Type" formControlName="Type" >
+
+            <option [value]="InterviewType.INPERSON">INPERSON</option>
+            <option [value]="InterviewType.ONLINE">ONLINE</option>
+            
+          </select>
+        
+      </div>
+
+      <div class="checkbox-wrapper">
+        <label for="Date">Interview Date:</label>
+        <input type="date" id="Date" formControlName="Date" />
+        
+      </div>
+
+      <div class="checkbox-wrapper">
+        <label for="Class">Classroom:</label>
+        <input type="text" class="form-control-file" id="Class" formControlName="Class">
+
+      </div>
+
+      <div class="checkbox-wrapper">
+        <label for="Link">Interview Link:</label>
+        <input type="text" class="form-control-file" id="Link" formControlName="Link" >
+
+      </div>
+
+      
+  <div>
+    <button type="button" (click)="saveChanges()">Save Changes</button>
+    <button type="button" (click)="closeDialog()">Cancel</button>
+  </div>
+</form>
