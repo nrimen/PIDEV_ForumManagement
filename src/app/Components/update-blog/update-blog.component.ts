@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Categorie } from '../../Core/Models/categorie';
 import { blogService } from 'src/app/Service/blog-service';
 import { supabase } from 'src/app/utils/supabase';
@@ -20,14 +20,14 @@ export class UpdateBlogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private blogservice: blogService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.postForm = this.fb.group({
       title: ['', Validators.required],
       content: ['', Validators.required],
-      image: ['', Validators.required],
       publishDate: ['', Validators.required],
       categorie: ['', Validators.required],
       comment: [null],
@@ -68,6 +68,7 @@ export class UpdateBlogComponent implements OnInit {
       console.log(updatedArticle);
       // Assuming you have a method in blogService to update the article
       this.blogservice.updateArticle(updatedArticle).subscribe();
+      this.router.navigate(['/blog']);
     } else {
       console.error('Form is invalid');
     }
