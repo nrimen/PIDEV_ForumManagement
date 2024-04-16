@@ -1,12 +1,9 @@
-
-
-<!-- stand-details.component.html -->
-
-<div class="stand-details-container">
-  <div class="gallery">
-    <div *ngFor="let imageUrl of imageUrls" class="gallery-item">
-      <img [src]="imageUrl" alt="Stand Photo" class="photo">
-    </div>
-  </div>
+<div class="carousel-container">
+  <mdb-carousel>
+    <mdb-carousel-item *ngFor="let imageUrl of imageUrls">
+      <img [src]="imageUrl" class="d-block w-100" alt="Stand Photo">
+    </mdb-carousel-item>
+  </mdb-carousel>
+  <button class="prev" mdbRipple mdbWavesEffect (click)="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+  <button class="next" mdbRipple mdbWavesEffect (click)="nextSlide()"><i class="fas fa-chevron-right"></i></button>
 </div>
-

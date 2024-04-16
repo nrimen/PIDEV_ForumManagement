@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from "@angular/forms";
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,15 +9,15 @@ import { DeleteConfirmationDialogComponentComponent } from "../delete-confirmati
 import { Stand } from "../../../../Core/Modules/Stand-Module/stand/stand";
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { PageEvent } from '@angular/material/paginator';
-import {OpenStandsCardDialogComponent} from "../open-stands-card-dialog/open-stands-card-dialog.component";
-import {AddMultipleStandsDialogComponent} from "../add-multiple-stands-dialog/add-multiple-stands-dialog.component";
+import { OpenStandsCardDialogComponent } from "../open-stands-card-dialog/open-stands-card-dialog.component";
+import { AddMultipleStandsDialogComponent } from "../add-multiple-stands-dialog/add-multiple-stands-dialog.component";
 
 @Component({
   selector: 'app-create-stand',
   templateUrl: './create-stand.component.html',
   styleUrls: ['./create-stand.component.css']
 })
-export class CreateStandComponent implements OnInit, AfterViewInit  {
+export class CreateStandComponent implements OnInit, AfterViewInit {
 
   stands: Stand[] = [];
   filteredStands: any[] = [];
@@ -60,7 +60,7 @@ export class CreateStandComponent implements OnInit, AfterViewInit  {
           () => {
             console.log('Stand deleted successfully');
             // Reload stands after deletion
-            this.loadStands();
+            this.loadStandsWithUsers();
           },
           (error) => {
             console.error('Error deleting stand:', error);
@@ -71,13 +71,13 @@ export class CreateStandComponent implements OnInit, AfterViewInit  {
   }
 
   ngOnInit(): void {
-    this.loadStands();
+    this.loadStandsWithUsers();
     this.standService.standDataUpdated$.subscribe((updatedStand: Stand) => {
-      this.loadStands();
+      this.loadStandsWithUsers();
     });
   }
-  loadStands() {
-    this.standService.getStandsList().subscribe(
+  loadStandsWithUsers() {
+    this.standService.getStandsListWithUsers().subscribe(
       (stands: any[]) => {
         this.stands = stands;
         this.filteredStands = [...this.stands];

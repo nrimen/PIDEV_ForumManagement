@@ -1,5 +1,5 @@
 .theatre {
-  border: 2px solid black;
+  border: 3px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -389,7 +389,7 @@
 /******************* Responsive CSS *******************/
 
 /* For screens smaller than 768px */
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .theatre {
     margin: 50px 20px; /* Adjust margin for smaller screens */
   }
@@ -603,6 +603,35 @@
   font-size: 16px;
   margin-bottom: 5px;
 }
+/************reserved************/
+.reserved {
+  border-color: rgba(208, 0, 0, 0.9);
+  cursor: not-allowed;    /* Change cursor to indicate it's not clickable */
+}
+.countdown-container {
+  display: flex;
+  justify-content: center;
+}
 
+.countdown-item {
+  width: 100px; /* Adjust the width of the square */
+  height: 100px; /* Ensure the item is square */
+  margin: 0 10px;
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
+.countdown-value {
+  font-size: 24px;
+  font-weight: bold;
+}
 
+.countdown-label {
+  font-size: 12px;
+  color: #666;
+}

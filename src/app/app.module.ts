@@ -34,6 +34,7 @@ import { EventCreationComponent } from './Components/AdminStand/event-creation/e
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { StandDetailsComponent } from './Components/reserver-stand/stand-details/stand-details.component';
 // import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
+import { CarouselModule } from 'angular-bootstrap-md';
 
 
 @NgModule({
@@ -75,7 +76,9 @@ import { StandDetailsComponent } from './Components/reserver-stand/stand-details
     MatCardModule,
     OverlayModule,
     MatStepperModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    CarouselModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent]

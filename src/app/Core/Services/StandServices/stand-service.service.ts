@@ -37,10 +37,13 @@ export class StandServiceService {
   deleteStand(id: number): Observable<any> {
     return this.httpClient.delete(`${this.baseURL}remove-stand/${id}`);
   }
+  getStandsListWithUsers(): Observable<Stand[]> {
+    return this.httpClient.get<Stand[]>(`${this.baseURL}retrieve-all-stands-with-users`);
+  }
 
-  // getStandWithPhotos(id: number): Observable<any> {
-  //   return this.httpClient.get<any>(`${this.baseURL}${id}`);
-  // }
+  assignStandToUser(standId: number | undefined, userId: number): Observable<string> {
+    return this.httpClient.post<string>(`${this.baseURL}assign/${standId}/user/${userId}`, {});
+  }
 
   getStandImages(standId: number): Observable<string[]> {
     return this.httpClient.get<string[]>(`${this.baseURL}stand/${standId}/images`);

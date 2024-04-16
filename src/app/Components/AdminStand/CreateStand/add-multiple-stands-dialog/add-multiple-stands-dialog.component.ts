@@ -116,14 +116,6 @@ export class AddMultipleStandsDialogComponent implements OnInit {
   }
 
 
-  onPhotosSelected(files: FileList): void {
-    const filenames: string[] = [];
 
-    for (let i = 0; i < files.length; i++) {
-      filenames.push(files[i].name);
-    }
-
-    this.standForm.get('photos')?.setValue(filenames);
-  }
 
 }
