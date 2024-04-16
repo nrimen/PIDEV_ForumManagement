@@ -166,3 +166,45 @@
 .dropdown-item:hover {
   background-color: #e2e6ea;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.add-blog-btn {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.add-blog-btn button {
+  font-size: 18px;
+  padding: 5px 20px;
+  border-radius: 5px;
+  background-color: #695d6c; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.add-blog-btn button:hover {
+  background-color: #45a049; /* Darker Green */
+}
+
+.add-blog-btn button:active {
+  background-color: #ff3333; /* Light Red */
+  transform: translateY(2px);
+}

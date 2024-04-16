@@ -12,12 +12,19 @@ import { supabase } from 'src/app/utils/supabase';
 export class BlogDetailsComponent implements OnInit {
   id? :number;
   article?: Blog;
+  numberOfLikes: number = 0;
+  numberOfDislikes: number = 0;
+  liked: boolean = false;
+  disliked: boolean = false;
+
   constructor(private blogservice: blogService,private route:ActivatedRoute) { }
 
 
 
 
   ngOnInit(): void {
+    let b = document.querySelector('button');
+
     this.id = Number( this.route.snapshot.paramMap.get("id"));
   
     this.blogservice.getArticleById(this.id).subscribe(article => {
@@ -46,6 +53,31 @@ export class BlogDetailsComponent implements OnInit {
     }
   }*/
 }
+
+
+likeButtonClick() {
+  if (!this.liked) {
+    this.numberOfLikes++;
+    this.liked = true;
+    this.disliked = false;
+  } else {
+    this.numberOfLikes--;
+    this.liked = false;
+  }
+}
+
+dislikeButtonClick() {
+  if (!this.disliked) {
+    this.numberOfDislikes++;
+    this.disliked = true;
+    this.liked = false;
+  } else {
+    this.numberOfDislikes--;
+    this.disliked = false;
+  }
+}
+
+
 
 }
 

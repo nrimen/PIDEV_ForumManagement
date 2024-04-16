@@ -23,7 +23,10 @@
         
         <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
           <div class="row gy-5 posts-list">
+            <!-- Ajouter Blog Button -->
+            
             <!-- Loop through articles -->
+
             <div class="col-lg-6" *ngFor="let article of articles">
               <nav id="navbar" class="navbar">
                 <ul class="navbar-nav">
@@ -35,7 +38,7 @@
                       <li><a class="dropdown-item" routerLink="/addblog">Ajouter Article</a></li>
                       <li><a class="dropdown-item" (click)="deleteArticle(article.idBlog)">Delete Article</a></li>
                       <li><a class="dropdown-item" [routerLink]="['/updateblog',article.idBlog]">Update Article</a></li>
-                      <li><a class="dropdown-item"> Report </a></li>
+                      <!-- <li><a class="dropdown-item"> Report </a></li> -->
                     </ul>
                   </li>
                 </ul>
@@ -60,6 +63,13 @@
                 </div>
               </article>
             </div><!-- End post list item -->
+
+            <br>
+          <div class="col-12 add-blog-btn">
+            <button class="btn btn-primary" routerLink="/addblog">Ajouter Blog</button>
+          </div>
+          <br>
+          <br>
             <div class="text-center">
               <br>
               <br>
@@ -85,9 +95,12 @@
                 <div class="read-more mt-auto align-self-end">
                   <a [routerLink]="['/blog-details',article.idBlog]">Read More <i class="bi bi-arrow-right"></i></a>
                 </div>
+                
               </article>
+              
             </div><!-- End post list item -->
           </div><!-- End blog posts list -->
+          
 
           <!-- Blog Pagination -->
           <div class="blog-pagination">

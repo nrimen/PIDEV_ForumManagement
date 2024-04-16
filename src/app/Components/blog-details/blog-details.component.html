@@ -17,7 +17,7 @@
     <!-- ======= Blog Details Section ======= -->
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
-
+        
         <div class="row g-5" >
 
           <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
@@ -38,6 +38,9 @@
                   <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
                 </ul>
               </div><!-- End meta top -->
+
+              
+              
 
               <div class="content">
                 <h3>
@@ -87,6 +90,23 @@ While education holds immense potential, it also faces numerous challenges. Acce
                   Alias quia non aliquid. Eos et ea velit. Voluptatem maxime enim omnis ipsa voluptas incidunt. Nulla sit eaque mollitia nisi asperiores est veniam.
                 </p>
 
+                <br>
+                <h1>Do you find this article useful ?</h1>
+              <div class="row">
+                <div class="col">
+                  <p class="like-count">{{ numberOfLikes }}</p>
+                  <span class="like-icon" [ngClass]="{ 'clicked': liked }" (click)="likeButtonClick()">👍</span>
+                </div>
+                <div class="col">
+                  <p class="dislike-count">{{ numberOfDislikes }}</p>
+                  <span class="dislike-icon" [ngClass]="{ 'clicked': disliked }" (click)="dislikeButtonClick()">👎</span>
+                </div>
+              </div>
+                
+              <br>
+              <br>
+              
+
               </div><!-- End post content -->
 
               <div class="meta-bottom">
@@ -105,7 +125,7 @@ While education holds immense potential, it also faces numerous challenges. Acce
 
             </article><!-- End blog post -->
 
-            <div class="post-author d-flex align-items-center">
+            <!-- <div class="post-author d-flex align-items-center">
               <img src="assets/img/blog/blog-author.jpg" class="rounded-circle flex-shrink-0" alt="">
               <div>
                 <h4>Jane Smith</h4>
@@ -118,7 +138,7 @@ While education holds immense potential, it also faces numerous challenges. Acce
                   Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
                 </p>
               </div>
-            </div><!-- End post author -->
+            </div>End post author -->
 
             <!-- <div class="comments">
 
