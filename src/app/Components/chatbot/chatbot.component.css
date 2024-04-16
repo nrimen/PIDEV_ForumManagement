@@ -1,0 +1,28 @@
+/* Style général du conteneur de la bulle de discussion */
+.chatbase-chat-bubble {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+/* Style du texte à l'intérieur de la bulle */
+.chatbase-chat-bubble p {
+    margin: 0;
+}
+
+/* Style pour la bulle de discussion de l'utilisateur */
+.chatbase-chat-bubble-user {
+    background-color: #4CAF50;
+    color: white;
+    align-self: flex-end;
+}
+
+/* Style pour la bulle de discussion du chatbot */
+.chatbase-chat-bubble-bot {
+    background-color: #008CBA;
+    color: white;
+    align-self: flex-start;
+}

@@ -1,0 +1,195 @@
+
+
+
+
+<main id="main">
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/blog-header.jpg');">
+    <div class="container position-relative d-flex flex-column align-items-center">
+      <h2>Blog</h2>
+      <ol>
+        <li><a href="index">Home</a></li>
+        <li>Blog</li>
+      </ol>
+    </div>
+  </div>
+  <!-- End Breadcrumbs -->
+
+  <!-- Blog Section -->
+  <section id="blog" class="blog">
+
+    <div class="container" data-aos="fade-up">
+      <div class="row g-5">
+
+        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+          <div class="row gy-5 posts-list">
+            <!-- Ajouter Blog Button -->
+
+            <!-- Loop through articles -->
+
+            <div class="col-lg-6" *ngFor="let article of articles">
+              <article class="d-flex flex-column">
+                <div>
+                  <img [src]="getImageUrl(article.image)" alt="Image from Supabase" />
+                </div>
+                <h2 class="title"><a [routerLink]="['/blog-details',article.idBlog]">{{article.title}}</a></h2>
+                <div class="buttons">
+                  <button mat-icon-button color="warn" (click)="deleteArticle(article.idBlog)" matTooltip="Delete">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                  <button mat-icon-button color="warn" [routerLink]="['/updateblog',article.idBlog]" matTooltip="update">
+                    <mat-icon>update</mat-icon>
+                  </button>
+                </div>
+
+                <div class="meta-top">
+                  <ul>
+                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a routerLink="blog-details">John Doe</a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a routerLink="blog-details">{{article.publishDate}}</a></li>
+                  </ul>
+                </div>
+                <div class="content" >
+                  <p [innerText]="article.content.split(' ').slice(0, 30).join(' ') + '    ...'"></p>
+                </div>
+                <div class="read-more mt-auto align-self-end">
+                  <a [routerLink]="['/blog-details',article.idBlog]">Read More <i class="bi bi-arrow-right"></i></a>
+                </div>
+              </article>
+            </div><!-- End post list item -->
+
+
+            <div class="text-center">
+              <br>
+              <br>
+              <br>
+              <h2 class="font-weight-bold" style="font-size: 1.4rem;">Previous Posts</h2>
+            </div>
+            <div class="col-lg-6" *ngFor="let article of articles">
+              <article class="d-flex flex-column">
+                <div>
+                  <img [src]="getImageUrl(article.image)" alt="Image from Supabase" />
+                </div>
+                <h2 class="title"><a [routerLink]="['/blog-details',article.idBlog]">{{article.title}}</a></h2>
+                <div class="buttons">
+                  <button mat-icon-button color="warn" (click)="deleteArticle(article.idBlog)" matTooltip="Delete">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                  <button mat-icon-button color="warn" [routerLink]="['/updateblog',article.idBlog]" matTooltip="update">
+                    <mat-icon>update</mat-icon>
+                  </button>
+                </div>
+
+                <div class="meta-top">
+                  <ul>
+                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details">John Doe</a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details"><time datetime="2022-01-01">{{article.publishDate}}</time></a></li>
+<!--                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details">12 Comments</a></li>-->
+                  </ul>
+                </div>
+                <div class="content">
+                  <p>{{ article.content.split(' ').slice(0, 30).join(' ') + '...' }}</p>
+                </div>
+                <div class="read-more mt-auto align-self-end">
+                  <a [routerLink]="['/blog-details',article.idBlog]">Read More <i class="bi bi-arrow-right"></i></a>
+
+                </div>
+
+              </article>
+
+            </div><!-- End post list item -->
+          </div><!-- End blog posts list -->
+
+
+          <!-- Blog Pagination -->
+          <div class="blog-pagination">
+            <ul class="justify-content-center">
+              <li><a href="blog">1</a></li>
+              <li class="active"><a href="blog">2</a></li>
+              <li><a href="blog">3</a></li>
+            </ul>
+          </div><!-- End blog pagination -->
+        </div>
+
+        <!-- Blog Sidebar -->
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="sidebar ps-lg-4">
+            <!-- Sidebar Search Form -->
+<div class="sidebar-item search-form">
+  <h3 class="sidebar-title">Search</h3>
+  <form [formGroup]="searchForm"  class="mt-3">
+    <input type="text" id="title" formControlName="title" type="text" id="categorie"  placeholder="Search by ">
+    <button type="submit" (click)="searchArticles()"><i class="bi bi-search"></i></button>
+  </form>
+  <button class="mb-3 btn btn-danger" style="margin-left: 10px;margin-top: 20px" routerLink="/addblog">Add Article</button>
+  <button class="mb-3 btn btn-danger" style="margin-left: 10px;margin-top: 20px" routerLink="/chatbot">connect with your chatbot !</button>
+</div>
+<!-- End sidebar search form -->
+
+
+            <!-- Sidebar Categories -->
+            <div class="sidebar-item categories">
+              <h3 class="sidebar-title">Categories</h3>
+              <ul class="mt-3">
+                <li><a href="blog">General <span>(25)</span></a></li>
+                <li><a href="blog">Lifestyle <span>(12)</span></a></li>
+                <li><a href="blog">Travel <span>(5)</span></a></li>
+                <li><a href="blog">Design <span>(22)</span></a></li>
+                <li><a href="blog">Creative <span>(8)</span></a></li>
+                <li><a href="blog">Education <span>(14)</span></a></li>
+              </ul>
+            </div><!-- End sidebar categories-->
+
+            <!-- Sidebar Recent Posts -->
+            <div class="sidebar-item recent-posts">
+              <h3 class="sidebar-title">Recent Posts</h3>
+              <div class="mt-3" *ngFor="let article of articles">
+                <div *ngIf="article">
+                  <!-- Display the image -->
+                  <img [src]="getImageUrl(article.image)" alt="Article Image" class="img-fluid">
+                <br>
+                  <div>
+                    <h4><a [routerLink]="['/blog-details',article.idBlog]">{{article.title}}</a></h4>
+                    <time datetime="2020-01-01">{{article.publishDate}}</time>
+                    <br>
+                  </div>
+                </div><!-- End recent post item-->
+                <!-- Repeat recent post items -->
+              </div>
+
+
+              </div><!-- End sidebar recent posts-->
+
+              <div class="sidebar-item tags">
+                <h3 class="sidebar-title">Tags</h3>
+                <ul class="mt-3">
+                  <li><a href="blog">App</a></li>
+                  <li><a href="blog">IT</a></li>
+                  <li><a href="blog">Business</a></li>
+                  <li><a href="blog">Mac</a></li>
+                  <li><a href="blog">Design</a></li>
+                  <li><a href="blog">Office</a></li>
+                  <li><a href="blog">Creative</a></li>
+                  <li><a href="blog">Studio</a></li>
+                  <li><a href="blog">Smart</a></li>
+                  <li><a href="blog">Tips</a></li>
+                  <li><a href="blog">Marketing</a></li>
+                </ul>
+              </div><!-- End sidebar tags-->
+
+            </div><!-- End Blog Sidebar -->
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Section -->
+
+  </main><!-- End blogmain -->
+
+
+  <!-- <a href="blog" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
+
+  <!-- <div id="preloader"></div> -->
+
+

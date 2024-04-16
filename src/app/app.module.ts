@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import {HeaderComponent} from "./Shared/Header/header.component";
 import {FooterComponent} from "./Shared/footer/footer.component";
@@ -8,6 +7,11 @@ import {RouterOutlet} from "@angular/router";
 import {HomeComponent} from "./Components/home/home.component";
 import { NotFoundComponent } from './Shared/not-found/not-found.component';
 import {AppRoutingModule} from "./app-routing.module";
+import { BlogComponent } from './Components/blog/blog.component';
+import { BlogDetailsComponent } from './Components/blog-details/blog-details.component';
+import { ContactComponent } from './Components/contact/contact.component';
+import { AddBlogComponent } from './Components/add-blog/add-blog.component';
+import { HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateStandComponent } from './Components/AdminStand/CreateStand/create-stand/create-stand.component';
 import { CreatemodalComponent } from './Components/AdminStand/CreateStand/createmodal/createmodal.component';
@@ -35,7 +39,17 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { StandDetailsComponent } from './Components/reserver-stand/stand-details/stand-details.component';
 // import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { CarouselModule } from 'angular-bootstrap-md';
-
+import { DatePipe } from '@angular/common';
+import {RoomlistComponent} from "./Components/roomlist/roomlist.component";
+import {ChatbotComponent} from "./Components/chatbot/chatbot.component";
+import {LoginComponent} from "./Components/login/login.component";
+import {AddroomComponent} from "./Components/addroom/addroom.component";
+import {ChatroomComponent} from "./Components/chatroom/chatroom.component";
+import {UpdateBlogComponent} from "./Components/update-blog/update-blog.component";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -51,7 +65,17 @@ import { CarouselModule } from 'angular-bootstrap-md';
     AddMultipleStandsDialogComponent,
     EventCreationComponent,
     StandDetailsComponent,
-
+    BlogComponent,
+    BlogDetailsComponent,
+    ContactComponent,
+    //ChatComponent,
+    AddBlogComponent,
+    LoginComponent,
+    RoomlistComponent,
+    AddroomComponent,
+    ChatroomComponent,
+    UpdateBlogComponent,
+    ChatbotComponent
   ],
   imports: [
     AppRoutingModule,
@@ -77,10 +101,22 @@ import { CarouselModule } from 'angular-bootstrap-md';
     OverlayModule,
     MatStepperModule,
     MatSnackBarModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatIconModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatSortModule,
+    MatSnackBarModule,
+    MatSidenavModule,
 
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,68 @@
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/blog-header.jpg');">
+  <div class="container position-relative d-flex flex-column align-items-center">
+    <h2>ADD BLOG</h2>
+    <ol>
+      <li><a href="index.html">Accueil</a></li>
+      <li>ADD BLOG</li>
+    </ol>
+  </div>
+</div><!-- Fin Breadcrumbs -->
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Titre :</label>
+          <input type="text" class="form-control" formControlName="title">
+          <div *ngIf="postForm.get('title')?.invalid && (postForm.get('title')?.dirty || postForm.get('title')?.touched)">
+            <small class="text-danger" *ngIf="postForm.get('title')?.errors?.['required']">Le titre est requis.</small>
+            <small class="text-danger" *ngIf="postForm.get('title')?.errors?.['minlength']">Le titre doit contenir au moins 3 caractères.</small>
+            <small class="text-danger" *ngIf="postForm.get('title')?.errors?.['maxlength']">Le titre ne peut pas dépasser 50 caractères.</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Contenu :</label>
+          <textarea class="form-control" formControlName="content" rows="5"></textarea>
+          <div *ngIf="postForm.get('content')?.invalid && (postForm.get('content')?.dirty || postForm.get('content')?.touched)">
+            <small class="text-danger" *ngIf="postForm.get('content')?.errors?.['required']">Le contenu est requis.</small>
+            <small class="text-danger" *ngIf="postForm.get('content')?.errors?.['minlength']">Le contenu doit contenir au moins 10 caractères.</small>
+            <small class="text-danger" *ngIf="postForm.get('content')?.errors?.['maxlength']">Le contenu ne peut pas dépasser 10000 caractères.</small>
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <label>Image :</label>
+          <input type="file" (change)="onFileChanged($event)" formControlName="image">
+          <div *ngIf="postForm.get('image')?.invalid && (postForm.get('image')?.dirty || postForm.get('image')?.touched)">
+            <small class="text-danger">Une image est requise.</small>
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <label>Date de publication :</label>
+          <input type="date" class="form-control" formControlName="publishDate">
+          <div *ngIf="postForm.get('publishDate')?.invalid && (postForm.get('publishDate')?.dirty || postForm.get('publishDate')?.touched)">
+            <small class="text-danger">La date de publication est requise.</small>
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <label>Catégorie :</label>
+          <select class="form-control" formControlName="categorie">
+            <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+          </select>
+          <div *ngIf="postForm.get('categorie')?.invalid && (postForm.get('categorie')?.dirty || postForm.get('categorie')?.touched)">
+            <small class="text-danger">La catégorie est requise.</small>
+          </div>
+        </div>
+        
+        <!-- Ajouter une section pour les commentaires si nécessaire -->
+        <button type="submit" class="btn btn-primary" [disabled]="postForm.invalid">ADD BLOG</button>
+        <div *ngIf="postForm.invalid && (postForm.dirty || postForm.touched)" class="mt-2">
+          <small class="text-danger">Veuillez remplir tous les champs correctement avant de soumettre.</small>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
