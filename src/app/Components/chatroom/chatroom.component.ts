@@ -48,7 +48,7 @@ export class ChatroomComponent implements OnInit {
     public datepipe: DatePipe
   ) {
 
-  
+
     this.nickname = localStorage.getItem('nickname') || '';
     this.roomname = this.route.snapshot.params['roomname'];
 
@@ -73,6 +73,11 @@ export class ChatroomComponent implements OnInit {
   }
 
   onFormSubmit(form: any) {
+    console.log('Form submitted:', form);
+    if (this.chatForm.invalid) {
+      console.log('Form is invalid. Submission aborted.');
+      return;
+    }
     const chat = form;
     chat.roomname = this.roomname;
     chat.nickname = this.nickname;
@@ -93,16 +98,16 @@ export class ChatroomComponent implements OnInit {
       date: '',
       type: ''
     };
-  
+
     chat.roomname = this.roomname;
     chat.nickname = this.nickname;
     chat.date = this.datepipe.transform(new Date(), 'dd/MM/yyyy HH:mm:ss') || '';
     chat.message = `${this.nickname} left the room`;
     chat.type = 'exit';
-  
+
     const newMessage = firebase.database().ref('chats/').push();
     newMessage.set(chat);
-  
+
     firebase.database().ref('roomusers/').orderByChild('roomname').equalTo(this.roomname).once('value', (resp:any) => {
       const roomusers = snapshotToArray<any>(resp, 'key'); // Update the type argument to include 'nickname'
       const user = roomusers.find((x) => x.nickname === this.nickname);
@@ -111,7 +116,7 @@ export class ChatroomComponent implements OnInit {
         userRef.update({ status: 'offline' });
       }
     });
-  
+
     this.router.navigate(['/roomlist']);
   }
 }

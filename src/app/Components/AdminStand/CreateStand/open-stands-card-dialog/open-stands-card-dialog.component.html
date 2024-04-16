@@ -1,0 +1,91 @@
+
+
+<!--<div class="theatre">-->
+<!--  <div class="stands">-->
+<!--    &lt;!&ndash; Iterate over stands &ndash;&gt;-->
+<!--    <div *ngFor="let stand of data.stands">-->
+<!--      &lt;!&ndash; Conditionally display based on pack type &ndash;&gt;-->
+<!--      <div *ngIf="stand.pack === 'SILVER'" class="packSilver">-->
+<!--        <div class="row" *ngFor="let row of stand.rows">-->
+<!--          <div class="seat" *ngFor="let seat of row.seats"></div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div *ngIf="stand.pack === 'GOLD'" class="packGold">-->
+<!--        <div class="row" *ngFor="let row of stand.rows">-->
+<!--          <div class="seat" *ngFor="let seat of row.seats"></div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div *ngIf="stand.pack === 'DIAMOND'" class="packDiamond">-->
+<!--        <div class="row" *ngFor="let row of stand.rows">-->
+<!--          <div class="seat" *ngFor="let seat of row.seats"></div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="stage">Porte</div>-->
+<!--</div>-->
+
+
+<div class="theatre">
+  <div class="stands">
+    <div class="packSilver left" matTooltip="Silver Stands">
+      <!-- Silver stands on the left -->
+      <div class="row" *ngFor="let row of getRows(PackEnum.SILVER)">
+        <div class="seat" *ngFor="let seat of row" >
+          <div style="align-content: center; margin-top: 3px; margin-left: -7px;">{{seat.idStand}}
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="center">
+      <div class="packUnpayed" matTooltip="Unpayed Stands">
+
+           <div class="row" *ngFor="let row of getRows(PackEnum.UNPAYED)">
+          <button class="seat" *ngFor="let seat of row" >
+            <div style="align-content: center; margin-top: 3px; margin-left: -7px;">{{seat.idStand}}
+            </div>
+          </button>
+        </div>
+      </div>
+      <div class="packGold" matTooltip="Gold Stands">
+        <div class="row" *ngFor="let row of getRows(PackEnum.GOLD)">
+          <button class="seat" *ngFor="let seat of row" >
+            <div style="align-content: center; margin-top: 3px; margin-left: -7px;">{{seat.idStand}}
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div class="packDiamond" matTooltip="Diamond Stands">
+        <div class="row" *ngFor="let row of getRows(PackEnum.DIAMOND)">
+          <button class="seat" *ngFor="let seat of row" >
+
+            <div style="align-content: center; margin-top: 3px; margin-left: -7px;"> {{seat.idStand}}</div></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="packSilver right" matTooltip="Silver Stands">
+      <!-- Silver stands on the right -->
+      <div class="row" *ngFor="let row of getRows(PackEnum.SILVER)">
+        <button class="seat" *ngFor="let seat of row" >
+          <div style="align-content: center; margin-top: 3px; margin-left: -7px;">{{seat.idStand}}
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">Porte</div>
+</div>
+<!--////////////////////////////////-->
+
+
+
+
+
+
+

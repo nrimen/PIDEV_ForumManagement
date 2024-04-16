@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import {NavigationEnd, Router} from "@angular/router";
 
 const config = {
   databaseURL: 'https://chatting-9b8b8-default-rtdb.firebaseio.com',
@@ -19,7 +20,15 @@ const config = {
 })
 export class AppComponent implements OnInit {
   title = 'ForumManagement';
+  isReserverStandRoute: boolean = false;
 
+  constructor(private router: Router  ) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.isReserverStandRoute = event.url.includes('/ReserverStand');
+      }
+    });
+  }
   ngOnInit() {
     firebase.initializeApp(config);
     // Initialisez Firestore ici si vous en avez besoin

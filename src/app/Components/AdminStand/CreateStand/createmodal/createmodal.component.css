@@ -1,0 +1,85 @@
+/* createmodal.component.css */
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+/* Style the form container */
+form {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+.form-container {
+  width: 100%;
+  max-width: 500px; /* Set maximum width */
+  margin: 0 auto;
+  overflow-y: auto; /* Add vertical scrollbar */
+  max-height: 500px; /* Set maximum height for scrollbar to appear */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.error-message {
+  color: red; /* Set color to red */
+  font-size: 12px;
+  margin-top: 5px; /* Add some spacing */
+}
+/* Style form labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Style form input fields */
+input[type="text"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+/* Style form error messages */
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+
+/* Style submit button */
+button[type="submit"] {
+  margin-top: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+  /* Adjust form width for smaller screens */
+  form {
+    width: 90%;
+    max-width: none;
+  }
+}

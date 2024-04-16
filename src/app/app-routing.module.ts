@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from "./Components/home/home.component";
 import {NotFoundComponent} from "./Shared/not-found/not-found.component";
+import {CreateStandComponent} from "./Components/AdminStand/CreateStand/create-stand/create-stand.component";
+import {ReserverStandComponent} from "./Components/reserver-stand/reserver-stand.component";
+import {EventCreationComponent} from "./Components/AdminStand/event-creation/event-creation.component";
 import { BlogComponent } from './Components/blog/blog.component';
 import { BlogDetailsComponent } from './Components/blog-details/blog-details.component';
 import { ContactComponent } from './Components/contact/contact.component';
@@ -16,7 +19,10 @@ import { ChatbotComponent } from './Components/chatbot/chatbot.component';
 
 
 const r: Routes = [
-
+  {path:'',component:HomeComponent},
+  {path:'CreateEvent',component:EventCreationComponent},
+  {path:'stand',component:CreateStandComponent},
+  {path:'ReserverStand',component:ReserverStandComponent},
   {path:'blog',component:BlogComponent},
   {path:'home',component:HomeComponent},
   {path:'blog-details/:id',component:BlogDetailsComponent},
@@ -32,7 +38,7 @@ const r: Routes = [
   { path: 'chatroom/:nickname/:roomid', component: ChatroomComponent },
   { path: 'chatbot', component:ChatbotComponent},
   {path:'**',component:NotFoundComponent}
-  
+
 
 
 ];

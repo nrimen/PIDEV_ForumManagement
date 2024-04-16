@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import {HeaderComponent} from "./Shared/Header/header.component";
 import {FooterComponent} from "./Shared/footer/footer.component";
@@ -12,31 +11,60 @@ import { BlogComponent } from './Components/blog/blog.component';
 import { BlogDetailsComponent } from './Components/blog-details/blog-details.component';
 import { ContactComponent } from './Components/contact/contact.component';
 import { AddBlogComponent } from './Components/add-blog/add-blog.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './Components/login/login.component';
-import { RoomlistComponent } from './Components/roomlist/roomlist.component';
-import { AddroomComponent } from './Components/addroom/addroom.component';
-import { ChatroomComponent } from './Components/chatroom/chatroom.component';
-//import { ChatComponent } from './Components/chat/chat.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
+import { CreateStandComponent } from './Components/AdminStand/CreateStand/create-stand/create-stand.component';
+import { CreatemodalComponent } from './Components/AdminStand/CreateStand/createmodal/createmodal.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {MatDialogModule} from "@angular/material/dialog";
+import { HttpClientModule } from '@angular/common/http';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DeleteConfirmationDialogComponentComponent } from './Components/AdminStand/CreateStand/delete-confirmation-dialog-component/delete-confirmation-dialog-component.component';
+import {MatSelectModule} from "@angular/material/select";
+import { ConfirmationModalComponent } from './Components/AdminStand/CreateStand/confirmation-modal/confirmation-modal.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatTableModule} from "@angular/material/table";
+import { OpenStandsCardDialogComponent } from './Components/AdminStand/CreateStand/open-stands-card-dialog/open-stands-card-dialog.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
-import { MatTableModule } from '@angular/material/table';
+import {OverlayModule} from "@angular/cdk/overlay";
+import { ReserverStandComponent } from './Components/reserver-stand/reserver-stand.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import { AddMultipleStandsDialogComponent } from './Components/AdminStand/CreateStand/add-multiple-stands-dialog/add-multiple-stands-dialog.component';
+import { EventCreationComponent } from './Components/AdminStand/event-creation/event-creation.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { StandDetailsComponent } from './Components/reserver-stand/stand-details/stand-details.component';
+// import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
+import { CarouselModule } from 'angular-bootstrap-md';
+import { DatePipe } from '@angular/common';
+import {RoomlistComponent} from "./Components/roomlist/roomlist.component";
+import {ChatbotComponent} from "./Components/chatbot/chatbot.component";
+import {LoginComponent} from "./Components/login/login.component";
+import {AddroomComponent} from "./Components/addroom/addroom.component";
+import {ChatroomComponent} from "./Components/chatroom/chatroom.component";
+import {UpdateBlogComponent} from "./Components/update-blog/update-blog.component";
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { DatePipe } from '@angular/common';
-import { UpdateBlogComponent } from './Components/update-blog/update-blog.component';
-import { ChatbotComponent } from './Components/chatbot/chatbot.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NotFoundComponent,
+    CreateStandComponent,
+    CreatemodalComponent,
+    DeleteConfirmationDialogComponentComponent,
+    ConfirmationModalComponent,
+    OpenStandsCardDialogComponent,
+    ReserverStandComponent,
+    AddMultipleStandsDialogComponent,
+    EventCreationComponent,
+    StandDetailsComponent,
     BlogComponent,
     BlogDetailsComponent,
     ContactComponent,
@@ -48,9 +76,6 @@ import { ChatbotComponent } from './Components/chatbot/chatbot.component';
     ChatroomComponent,
     UpdateBlogComponent,
     ChatbotComponent
-    
-    
-
   ],
   imports: [
     AppRoutingModule,
@@ -58,7 +83,25 @@ import { ChatbotComponent } from './Components/chatbot/chatbot.component';
     HeaderComponent,
     FooterComponent,
     RouterOutlet,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatDialogModule,
+    HttpClientModule,
+    MatTooltipModule,
     FormsModule,
+    MatSelectModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatGridListModule,
+    MatCardModule,
+    OverlayModule,
+    MatStepperModule,
+    MatSnackBarModule,
+    CarouselModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,

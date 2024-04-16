@@ -1,0 +1,165 @@
+<section class="intro">
+  <div class="bg-image h-100">
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="filter-container">
+              <button class="mb-3 btn btn-danger" (click)="openAddEditEmpForm()">Add Stand</button>
+              <button class="mb-3 btn btn-danger" style="margin-left: 10px;" (click)="openAddMultipleStandsDialog()">Add Multiple Stands</button>
+
+                <mat-icon class="mb-3 btn select-pack filter-icon">filter_alt</mat-icon>
+                <mat-select class="mb-3 select-pack" [(ngModel)]="selectedPack" (selectionChange)="filterStandsByPack(selectedPack)">
+                  <mat-select-trigger>
+                    <span class="filter-label">All Packs</span>
+                  </mat-select-trigger>
+                  <mat-option value="">All Packs</mat-option>
+                  <mat-option value="DIAMOND">Diamond</mat-option>
+                  <mat-option value="GOLD">Gold</mat-option>
+                  <mat-option value="SILVER">Silver</mat-option>
+                  <mat-option value="UNPAYED">Unpayed</mat-option>
+                </mat-select>
+
+            </div>
+
+            <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
+              <div class="card-body">
+                <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Filter</mat-label>
+                    <input matInput #inputFilter (keyup)="applyFilter(inputFilter.value)" placeholder="Type to filter">
+                  </mat-form-field>
+                  <table mat-table [dataSource]="dataSource">
+
+                    <!-- Define columns -->
+                    <ng-container matColumnDef="immatriculationStand">
+                      <th mat-header-cell *matHeaderCellDef> Stand Immatricule </th>
+                      <td mat-cell *matCellDef="let stand"> {{ stand.immatriculationStand }} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="exponent">
+                      <th mat-header-cell *matHeaderCellDef> Exponent </th>
+                      <td mat-cell *matCellDef="let stand">
+                        {{ stand.userStand?.lastName }} {{ stand.userStand?.firstName }}
+                        <ng-container *ngIf="!stand.userStand">
+                          No exhibitor
+                        </ng-container>
+                      </td>
+                    </ng-container>
+
+
+
+
+                    <ng-container matColumnDef="reservationDate">
+                      <th mat-header-cell *matHeaderCellDef> Reservation Date </th>
+                      <td mat-cell *matCellDef="let stand"> {{ stand.reservationDate ? stand.reservationDate : 'Not Reserved yet !' }} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="price">
+                      <th mat-header-cell *matHeaderCellDef> Price </th>
+                      <td mat-cell *matCellDef="let stand"> {{ stand.price }} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="pack">
+                      <th mat-header-cell *matHeaderCellDef> Pack </th>
+                      <td mat-cell *matCellDef="let stand">
+                        <ng-container *ngIf="stand.pack === 'DIAMOND'">
+                          <mat-icon class="diamond-icon" matTooltip="Diamond">diamond</mat-icon>
+                        </ng-container>
+                        <ng-container *ngIf="stand.pack === 'GOLD'">
+                          <mat-icon class="gold-icon" matTooltip="Gold">star</mat-icon>
+                        </ng-container>
+                        <ng-container *ngIf="stand.pack === 'SILVER'">
+                          <mat-icon class="silver-icon" matTooltip="Silver">grade</mat-icon>
+                        </ng-container>
+                        <ng-container *ngIf="stand.pack === 'UNPAYED'">
+                          <mat-icon class="unpayed-icon" matTooltip="Unpayed">money_off</mat-icon>
+                        </ng-container>
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="reserved">
+                      <th mat-header-cell *matHeaderCellDef> Reserved </th>
+                      <td mat-cell *matCellDef="let stand">
+            <span *ngIf="stand.reserved; else notReserved">
+              <mat-icon class="green-icon" matTooltip="Reserved">check_circle</mat-icon>
+            </span>
+                        <ng-template #notReserved>
+                          <mat-icon class="red-icon" matTooltip="not Reserved">highlight_off</mat-icon>
+                        </ng-template>
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="finished">
+                      <th mat-header-cell *matHeaderCellDef> Finished </th>
+                      <td mat-cell *matCellDef="let stand">
+            <span mat-icon-button (click)="openConfirmationModal(stand)">
+              <ng-container *ngIf="stand.finished; else notFinished">
+                <mat-icon class="green-icon" matTooltip="Finished">check_circle</mat-icon>
+              </ng-container>
+              <ng-template #notFinished>
+                <mat-icon class="red-icon" matTooltip="Not Finished">highlight_off</mat-icon>
+              </ng-template>
+            </span>
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="partner">
+                      <th mat-header-cell *matHeaderCellDef> Partner </th>
+                      <td mat-cell *matCellDef="let stand">
+            <span *ngIf="stand.partner; else notPartner">
+              <mat-icon class="green-icon" matTooltip="Partner">check_circle</mat-icon>
+            </span>
+                        <ng-template #notPartner>
+                          <mat-icon class="red-icon" matTooltip="not Partner">highlight_off</mat-icon>
+                        </ng-template>
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="actions">
+                      <th mat-header-cell *matHeaderCellDef> Actions </th>
+                      <td mat-cell *matCellDef="let stand">
+                        <button mat-icon-button color="warn" (click)="delete(stand.idStand)" matTooltip="Delete">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </td>
+                    </ng-container>
+
+                    <!-- Table header -->
+                    <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">STAND IMMATRICULE</th>
+                      <th scope="col">EXPONENT</th>
+                      <th scope="col">RESERVATION DATE</th>
+                      <th scope="col">PRICE</th>
+                      <th scope="col">PACK</th>
+                      <th scope="col">RESERVED</th>
+                      <th scope="col">FINISHED</th>
+                      <th scope="col">PARTNER</th>
+                      <th scope="col">ACTIONS</th>
+                    </tr>
+                    </thead>
+
+                    <!-- Row -->
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                  </table>
+
+                  <!-- Paginator -->
+                  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" (page)="onPageChange($event)" [length]="filteredStands.length" showFirstLastButtons></mat-paginator>
+                </div>
+                <div class="button-container">
+                  <button mat-button color="primary" (click)="openStandsCardDialog()">Stands Card</button>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>

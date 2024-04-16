@@ -1,0 +1,26 @@
+/* Styling for the dialog title */
+.mat-dialog-title {
+  color: #f44336; /* Red color for title */
+  font-size: 24px; /* Increase font size */
+}
+
+/* Styling for the dialog content */
+.mat-dialog-content {
+  font-size: 18px; /* Increase font size */
+}
+
+/* Styling for the dialog actions */
+.mat-dialog-actions {
+  margin-top: 16px; /* Add some margin at the top */
+}
+
+/* Styling for the Cancel button */
+.mat-dialog-actions button:first-child {
+  margin-right: 8px; /* Add some space between buttons */
+}
+
+/* Styling for the Delete button */
+.mat-dialog-actions button:last-child {
+  background-color: #f44336; /* Red background color */
+  color: white; /* White text color */
+}

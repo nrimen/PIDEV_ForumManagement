@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
-
 /**
 * Template Name: Nova
 * Updated: Jan 29 2024 with Bootstrap v5.3.2
@@ -24,7 +23,7 @@
 /* Colors */
 :root {
   --color-default: #2b180d;
-  --color-primary: rgba(208, 0, 0, 0.85);
+  --color-primary: rgba(208, 0, 0, 0.9);
   --color-secondary: rgba(208, 0, 0, 0.61);
 }
 
@@ -2181,6 +2180,12 @@ section {
   font-size: 13px;
   color: var(--color-secondary);
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
