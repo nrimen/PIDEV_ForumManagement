@@ -1,0 +1,118 @@
+<style>
+  #header {
+    background-color: rgba(27, 47, 69, 0.8); /* Couleur de fond avec une opacité de 0.8 */
+    transition: background-color 0.3s ease; /* Ajouter une transition pour une animation fluide */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999; /* Assurez-vous que le header est au-dessus de tout autre contenu */
+  }
+
+  /* Ajouter un style pour le header lorsque le scrolling est effectué */
+  #header.stuck {
+    background-color: rgb(29, 51, 75); /* Fond entièrement opaque lorsque scrolling */
+  }
+  </style>
+
+<header id="header" class="header d-flex align-items-center fixed-top">
+
+  <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+    <a href="index.html" class="logo d-flex align-items-center">
+      <!-- Uncomment the line below if you also wish to use an image logo -->
+      <img class="d-flex align-items-center" src="assets/img/logo.png" alt="">
+      <!--<h1 class="d-flex align-items-center">Nova</h1>-->
+    </a>
+
+    <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+    <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="active">Home</a></li>
+        <li><a>About</a></li>
+        <li><a>Offers</a></li>
+        <li><a>Blog</a></li>
+        <li class="dropdown" *ngIf="keycloakService.getUserRoles().includes('Admin')"><a href="#"><span>Manage Users</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <ul>
+            <li><a class="dropdown-item" [routerLink]="['/addUser']">Add Users</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/ViewUsers']">View Users</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#"><span>Offers</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <ul>
+            <li><a class="dropdown-item" [routerLink]="['/addOffer']">Post An Offer</a></li>
+            <li class="dropdown">
+              <a href="#"><span>Choose your job</span> <i class="bi bi-chevron-left dropdown-indicator"></i></a> <!-- Utilisez bi-chevron-left pour afficher la flèche vers la gauche -->
+              <ul class="dropdown-menu" style="left: -100%;" > <!-- Ajoutez left: 0; pour positionner le sous-menu à gauche -->
+                <li>
+                  <a class="dropdown-item" [routerLink]="['/viewOffers']">
+                    <i class="fas fa-list" style="font-size: 20px; margin-right: 5px;"></i>Check All the Offers
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" [routerLink]="['/map']">
+                    <i class="fas fa-map-marker-alt" style="font-size: 20px; "></i>Choose your Location
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" [routerLink]="['/matching/1']">
+                    <i class="fas fa-handshake" style="font-size: 20px; margin-right: 5px;"></i>Your domain's Offers
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+
+            <li><a class="dropdown-item" [routerLink]="['/favOffers']">Your Favourites Offers</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="#"><span>FeedBacks</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <ul>
+            <li><a class="dropdown-item" [routerLink]="['/addFeedBack']">Send a FeedBack</a></li>
+            <li><a class="dropdown-item" *ngIf="keycloakService.getUserRoles().includes('Admin')" [routerLink]="['/viewFeedBack']">View Sended FeedBack</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span *ngIf="profile;else login_template">{{profile.username}}</span>
+            <ng-template #login_template>
+              <button class="btn btn-success" (click)="handleLogin()">Login</button>
+            </ng-template>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" (click)="handleLogin()">Login</a></li>
+            <li><a class="dropdown-item" (click)="handleLogout()">Logoout</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" (click)="openUserProfileDialog()">View Profile Details</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- Vendor JS Files -->
+  <script>
+    let lastScrollTop = 0;
+    const header = document.querySelector('#header');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScroll > lastScrollTop) {
+        // Faites défiler vers le bas
+        header.classList.add('stuck');
+      } else {
+        // Faites défiler vers le haut
+        header.classList.remove('stuck');
+      }
+
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Assurez-vous que lastScrollTop ne devienne pas négatif
+    });
+  </script>
+</header><!-- End Header -->

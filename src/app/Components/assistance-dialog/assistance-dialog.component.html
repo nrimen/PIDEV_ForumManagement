@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Assistance</h1>
+<div mat-dialog-content>
+  <ng-container *ngFor="let q of questions">
+    <p>{{ q.question }}</p>
+    <mat-radio-group [(ngModel)]="selectedAnswers[q.question]">
+      <mat-radio-button *ngFor="let option of q.options" [value]="option">{{ option }}</mat-radio-button>
+    </mat-radio-group>
+  </ng-container>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="submitAnswers()">Submit</button>
+</div>

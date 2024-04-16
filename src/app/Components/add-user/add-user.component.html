@@ -1,0 +1,125 @@
+<!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/contact-header.jpg');">
+    <div class="container position-relative d-flex flex-column align-items-center">
+
+      <h2>Sign Up</h2>
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li>Sign up</li>
+      </ol>
+
+    </div>
+  </div><!-- End Breadcrumbs -->
+
+  <!-- ======= Add User Section ======= -->
+<section id="add-user" class="add-user">
+  <div class="container position-relative" data-aos="fade-up">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Sign Up</h2>
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
+              <div class="mb-3">
+                <label for="firstName" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">First Name</label>
+                <input type="text" class="form-control" id="firstName" formControlName="firstName" required>
+                <div *ngIf="userForm.get('firstName')?.errors?.['required'] && (userForm.get('firstName')?.touched)" class="text-danger">
+                  First Name is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="lastName" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Last Name</label>
+                <input type="text" class="form-control" id="lastName" formControlName="lastName" required>
+                <div *ngIf="userForm.get('lastName')?.errors?.['required'] && (userForm.get('lastName')?.touched)" class="text-danger">
+                  Last Name is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Email</label>
+                <input type="email" class="form-control" id="email" formControlName="email" required>
+                <div *ngIf="userForm.get('email')?.errors?.['required'] && (userForm.get('email')?.touched)" class="text-danger">
+                  Email is required.
+                </div>
+                <div *ngIf="userForm.get('email')?.errors?.['email'] && (userForm.get('email')?.touched)" class="text-danger">
+                  Please enter a valid email address.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password" required>
+                <div *ngIf="userForm.get('password')?.errors?.['required'] && (userForm.get('password')?.touched)" class="text-danger">
+                  Password is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="birthDate" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Birth Date</label>
+                <input type="date" class="form-control" id="birthDate" formControlName="birthDate" required>
+                <div *ngIf="userForm.get('birthDate')?.errors?.['required'] && (userForm.get('birthDate')?.touched)" class="text-danger">
+                  Birth Date is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="address" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Address</label>
+                <input type="text" class="form-control" id="address" formControlName="address" required>
+                <div *ngIf="userForm.get('address')?.errors?.['required'] && (userForm.get('address')?.touched)" class="text-danger">
+                  Address is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="role" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Role</label>
+                <select class="form-control" id="role" formControlName="role" required>
+                  <option value="Exposant">Exposant</option>
+                  <option value="Student">Student</option>
+                  <option value="Admin">Admin</option>
+                  <option value="Supplier">Supplier</option>
+                  <option value="Alumny">Alumny</option>
+                  <option value="Professor">Professor</option>
+                </select>
+                <div *ngIf="userForm.get('role')?.errors?.['required'] && (userForm.get('role')?.touched)" class="text-danger">
+                  Role is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="immatriculationNumber" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Immatriculation Number</label>
+                <input type="text" class="form-control" id="immatriculationNumber" formControlName="immatriculationNumber" required>
+                <div *ngIf="userForm.get('immatriculationNumber')?.errors?.['required'] && ( userForm.get('immatriculationNumber')?.touched)" class="text-danger">
+                  Immatriculation Number is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="sectorOfActivity" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Sector of Activity</label>
+                <select class="form-control" id="sectorOfActivity" formControlName="sectorOfActivity" required>
+                  <option value="IT">IT</option>
+                  <option value="Civil_Engineering">Civil Engineering</option>
+                  <option value="Electromechanical">Electromechanical</option>
+                  <option value="Bussiness">Bussiness</option>
+                </select>
+                <div *ngIf="userForm.get('sectorOfActivity')?.errors?.['required'] && (userForm.get('sectorOfActivity')?.touched)" class="text-danger">
+                  Sector of Activity is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="levelOfStudies" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Level of Studies</label>
+                <input type="text" class="form-control" id="levelOfStudies" formControlName="levelOfStudies" required>
+                <div *ngIf="userForm.get('levelOfStudies')?.errors?.['required'] && (userForm.get('levelOfStudies')?.touched)" class="text-danger">
+                  Level of Studies is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="domainOfStudies" class="form-label" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">Domain of Studies</label>
+                <input type="text" class="form-control" id="domainOfStudies" formControlName="domainOfStudies" required>
+                <div *ngIf="userForm.get('domainOfStudies')?.errors?.['required'] && (userForm.get('domainOfStudies')?.touched)" class="text-danger">
+                  Domain of Studies is required.
+                </div>
+              </div>
+              <button type="submit" class="btn btn-secondary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

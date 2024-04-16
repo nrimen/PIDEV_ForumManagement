@@ -1,0 +1,21 @@
+<!-- user-profile-dialog.component.html -->
+
+<mat-dialog-content class="dialog-content">
+  <div class="user-icon">
+    <mat-icon>account_circle</mat-icon> <!-- Insérez ici l'icône utilisateur -->
+  </div>
+  <div *ngIf="data.profile" class="profile-details">
+    <p class="username">{{ data.profile.username }}</p>
+    <p class="detail red-text">First Name: {{ data.profile.firstName }}</p>
+    <p class="detail red-text">Last Name: {{ data.profile.lastName }}</p>
+    <p class="detail red-text">Email: {{ data.profile.email }}</p>
+    <!-- Ajoutez plus de détails de profil au besoin -->
+  </div>
+  <div *ngIf="!data.profile">
+    <p class="red-text">User Details are not available. Please make sure you are logged in.</p>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button mat-button class="red-button" (click)="closeDialog()">Close</button>
+</mat-dialog-actions>

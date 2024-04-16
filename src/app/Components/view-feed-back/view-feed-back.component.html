@@ -1,0 +1,35 @@
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/contact-header.jpg');">
+  <div class="container position-relative d-flex flex-column align-items-center">
+    <h2>FEEDBACKS</h2>
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li>FEEDBACKS</li>
+    </ol>
+  </div>
+</div><!-- End Breadcrumbs -->
+
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let feedBack of feedbacks">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">{{ feedBack.feedBackType }}</h5>
+          <p class="card-text">{{ feedBack.idFeedBack !== undefined && expandedFeedbacks[feedBack.idFeedBack] ? feedBack.feedBackContent : feedBack.feedBackContent.substring(0, 100) }}</p>
+          <p class="card-text" style="color: maroon; cursor: pointer;" (click)="toggleFeedbackContent(feedBack.idFeedBack)">
+            {{ feedBack.idFeedBack !== undefined && expandedFeedbacks[feedBack.idFeedBack] ? 'View less' : 'View more' }}
+          </p>
+          <p class="card-text">Rate: {{ feedBack.rating }}</p>
+          <p class="card-text">Priority: {{ feedBack.priority }}</p>
+          <p class="card-text">Submited Date: {{ feedBack.submitedDate }}</p>
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-secondary" [routerLink]="['/edit-feedback', feedBack.idFeedBack]">Edit</button>
+            <button class="btn btn-danger" style="background-color: maroon;" (click)="deleteFeedback(feedBack)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,45 @@
+/* user-profile-dialog.component.css */
+
+.mat-dialog-container {
+  background-color: #d6d6d6; /* Couleur de fond */
+  border-radius: 10px; /* Coins arrondis */
+  padding: 20px; /* Espace intérieur */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre */
+}
+
+.dialog-content {
+  color: #333; /* Couleur du texte */
+  text-align: center; /* Centrer le texte */
+}
+
+.user-icon {
+  font-size: 48px; /* Taille de l'icône utilisateur */
+  margin-bottom: 20px; /* Espace en bas de l'icône */
+}
+
+.username {
+  font-size: 24px; /* Taille du nom d'utilisateur */
+  font-weight: bold; /* Texte en gras */
+}
+
+.detail {
+  margin-top: 10px; /* Espace en haut des détails */
+}
+
+.mat-dialog-actions {
+  justify-content: center; /* Centrer les actions */
+}
+
+.red-button {
+  background-color: rgb(188, 6, 3); /* Couleur de fond rouge */
+  color: #fff; /* Couleur du texte blanc */
+  padding: 10px 20px; /* Espacement du bouton */
+  border: none; /* Pas de bordure */
+  border-radius: 5px; /* Coins arrondis */
+  cursor: pointer; /* Curseur de souris */
+  transition: background-color 0.3s ease; /* Transition en douceur */
+}
+
+.red-button:hover {
+  background-color: #c82333; /* Changement de couleur au survol */
+}

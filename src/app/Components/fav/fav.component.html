@@ -1,0 +1,42 @@
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/contact-header.jpg');">
+    <div class="container position-relative d-flex flex-column align-items-center">
+
+        <h2>FAVOURITE OFFERS</h2>
+        <ol>
+            <li><a href="index.html">Home</a></li>
+            <li>FAVOURITE OFFERS</li>
+        </ol>
+
+    </div>
+</div><!-- End Breadcrumbs -->
+<div class="container">
+    <h2 class="mt-4 mb-4">Favorite Offers</h2>
+    <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let offer of favorites">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: rgba(208, 0, 0, 0.85); font-weight: bold; font-size: 1.2rem;">{{ offer.offerTitle }}
+                    </h5>
+                    <p class="card-text"><span style="color: grey; font-weight: bold;">Posting Date:</span> {{ offer.postingDate }}</p>
+                    <p class="card-text"><span style="color: grey; font-weight: bold;">Closing Date:</span> {{ offer.closingDate }}</p>
+                    <p class="card-text"><span style="color: grey; font-weight: bold;">Location:</span> {{ getLocationName(offer.location) }}</p>
+                    <p class="card-text"><span style="color: grey; font-weight: bold;">Contract Type:</span> {{ offer.employementType }}</p>
+                    <p class="card-text"><span style="color: grey; font-weight: bold;">Status:</span> {{ offer.offerStatus }}</p>
+                    <p class="card-text">
+                        <span style="color: grey; font-weight: bold;">Description:</span>
+                        {{ offer.idOffer !== undefined && expandedOffers[offer.idOffer] ? offer.offerDescription : offer.offerDescription.substring(0, 100) }}
+                    </p>
+                    <p class="card-text" style="color: maroon; cursor: pointer;" (click)="toggleOfferDescription(offer.idOffer)">
+                        {{ offer.idOffer !== undefined && expandedOffers[offer.idOffer] ? 'View less' : 'View more' }}
+                    </p>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-danger" (click)="removeFavorite(offer.idOffer)">
+                            Remove from Favorites
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
