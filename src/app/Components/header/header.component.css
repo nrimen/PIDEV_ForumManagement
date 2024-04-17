@@ -1,0 +1,13 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff; /* Adjust as needed */
+    z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+/* Adjustments to prevent content from being hidden behind the fixed navbar */
+body {
+    padding-top: 80px; /* Adjust according to the height of your navbar */
+}

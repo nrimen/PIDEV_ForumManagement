@@ -1,0 +1,54 @@
+
+<header id="header" class="header d-flex align-items-center fixed-top" >
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+  
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img class="d-flex align-items-center" src="assets/img/logo.png" alt="">
+        <!--<h1 class="d-flex align-items-center">Nova</h1>-->
+      </a>
+  
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+  
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="active">Home</a></li>
+          <li><a class="nav-link " href="Auctions">
+            Auctions
+        </a></li>
+        
+          <li><a *ngIf="userId==4 "class="nav-link" href="AddAuction">
+            Add Auction
+        </a>
+
+    </li>
+       
+    <ul class="navbar-nav ml-auto navbar-auth">
+      <li class="nav-item">
+        <a *ngIf="userId== undefined" class="nav-link nav-auth" href="Signup">
+          Sign Up
+        </a>
+      </li>
+      <li class="nav-item">
+          <a *ngIf="userId== undefined"  class="" href="Login">
+            Log In
+          </a>
+          <a *ngIf="userId!== undefined"  class="" href="Profile">
+            Profile
+          </a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="userId!== undefined" class="" (click)=" deconnextion()">
+              Log Out
+            </a>
+        </li>
+    </ul>
+       
+          
+        </ul>
+      </nav>
+  
+    </div>
+  </header><!-- End Header -->
+  

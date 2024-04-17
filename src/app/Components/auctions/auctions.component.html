@@ -1,0 +1,135 @@
+<body class="page app  items index">
+    <style>
+        .card-header {
+            width: 8cm; /* Largeur de la carte */
+            height: 8cm; /* Hauteur de la carte */
+            border: 1px solid black; /* Bordure pour visualisation */
+            overflow: hidden; /* Pour s'assurer que l'image ne dépasse pas les dimensions */
+            position: relative; /* Position relative pour placer l'image à l'intérieur */
+        }
+        
+        .cover {
+            width: 100%; /* Largeur de l'image (remplira la largeur de la carte) */
+            height: auto; /* Hauteur automatique en fonction de la largeur */
+            display: block; /* Affichage en bloc pour centrer l'image */
+            position: absolute; /* Position absolue pour placer l'image correctement */
+            top: 0; /* Aligner l'image en haut */
+            left: 0; /* Aligner l'image à gauche */
+        }
+    </style>
+    <!--------------------------image auction----------------------------------------------------->
+    
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/blog-header.jpg');">
+        <div class="container position-relative d-flex flex-column align-items-center">
+          <h2>Auction</h2>
+          <ol>
+            <li><a href="index">Home</a></li>
+            <li>Auction</li>
+          </ol>
+        </div>
+      </div>
+      
+    <app-header></app-header>
+    
+
+    <!------------------------------------------------------------------------------->
+        <br>
+        <br>
+        <br>
+        <br>
+        
+    <div class="content">
+        <div class="list list-property">
+            <div class="container">
+                <form method="GET">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-5">
+                            
+
+                            <div class="filters">
+                                <h5>Search</h5>
+                                <div class="form-group">
+                                    <input matInput (keyup)="applyFilter($event)" type="text" class="form-control"
+                                        placeholder="Search Keywords" name="keyword" value="">
+                                     
+                                </div>
+                          
+
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-block" type="submit">Search</button>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="filters">
+                                <h5>Map</h5>
+                             <div class="form-group">
+                                <app-map></app-map>
+                            </div>
+                            </div>
+                        
+
+
+                        </div>
+                        <div class="col-lg-9 col-md-7">
+                            <div class="header row">
+                                <div class="filter-group col-md-5 col-lg-4">
+                                    <div class="row no-gutters">
+                                        <div class="col-12">
+                                      
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <!--------------------------------------------------------------------------------------->
+
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6" *ngFor="let auction of auctions">
+                                    <a [routerLink]="['/', auction.id, 'AuctionDetail']"
+                                        [queryParams]="{ auctionId:auction.id, auctionMinPrice:auction.minPrice }"
+                                        
+                                        class="card card-property">
+                                        
+                                        <div class="card-header">
+                                            <img class="cover" src="assets/images/cover_about.png" alt="Cover Image" />
+                                        </div>
+                                        <div class="card-body">
+                                            <h5>{{ auction.product.name}}</h5>
+                                            <p class="address"></p>
+                                            <div class="built">
+                                                
+                                                <span><i class=""> Category : </i>{{ auction.product.category}}</span>
+                                            </div>
+                                            <div class="built">
+                                                <span><i class=""> Product name : </i>{{ auction.product.name}}</span>
+                                            </div>
+                                            <div class="built">
+                                                <span><i class=""> Minimum price : </i>{{ auction.minPrice }} TND</span>
+                                            </div>
+                                            <span><i class=""> End date : </i>{{ auction.endDate | date:'medium' }}</span>
+                                            <hr>
+                                            <button (click)="(auction)" class="btn btn-primary btn-orange w-100 mt-3">View Auction Details</button>
+                                            <button *ngIf="  auction.product.name =='Auction' " (click)="attemptToParticipate()" class="btn btn-success">
+                                                Participate in Auction
+                                            </button> 
+                                            <div>Participants: {{ auction.participantCount || 0 }}</div>
+                                            <div>Auction Status: {{ auction.auctionStatus || 'Closed' }}</div>
+                                           
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <!--------------------------------------------------------------------------------------->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+ 
+    
+    <app-footer></app-footer>
+</body>

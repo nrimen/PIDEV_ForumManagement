@@ -1,0 +1,94 @@
+
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/blog-header.jpg');">
+    <div class="container position-relative d-flex flex-column align-items-center">
+        <h2>Auction Detail</h2>
+        <ol>
+            <li><a href="index">Home</a></li>
+            <li>Auction</li>
+        </ol>
+    </div>
+</div>
+
+<app-header></app-header>
+
+<section class="articles ">
+    <article>
+        <div class="article-wrapper">
+            <figure>
+                <img src="../../../assets/images/cover_about.png" alt="" />
+            </figure>
+            <div class="article-body ">
+                <div class="form-group">
+                    <div class="title">Category: {{ auction.product.category }}</div>
+                </div>
+                <div class="form-group">
+                    <div class="title">email: mohamedakrembargaouiesprit.tn: {{ userId }}</div>
+                </div>
+                <div class="form-group">
+                    <div class="title">Product name: {{ auction.product.name }}</div>
+                </div>
+                <div class="form-group">
+                    <div class="title">End date: {{ auction.endDate | date:'medium' }}</div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="title">Minimum price: {{ auction.minPrice }} TND</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="title">Current price: {{ currentPrice }} TND</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="interest">
+                        <p><br>Interested to place a bid?</p>
+                        <a *ngIf="userId == undefined"  && href="/Login"class="btn btn-primary btn-bid">Register to Bid</a>
+                        
+                        <div *ngIf="userId !== undefined" class="container mt-5">
+                            <button *ngIf="auction.auctionStatus === 'ACTIVE' && userId" (click)="attemptToParticipate()" class="btn btn-success">
+                                Participate in Auction
+                            </button>
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2 class="card-title mb-2">Add Bid</h2>
+                                            <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                                                <div class="form-floating mb-3">
+                                                    <label for="price">Price en DT: </label>
+                                                    <input type="number" class="form-control" id="price"
+                                                        formControlName="price" required>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary btn-orange w-100 mt-3">Bid</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--map*********************************************************-->
+                    <p class="mb-0 mt-3">For Bid Battle Only.</p>
+                    <div class="interest">
+                        <p><br>Share your place of bid?</p>
+                        <br>
+                        
+                     
+                        
+                        <app-map></app-map>
+                    </div>
+                    <!--***************************************************************-->
+                </div>
+            </div>
+            
+        </div>
+        <div class="delete-auction">
+            <button class="btn btn-danger" (click)="deleteAuction()">Delete Auction</button>
+          </div> 
+    </article>
+</section>
+
+<app-footer></app-footer>
+
