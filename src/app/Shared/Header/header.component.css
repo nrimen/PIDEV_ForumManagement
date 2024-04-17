@@ -68,6 +68,82 @@ section {
   width: 60px;
   height: 2px;
   background: var(--color-primary);
+}
+.navbar .dropdown .material-icons {
+  font-size: 24px; /* Adjust the size as needed */
+  vertical-align: middle; /* Align the icon vertically */
+  margin-right: 5px; /* Add some spacing between the icon and the text */
+}
+
+
+/* Colors */
+:root {
+  --color-default: #2b180d;
+  --color-primary: rgba(208, 0, 0, 0.65);
+  --color-secondary: rgba(222, 49, 49, 0.68);
+}
+
+/* Smooth scroll behavior */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+  font-family: var(--font-default);
+  color: var(--color-default);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: rgba(246, 34, 34, 0.84);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-primary);
+}
+
+/*--------------------------------------------------------------
+# Sections & Section Header
+--------------------------------------------------------------*/
+section {
+  overflow: hidden;
+  padding: 80px 0;
+}
+
+.section-header {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.section-header h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.section-header h2:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--color-primary);
   left: 0;
   right: 0;
   bottom: 0;
@@ -89,4 +165,3 @@ section {
   vertical-align: middle; /* Align the icon vertically */
   margin-right: 5px; /* Add some spacing between the icon and the text */
 }
-

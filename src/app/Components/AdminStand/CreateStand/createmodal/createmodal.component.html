@@ -1,0 +1,47 @@
+<!-- JQUERY STEP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js"></script>
+<div class="wrapper">
+  <div class="form-container">
+    <h2>Add Stand</h2>
+
+    <form [formGroup]="standForm"  >
+
+      <div>
+        <label for="pack">Pack:</label>
+        <select id="pack" formControlName="pack">
+          <option value="DIAMOND">Diamond</option>
+          <option value="GOLD">Gold</option>
+          <option value="SILVER">Silver</option>
+          <option value="UNPAYED">Unpayed</option>
+        </select>
+        <div class="error-message" *ngIf="standForm.get('pack')?.invalid && standForm.get('pack')?.touched">
+          <span *ngIf="standForm.get('pack')?.errors?.['required']">* Pack is required.</span>
+        </div>
+      </div>
+
+      <div>
+        <label for="price">Price:</label>
+        <input type="number" id="price" formControlName="price" [disabled]="standForm.valid">
+        <div class="error-message" *ngIf="standForm.get('price')?.invalid && standForm.get('price')?.touched">
+          <span *ngIf="standForm.get('price')?.errors?.['required']">* Price is required.</span>
+        </div>
+      </div>
+
+      <div>
+        <label for="gallery">Gallery (Max 4 images):</label>
+        <input class="form-control" type="file" id="gallery" (change)="onFileChanged($event)" multiple />
+      </div>
+
+
+      <ng-container *ngIf="mode !== 'update'; else updateButton">
+        <button class="mb-3 btn btn-danger" (click)="onSubmit()">Add Stand</button>
+      </ng-container>
+      <ng-template #updateButton>
+        <button class="mb-3 btn btn-primary" (click)="onSubmit()">Update Stand</button>
+      </ng-template><div>
+        </div>
+
+    </form>
+
+  </div>
+</div>

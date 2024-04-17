@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { SupabaseClient, createClient } from '@supabase/supabase-js';
-import { initSupabase } from 'src/app/utils/supabase';
+import { supabase } from 'src/app/utils/supabase';
 
 @Component({
   selector: 'app-addrequest',
@@ -13,18 +13,18 @@ import { initSupabase } from 'src/app/utils/supabase';
 })
 export class AddrequestComponent {
   myForm: FormGroup;
-  supabase: SupabaseClient = createClient(initSupabase.supabaseUrl, initSupabase.supabaseKey);
+
   private fileupload: File = {} as File;
 
-  
+
   constructor(private formBuilder: FormBuilder, private http: HttpClient, private snackBar: MatSnackBar, private router: Router) {
     this.myForm = this.formBuilder.group({
       requestTitle: ['', [Validators.required, Validators.minLength(5)]],
       requestContent: ['', [Validators.required, Validators.minLength(15)]],
       location: ['', Validators.required],
       cv: ['', Validators.required],
-      requestField: [ '', Validators.required ], 
-      otherField: [''], 
+      requestField: ['', Validators.required],
+      otherField: [''],
     });
   }
 
@@ -34,24 +34,24 @@ export class AddrequestComponent {
   //    this.fileupload = file;
   //    this.uploadFile(file);
   //  }
-   async uploadFile(file: File) {
-     const { data, error } = await this.supabase.storage.from('resumes').upload(`${Date.now()}_${file.name}`, file, { cacheControl: '3600', upsert: false });
-   
-     console.log('Upload Data:', data);
-     console.error('Upload Error:', error);
-   
-     if (error) {
-       console.error(error);
-       return;
-     } else {
-       return data.path;
-     }
-   }
- 
+  async uploadFile(file: File) {
+    const { data, error } = await supabase.storage.from('images').upload(`${Date.now()}_${file.name}`, file, { cacheControl: '3600', upsert: false });
+
+    console.log('Upload Data:', data);
+    console.error('Upload Error:', error);
+
+    if (error) {
+      console.error(error);
+      return;
+    } else {
+      return data.path;
+    }
+  }
+
 
   async onSubmit() {
-   
-    if ( this.myForm.valid) {
+
+    if (this.myForm.valid) {
 
 
 
@@ -61,12 +61,12 @@ export class AddrequestComponent {
       console.log(formData)
       // this.blogservice.addArticle(article).subscribe();
       // this.router.navigate(['/blog']);
-      
-    // } else {
-    //   // Form validation failed
-    //   console.error('Form is invalid');
-    // }
-    
+
+      // } else {
+      //   // Form validation failed
+      //   console.error('Form is invalid');
+      // }
+
 
 
       // let formData = this.myForm.value;
@@ -102,7 +102,7 @@ export class AddrequestComponent {
     } else {
       console.error('Form data is undefined.');
     }
-      
+
   }
 
 
@@ -127,7 +127,7 @@ export class AddrequestComponent {
     });
   }
 
-  onFileChanged = (event :any) => {
+  onFileChanged = (event: any) => {
     console.log("here")
     const file = event.target.files[0];
     this.fileupload = file;
@@ -143,5 +143,5 @@ export class AddrequestComponent {
 
   // }
 
- 
+
 }

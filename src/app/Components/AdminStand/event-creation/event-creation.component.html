@@ -1,0 +1,56 @@
+<div class="event-creation-container" style=" display: flex;
+  background-image: url('./assets/img/CreateEvent.jpg');
+  background-size: cover;">
+
+  <div class="cardleft-section ">
+    <div *ngIf="createdEvent" class="existing-event-info ">
+      <h2  data-aos="fade-up">{{ createdEvent.description }}</h2>
+      <div class="event-details">
+        <div class="detail-item">
+          <span class="detail-label">Date:</span>
+          <span class="detail-value">{{ createdEvent.debutDate }} - {{ createdEvent.lastDate }}</span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Location:</span>
+          <span class="detail-value">{{ createdEvent.location }}</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div *ngIf="!createdEvent" class="existing-event-info">
+      <h2>No event found.</h2>
+    </div>
+
+  </div>
+  <div class="card">
+
+    <div class="cardright-section">
+      <h2>Create New Event</h2>
+      <form class="event-form" [formGroup]="eventForm" >
+        <div class="form-group">
+          <label for="DebutDate">Event Start Date:</label>
+          <input type="date" id="DebutDate" name="DebutDate" formControlName="debutDate" required>
+        </div>
+        <div class="form-group">
+          <label for="LastDate">Event End Date:</label>
+          <input type="date" id="LastDate" name="LastDate" formControlName="lastDate" required>
+        </div>
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <input type="text" id="location" name="location" formControlName="location">
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" formControlName="description"></textarea>
+        </div>
+        <div class="form-group">
+          <button class="submit" (click)="onSubmit()">Create Event</button>
+          <button class="submit" (click)="checkExistingEvent()"style="margin-left: 260px">Delete</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

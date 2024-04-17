@@ -16,14 +16,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       integrity="sha512-e0F6OvBkdpsIf3pT3DwXoJLSr9lBVZL0dCfxqXr8Y2jkEuh6q8R+FTtBXs2CQ8HPfRF7aqqgNSHH1FzFgTOYBg=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-   
 
-    <div class="search-container"  [class.expanded]="showSearch">
+
+    <div class="search-container" [class.expanded]="showSearch">
       <input class="search-input" type="text" placeholder="Search..." *ngIf="showSearch" (keyup)="applySearch($event)">
     </div>
 
@@ -56,17 +53,16 @@
         </div>
       </div>
 
-<button class="button" routerLink="/addrequest"> Add Your Request</button>
+      <button class="button" routerLink="/addrequest"> Add Your Request</button>
     </div>
 
-    
+
     <!--Paginator-->
 
-    <div class="ngx-pagination" >
+    <div class="ngx-pagination">
       <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
     </div>
   </div>
 
 </main>
-

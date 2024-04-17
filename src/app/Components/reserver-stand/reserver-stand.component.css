@@ -1,0 +1,637 @@
+.theatre {
+  border: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.center {
+  flex: 1; /* Take up remaining space */
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+
+.stage {
+  background-color: #666;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.direction {
+  margin-bottom: 5px;
+}
+
+.box {
+  background: grey;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stands {
+  align-items: center;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: -42px;
+}
+
+.left {
+  margin-right: auto; /* Push to the left */
+}
+
+.right {
+  margin-left: auto; /* Push to the right */
+}
+
+.packUmpayed, .packGold, .packDiamond {
+  margin-top: 20px;
+  margin-bottom: 10px; /* Space between packages */
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.stage {
+  width: 10%;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.packSilver.left{
+  margin-left: 20px;
+}
+
+.packSilver.right{
+  margin-right: 20px;
+
+}
+
+.packSilver.left,
+.packSilver.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 85px;
+
+}
+
+.packGold,
+.packUnpayed,
+.packDiamond {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px; /* Adjust margin between packs as needed */
+}
+
+.center {
+  display: flex;
+  align-items: center;
+}
+
+.stands {
+  display: flex;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+}
+
+
+.seat {
+  width: 10px;
+  height: 30px;
+  margin: 2px;
+  background-color: #fff;
+  border: 2px solid #888585;
+}
+
+.packSilver.left,
+.packSilver.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.packGold,
+.packUnpayed,
+.packDiamond {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+.tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.seat:hover .tooltip {
+  visibility: visible;
+}
+/**************************/
+
+.placeselection {
+  text-align: center;
+  font-family: Arial, sans-serif; /* Choose a professional font */
+  font-size: 24px; /* Adjust font size as needed */
+  font-weight: bold; /* Make the text bold */
+  color: #333; /* Choose a suitable text color */
+  margin-top: 50px;
+  /* Adjust top margin as needed */
+}
+.main-wrapper__title{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  margin-top: -20px;
+}
+/**********************sidebar************************/
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 336px;
+  height: 100%;
+  background: var(--color-secondary) ;
+  color: #fff;
+  background-size: cover; /* Cover the entire sidebar with the background image */
+  background-position: center;
+}
+
+.color-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(27, 47, 69, 0.6);
+  z-index: -1; /* Ensure it's behind other content */
+}
+
+.sidebar.header {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensure sidebar takes full height */
+}
+
+.logo {
+  margin-bottom: auto; /* Pushes the logo to the top */
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin-top: auto; /* Pushes the menu to the bottom */
+  margin: 20px 0;
+  position: center;
+  bottom: 20px;
+}
+
+
+.menu li {
+  margin-bottom: 10px; /* Adjust as needed */
+  position: center;
+  border-bottom: 4px solid #ccc; /* Add a border to the bottom of each menu item */
+  padding-bottom: 10px; /* Add padding to create space between the text and the border */
+
+  align-items: center;
+}
+
+.menu li a {
+  position: center;
+  color: #fff;
+  text-decoration: none;
+  align-items: center;
+}
+
+.menu li:last-child {
+  border-bottom: none;
+}
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin-top: auto;
+}
+
+.menu li {
+  margin-bottom: 20px;
+}
+
+.menu li span {
+  display: block;
+  /*margin-bottom: 5px;*/
+  font-weight: bold;
+  font-size: 20px;
+}
+.info{
+  margin-bottom: 20px;
+
+}
+
+.menu li strong {
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.menu li span:last-child {
+  margin-bottom: 0;
+}
+
+
+
+
+.sideRight{
+  position: fixed;
+  right: 60px;
+  top: 5px;
+  width: 1000px;
+  height: 100%;
+  margin-top: 50px;
+}
+/*******************next button********************/
+.next-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(208, 0, 0, 0.85); /* Button background color */
+  color: #fff; /* Button text color */
+  padding: 10px 20px; /* Button padding */
+  border: none; /* Remove button border */
+  border-radius: 5px; /* Add button border radius */
+  cursor: pointer; /* Add cursor pointer */
+  font-size: 16px; /* Button font size */
+}
+
+.next-button:hover {
+  background-color: rgba(208, 0, 0, 0.65); /* Change background color on hover */
+}
+
+.next-button:focus {
+  outline: none; /* Remove button outline */
+}
+
+.section-header  {
+  background: var(--color-primary);
+}
+/***********buttom***********/
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 28px;
+  padding: 0 20px; /* Adjust padding for smaller screens */
+
+  /* left: 222px; */
+  right: 600px;
+}
+
+.seats {
+  display: flex;
+  align-items: center;
+}
+
+.Reservedseat, .availableseat, .myseat {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border: 4px solid #888585;
+}
+
+.Reservedseat {
+  border-color: rgba(208, 0, 0, 0.9);
+}
+
+.myseat {
+  border-color: rgba(17, 162, 97, 0.79);
+}
+
+.tag {
+  margin-right: 20px;
+}
+
+.next-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: rgba(208, 0, 0, 0.85);
+  color: #fff;
+}
+.seat-container {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; /* Adjust as needed */
+}
+
+
+
+
+/***********************tag*******************/
+
+
+
+.back-button, .next-button {
+  padding: 10px 20px; /* Adjust padding */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add border radius */
+  cursor: pointer; /* Add cursor pointer */
+  font-size: 16px; /* Adjust font size */
+  display: flex;
+}
+
+.back-button {
+  background-color: rgba(17, 162, 97, 0.79); /* Button background color */
+  color: #fff; /* Button text color */
+  margin-right: 10px; /* Add margin to separate buttons */
+}
+
+
+/*************************************/
+
+/******************* Responsive CSS *******************/
+
+/* For screens smaller than 768px */
+@media (max-width: 1000px) {
+  .theatre {
+    margin: 50px 20px; /* Adjust margin for smaller screens */
+  }
+
+  .sideRight {
+    right: 20px; /* Adjust position for smaller screens */
+  }
+
+
+
+  .Reservedseat,
+  .availableseat,
+  .myseat {
+    width: 10px; /* Adjust seat width for smaller screens */
+    height: 10px; /* Adjust seat height for smaller screens */
+    border-width: 1px; /* Adjust border width for smaller screens */
+    margin-right: 5px; /* Adjust margin for smaller screens */
+  }
+
+  .tag {
+    margin-right: 10px; /* Adjust tag margin for smaller screens */
+    font-size: 12px; /* Adjust tag font size for smaller screens */
+  }
+
+  .next-button,
+  .back-button {
+    padding: 8px 16px; /* Adjust button padding for smaller screens */
+    font-size: 14px; /* Adjust button font size for smaller screens */
+  }
+}
+
+/* For screens between 768px and 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .bottom {
+    padding: 0 40px; /* Adjust padding for medium screens */
+  }
+}
+
+/******************* End of Responsive CSS *******************/
+/***if Reserved*****/
+.reserved-seat {
+  background-color: red;
+}
+/***********************************************/
+
+.indicator {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/*************************/
+.selected-seat {
+  background-color: rgba(17, 162, 97, 0.79);
+}
+/*************************/
+.selected-seats-info {
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.selected-seats-info h2 {
+  margin-top: 0;
+}
+
+.selected-seats-info p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.seat-info {
+  margin-bottom: 10px;
+}
+
+.seat-info span {
+  font-weight: bold;
+}
+
+.seat-info strong {
+  margin-left: 5px;
+}
+/*************************/
+.seat-details-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.seat-details {
+  width: calc(33.33% - 10px); /* Adjust as needed */
+  margin-bottom: 20px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.no-seat-selected {
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+  color: #999;
+}
+
+.card-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: rgba(208, 0, 0, 0.85); /* Button background color */
+  color: #fff; /* Button text color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card-button:hover {
+  background-color: rgba(208, 0, 0, 0.65); /* Hover background color */
+}
+.done-section {
+  text-align: center;
+}
+
+.done-section h2 {
+  margin-bottom: 10px;
+}
+
+.summary {
+  margin-bottom: 20px;
+}
+
+.summary ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.summary li {
+  margin-bottom: 10px;
+}
+
+.quote {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.quote h3 {
+  margin-top: 0;
+}
+
+.quote p {
+  margin-bottom: 5px;
+}
+/********************table******************/
+.summary {
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.main-wrapper__title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.placeselection {
+  font-size: 24px;
+}
+
+.selected-seats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.selected-seats-table th, .selected-seats-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.selected-seats-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: left;
+}
+
+.selected-seats-table td {
+  background-color: #fff;
+}
+
+.quote {
+  margin-top: 20px;
+}
+
+.quote h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.quote p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+/************reserved************/
+.reserved {
+  border-color: rgba(208, 0, 0, 0.9);
+  cursor: not-allowed;    /* Change cursor to indicate it's not clickable */
+}
+.countdown-container {
+  display: flex;
+  justify-content: center;
+}
+
+.countdown-item {
+  width: 100px; /* Adjust the width of the square */
+  height: 100px; /* Ensure the item is square */
+  margin: 0 10px;
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.countdown-value {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.countdown-label {
+  font-size: 12px;
+  color: #666;
+}

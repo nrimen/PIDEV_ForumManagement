@@ -1,0 +1,95 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(45deg, #f7f5f5, #e8e5e5);
+  background-size: 400% 400%;
+  animation: Gradient 15s ease infinite;
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.my-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.my-form label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input[type=text],
+input[type=email],
+textarea {
+  width: 100%;
+  padding: 15px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #e70303;
+  background-color: #fff;
+  font-size: 1rem;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+textarea:focus {
+  border-bottom-color: #007bff;
+  outline: none;
+}
+
+.my-form button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.my-form button[type="submit"]:hover {
+  background-color: #0069d9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.my-form .form-group {
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  background-color: #d90000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
