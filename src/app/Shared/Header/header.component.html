@@ -19,11 +19,13 @@
         <li><a>Team</a></li>
         <li><a>Blog</a></li>
         <li class="dropdown"><a><span>Admin</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-        <li class="dropdown"><a href="#"><span>Admin</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-          <ul>
-            <li routerLink="/CreateEvent"><a >Event Creation</a></li>
 
-            <li><a routerLink="/stand">Stands</a></li>
+
+          <i class="bi bi-chevron-down dropdown-indicator"></i>
+          <ul>
+            <li  ><a [routerLink]="['/CreateEvent']">Event Creation</a></li>
+
+            <li><a [routerLink]="['/stand']">Stands</a></li>
 
             <li><a href="#">users</a></li>
             <li><a href="#">materials</a></li>
@@ -42,17 +44,7 @@
           </ul>
         </li>
 
-        <li class="dropdown">
-          <a href="#">
-            <i class="material-icons">person</i>
-            <i class="bi bi-chevron-down dropdown-indicator"></i>
-          </a>
-          <ul>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Logout</a></li>
-            <li><a href="#">Create Account</a></li>
-          </ul>
-        </li>
+
       </ul>
     </nav>
 
