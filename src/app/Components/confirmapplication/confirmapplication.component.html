@@ -1,0 +1,16 @@
+<h2>Edit Application</h2>
+<form [formGroup]="editForm">
+    <div class="checkbox-wrapper">
+        <input type="checkbox" id="discussion" formControlName="discussion" />
+        <label for="discussion">Discussion:</label>
+      </div>
+      <div class="checkbox-wrapper">
+        <input type="checkbox" id="acceptance" formControlName="acceptance" />
+        <label for="acceptance">Acceptance:</label>
+      </div>
+      
+  <div>
+    <button type="button" (click)="saveChanges()">Save Changes</button>
+    <button type="button" (click)="closeDialog()">Cancel</button>
+  </div>
+</form>

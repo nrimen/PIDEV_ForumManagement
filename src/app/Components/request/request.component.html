@@ -1,0 +1,68 @@
+<main id="main">
+  <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/about-header.jpg');">
+    <div class="container position-relative d-flex flex-column align-items-center">
+
+      <h2>Requests</h2>
+      <ol>
+        <li><a href="./requests">Requests</a></li>
+
+      </ol>
+
+    </div>
+  </div>
+  <div>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-e0F6OvBkdpsIf3pT3DwXoJLSr9lBVZL0dCfxqXr8Y2jkEuh6q8R+FTtBXs2CQ8HPfRF7aqqgNSHH1FzFgTOYBg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+
+    <div class="search-container" [class.expanded]="showSearch">
+      <input class="search-input" type="text" placeholder="Search..." *ngIf="showSearch" (keyup)="applySearch($event)">
+    </div>
+
+    <div class="content">
+
+      <div class="row position-relative  align-items-center ">
+        <div class="card"
+          *ngFor="let request of filteredRequests | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+
+          <h3 class="blog-title"> {{ request.requestTitle }}</h3>
+
+          <span class="blog-time">{{ request.postingDate }}</span>
+          <span class="blog-time">
+            📍{{ request.location }}
+          </span>
+          <p class="description">
+            {{ request.requestContent }}
+          </p>
+
+          <p class="card-text">Field:</p>
+          <mat-chip-listbox aria-label="Field Selection">
+            <mat-chip *ngFor="let field of transformRequestField(request)" color="primary">{{ field }}</mat-chip>
+          </mat-chip-listbox>
+          <div class="options">
+            <span>
+              See cv
+            </span>
+            <!-- <button class="btn">Blog</button> -->
+          </div>
+        </div>
+      </div>
+
+      <button class="button" routerLink="/addrequest"> Add Your Request</button>
+    </div>
+
+
+    <!--Paginator-->
+
+    <div class="ngx-pagination">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+    </div>
+  </div>
+
+</main>

@@ -1,0 +1,127 @@
+/* Apply styles to the container */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+.number-of-applications {
+    text-align: center;
+    margin-bottom: 20px; 
+  }
+
+div {
+    margin-top: 70px !important; /* Use !important to override any conflicting styles */
+    margin-left: 40px;   
+    margin-right: 40px; 
+    padding-bottom: 20px; 
+    
+}
+
+
+/* Style the table */
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 10px auto;
+    border-radius: 10%;
+}
+
+/* Style the table header */
+thead {
+    background-color: #f2f2f2;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Alternate row colors in the table body */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Hover effect on table rows */
+tbody tr:hover {
+    background-color: #e5e5e5;
+}
+
+/* CSS */
+/* Common styling for both buttons */
+.edit-button {
+  background-color: #c2fbd7;
+  border-radius: 50%; /* Making it a circle */
+  box-shadow: rgba(44, 187, 99, .2) 0 -12px 9px -7px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+  padding: 7px; /* Adjust the padding to make it smaller */
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 10px; /* Decreased font size */
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-right: 10px; /* Adjust the spacing as needed */
+}
+
+  
+  /* Styling specific to the delete button */
+  .delete-button { background-color: #ed443bc8;
+    border-radius: 100px;
+    box-shadow: rgba(227, 30, 30, 0.2) 0 -25px 18px -14px inset, rgba(255, 0, 0, 0.15) 0 1px 2px, rgba(255, 8, 8, 0.15) 0 2px 4px, rgba(255, 0, 0, 0.15) 0 4px 8px, rgba(253, 0, 0, 0.15) 0 8px 16px, rgba(255, 1, 1, 0.15) 0 16px 32px;
+    color: rgb(148, 17, 8);
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+    padding: 7px; 
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 10px; 
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-right: 10px; 
+    }
+
+  .interview-button { background-color: #e8cf12c8;
+    border-radius: 100px;
+    box-shadow: rgba(221, 207, 10) 0 -25px 18px -14px inset, rgb(227, 214, 39) 0 1px 2px, rgb(207, 199, 85, 0.15) 0 2px 4px, rgba(221, 207, 10, 0.332) 0 4px 8px, rgba(230, 215, 16, 0.15) 0 8px 16px, rgba(237, 222, 12, 0.15) 0 16px 32px;
+    color: rgb(221, 123, 10);
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+    padding: 7px; 
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 10px; 
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-right: 10px; 
+    }
+    
+  /* Hover effect for both buttons */
+  .edit-button:hover, .delete-button:hover, .interview-button:hover {
+    box-shadow: rgba(23, 26, 25, 0.35) 0 -25px 18px -14px inset, rgba(24, 26, 25, 0.25) 0 1px 2px, rgba(31, 33, 32, 0.25) 0 2px 4px, rgba(22, 23, 22, 0.25) 0 4px 8px, rgba(34, 37, 35, 0.25) 0 8px 16px, rgba(29, 30, 29, 0.25) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
+  }
+
+
+  /*------Acceptance--------*/
+  .check-mark {
+    color: green;
+  }
+  
+  .cross-mark {
+    color: red;
+  }
+  

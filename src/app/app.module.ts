@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import {HeaderComponent} from "./Shared/Header/header.component";
-import {FooterComponent} from "./Shared/footer/footer.component";
-import {RouterOutlet} from "@angular/router";
-import {HomeComponent} from "./Components/home/home.component";
+import { HeaderComponent } from "./Shared/Header/header.component";
+import { FooterComponent } from "./Shared/footer/footer.component";
+import { RouterOutlet } from "@angular/router";
+import { HomeComponent } from "./Components/home/home.component";
 import { NotFoundComponent } from './Shared/not-found/not-found.component';
 import {AppRoutingModule} from "./app-routing.module";
 import { BlogComponent } from './Components/blog/blog.component';
@@ -50,6 +50,22 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ApplicationComponent } from './Components/application/application.component';
+import { RequestComponent } from './Components/request/request.component';
+import { AddrequestComponent } from './Components/addrequest/addrequest.component';
+import { FormBuilder } from '@angular/forms';
+import { RequestadminComponent } from './Components/requestadmin/requestadmin.component';
+import { ConfirmapplicationComponent } from './Components/confirmapplication/confirmapplication.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ResumeComponent } from './resume/resume.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ApplyComponent } from './Components/apply/apply.component';
+import { EditrequestComponent } from './Components/editrequest/editrequest.component';
+import { ZegocloudComponent } from './Components/zegocloud/zegocloud.component';
+import { MakeinterviewComponent } from './Components/makeinterview/makeinterview.component';
+
+
 
 @NgModule({
   declarations: [
@@ -75,32 +91,39 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     AddroomComponent,
     ChatroomComponent,
     UpdateBlogComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    ApplicationComponent,
+    RequestComponent,
+    AddrequestComponent,
+    RequestadminComponent,
+    ConfirmapplicationComponent,
+    ResumeComponent,
+    ApplyComponent,
+    EditrequestComponent,
+    ZegocloudComponent,
+    MakeinterviewComponent,
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     HeaderComponent,
+    HttpClientModule,
     FooterComponent,
     RouterOutlet,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
+   
     MatButtonModule,
-    MatIconModule,
-    MatInputModule,
+  
     MatDialogModule,
-    HttpClientModule,
     MatTooltipModule,
     FormsModule,
     MatSelectModule,
     MatPaginatorModule,
-    MatTableModule,
+    
     MatGridListModule,
-    MatCardModule,
+    
     OverlayModule,
     MatStepperModule,
-    MatSnackBarModule,
     CarouselModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
@@ -114,9 +137,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSortModule,
     MatSnackBarModule,
     MatSidenavModule,
+    MatChipsModule,
+    NgxPaginationModule
 
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,
+    FormBuilder
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

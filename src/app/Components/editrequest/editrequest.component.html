@@ -1,0 +1,41 @@
+<h2>Edit Request</h2>
+<form [formGroup]="editForm">
+    <div class="checkbox-wrapper">
+        <label for="Title">Request Title:</label>
+        <input type="text" id="Title" formControlName="Title" />
+        
+      </div>
+
+      <div class="checkbox-wrapper">
+        <label for="Cont">Content:</label>
+        <input type="text" id="Cont" formControlName="Cont" />
+        
+      </div>
+
+      <div class="checkbox-wrapper">
+        <label for="Res">CV:</label>
+        <input type="file" class="form-control-file" id="Res" formControlName="Res">
+
+      </div>
+
+      <div class="checkbox-wrapper">
+        <label for="Field">Field:</label>
+        <mat-chip-listbox aria-label="Field Selection" id="Field" formControlName="Field" multiple>
+          <mat-chip-option color="accent">Cybersecurity</mat-chip-option>
+          <mat-chip-option>Data Science</mat-chip-option>
+          <mat-chip-option color="warn">Business Intelligence</mat-chip-option>
+          <mat-chip-option color="accent">Cloud</mat-chip-option>
+          <mat-chip-option>Mobile App Developer</mat-chip-option>
+          <mat-chip-option color="warn">Software Developer</mat-chip-option>
+          <mat-chip-option color="black">Web Developer</mat-chip-option>
+          <mat-chip-option color="accent" >DevOps</mat-chip-option>
+          <mat-chip-option color="warn">UI/UX</mat-chip-option>
+        </mat-chip-listbox>
+        
+      </div>
+      
+  <div>
+    <button type="button" (click)="saveChanges()">Save Changes</button>
+    <button type="button" (click)="closeDialog()">Cancel</button>
+  </div>
+</form>

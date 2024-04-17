@@ -1,0 +1,120 @@
+<html lang="en">
+
+  <main id="main">
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/about-header.jpg');">
+      <div class="container position-relative d-flex flex-column align-items-center">
+
+        <h2>Add Request</h2>
+        <ol>
+          <li><a href="./requests">Requests</a></li>
+          <li>Add Request</li>
+        </ol>
+
+      </div>
+    </div>
+  </main>
+
+
+  <div class="container-form">
+  
+    <div class="login-box">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()" style="margin-bottom: 100px;">
+            
+                <div class="user-box">
+                    
+                    <input type="text" class="form-control" id="requestTitle" formControlName="requestTitle"
+                          [ngClass]="{'is-invalid': myForm.get('requestTitle')?.invalid && myForm.get('requestTitle')?.touched}">
+
+                    <label for="requestTitle">Request Title:</label>
+                    <!-- Display real-time error message if requestTitle is invalid -->
+                    <div *ngIf="myForm.get('requestTitle')?.hasError('minlength') && myForm.get('requestTitle')?.touched" class="error-message">
+                      Request Title must be at least 5 characters long.
+                    </div>
+                </div>
+
+                <div class="user-box">
+                  
+                  <textarea class="form-control taller-textarea" id="requestContent" formControlName="requestContent"
+                            [ngClass]="{'is-invalid': myForm.get('requestContent')?.invalid && myForm.get('requestContent')?.touched}">
+                  </textarea>
+                  <label for="requestContent">Request Content:</label>
+                  <!-- Display real-time error message if requestTitle is invalid -->
+                  <div *ngIf="myForm.get('requestContent')?.hasError('minlength') && myForm.get('requestContent')?.touched" class="error-message">
+                    Request Content must be at least 15 characters long.
+                  </div>
+                </div>
+            
+              
+                <div class="user-box">
+                  
+                  <select class="form-control" id="location" formControlName="location">
+                    <option>Ariana</option>
+                    <option>Beja</option>
+                    <option>Ben Arous</option>
+                    <option>Bizerte</option>
+                    <option>Gabes</option>
+                    <option>Gafsa</option>
+                    <option>Jendouba</option>
+                    <option>Kairouan</option>
+                    <option>Kasserine</option>
+                    <option>Kebili</option>
+                    <option>Kef</option>
+                    <option>Mahdia</option>
+                    <option>Manouba</option>
+                    <option>Medenine</option>
+                    <option>Monastir</option>
+                    <option>Nabeul</option>
+                    <option>Sfax</option>
+                    <option>Sidi Bouzid</option>
+                    <option>Siliana</option>
+                    <option>Sousse</option>
+                    <option>Tataouine</option>
+                    <option>Tozeur</option>
+                    <option>Tunis</option>
+                    <option>Zaghouan</option>
+                    <!-- Add more cities as needed -->
+                  </select>
+                  <label for="location">Location:</label>
+                </div>
+              
+                <div class="user-box">
+                  
+                  <input type="file" class="form-control-file" id="cv" formControlName="cv">
+                <label for="cv">CV:</label>
+              </div>
+
+                <div class="user-box">
+                  <mat-chip-listbox aria-label="Field Selection" id="requestField" formControlName="requestField" multiple>
+                    <mat-chip-option color="accent">Cybersecurity</mat-chip-option>
+                    <mat-chip-option>Data Science</mat-chip-option>
+                    <mat-chip-option color="warn">Business Intelligence</mat-chip-option>
+                    <mat-chip-option color="accent">Cloud</mat-chip-option>
+                    <mat-chip-option>Mobile App Developer</mat-chip-option>
+                    <mat-chip-option color="warn">Software Developer</mat-chip-option>
+                    <mat-chip-option color="black">Web Developer</mat-chip-option>
+                    <mat-chip-option color="accent" selected>DevOps</mat-chip-option>
+                    <mat-chip-option color="warn">UI/UX</mat-chip-option>
+                  
+
+                  <!-- Button to add custom chip -->
+                  <mat-chip-option class="button-other" color="primary"  (click)="toggleOtherField()">Other</mat-chip-option>
+                    </mat-chip-listbox>
+                  <div *ngIf="showOtherField">
+                    <input type="text" class="form-control-file" id="requestField" formControlName="requestField">
+                    
+                  </div>
+
+                </div>
+              
+                <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>  
+                    <!--          <a href="#" type="submit" class="btn btn-primary" [class.disabled]="!myForm.valid">Submit</a>-->
+
+                
+        </form>
+    </div>
+
+  </div>
+      
+ 
+  
+</html>  

@@ -1,0 +1,57 @@
+
+
+<div>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <h2>Application</h2>
+      
+
+    <div class="number-of-applications">Number of applications: {{ applications.length }}</div>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <!-- <th style="width: 18%;">CV</th> -->
+          <th>Notes</th>
+          <th>Discussion</th>
+          <th>Acceptance</th>
+          <th style="width: 15%;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let application of applications">
+          <!-- <td>{{ application.applicationCV }}</td> -->
+          <td>{{ application.notes }}</td>
+          <td>
+            <span *ngIf="application.discussion; else noDiscussion" class="check-mark">&#10004;</span>
+            <ng-template #noDiscussion><span class="cross-mark">&#10008;</span></ng-template>
+          </td>
+          <td>
+            <span *ngIf="application.accepted; else notAccepted" class="check-mark">&#10004;</span>
+            <ng-template #notAccepted><span class="cross-mark">&#10008;</span></ng-template>
+          </td>
+          
+
+          <td>
+            <button class="edit-button" (click)="editApplication(application)">
+              <span class="material-symbols-outlined">
+                settings
+                </span>
+            </button>
+
+            <button *ngIf="application.accepted" class="interview-button" (click)="addInterview(application.idApplication)">
+              <span class="material-symbols-outlined">
+                chronic
+                </span>
+            </button>
+
+            <!-- <button class="delete-button" (click)="deleteApplication(application.idApplication)">
+              <span class="material-symbols-outlined">
+                delete
+                </span>
+            </button> -->
+
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+</div>
