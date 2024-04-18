@@ -6,7 +6,7 @@
       <div class="container position-relative d-flex flex-column align-items-center">
 
         <h2>Generate Resume</h2>
-        
+
 
       </div>
     </div>
@@ -23,13 +23,13 @@
                 <div>
                   <label for="fullName">Full Name:</label>
                   <input type="text" id="fullName" name="fullName" formControlName="fullName">
-        
+
                   <label for="phoneNumber">Phone Number:</label>
                   <input type="text" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber">
-        
+
                   <label for="profileUrl">LinkedIn Profile URL:</label>
                   <input type="text" id="profileUrl" name="profileUrl" formControlName="profileUrl">
-        
+
                   <label for="email">Email:</label>
                   <input type="text" id="email" name="email" formControlName="email">
 
@@ -57,18 +57,18 @@
 
                   <label for="degree">Degree:</label>
                   <input type="text" id="degree" name="degree" formControlName="degree">
-                 
+
                   <hr>
                 </div>
-             
+
               <div class="stepper-navigation">
                   <button matStepperPrevious class="stepper-navigation-button">←</button>
                   <!-- <button class="stepper-navigation-button" (click)="addEducation()" [disabled]="!areAllEducationsValid()" >+</button> -->
                   <button matStepperNext class="stepper-navigation-button" >→</button>
               </div>
-                  
+
               </mat-step>
-        
+
               <mat-step label="Experience">
                 <div>
                   <label for="experienceTitle">Experience Title:</label>
@@ -85,16 +85,16 @@
 
                   <label for="experienceField">Experience Field:</label>
                   <input type="text" id="experienceField" name="experienceField" formControlName="experienceField">
-                 
+
                   <hr>
                 </div>
-             
+
               <div class="stepper-navigation">
                   <button matStepperPrevious class="stepper-navigation-button">←</button>
                   <!-- <button class="stepper-navigation-button" (click)="addEducation()" [disabled]="!areAllEducationsValid()" >+</button> -->
                   <button matStepperNext class="stepper-navigation-button" >→</button>
               </div>
-                  
+
               </mat-step>
 
               <mat-step label="Skill">
@@ -178,18 +178,19 @@
                     </div>
                   </div>
                 </div>
-              </mat-step> 
-             
-              
-        
+              </mat-step>
+
+
+
               <!-- Final Step -->
-             
+
             </mat-horizontal-stepper>
         </form>
-  
+
     </div>
 
 
-   
+
+
 
 </html>
