@@ -3,35 +3,46 @@
     <div class="checkbox-wrapper">
         <label for="Type">Interview Type:</label>
         <select id="Type" formControlName="Type" >
-
-            <option [value]="InterviewType.INPERSON">INPERSON</option>
-            <option [value]="InterviewType.ONLINE">ONLINE</option>
-            
-          </select>
+          <option [value]="InterviewType.INPERSON">INPERSON</option>
+          <option [value]="InterviewType.ONLINE">ONLINE</option>
+        </select>
         
       </div>
 
       <div class="checkbox-wrapper">
         <label for="Date">Interview Date:</label>
-        <input type="date" id="Date" formControlName="Date" />
+        <input type="datetime-local" id="Date" formControlName="Date" />
         
       </div>
 
-      <div class="checkbox-wrapper">
+      <div class="checkbox-wrapper" *ngIf="isInPersonInterview()">
         <label for="Class">Classroom:</label>
-        <input type="text" class="form-control-file" id="Class" formControlName="Class">
+        <select formControlName="Class">
+            <option value="A1">A1</option>
+            <option value="B2">B2</option>
+            <option value="C3">C3</option>
+            <option value="D4">D4</option>
+            <option value="E5">E5</option>
+            <option value="F6">F6</option>
+            <option value="G7">G7</option>
+            <option value="H8">H8</option>
+            <option value="I9">I9</option>
+            <option value="J10">J10</option>
+         
+        </select>
 
+
+       
       </div>
-
-      <div class="checkbox-wrapper">
+      
+      <div class="checkbox-wrapper" *ngIf="isOnlineInterview()">
         <label for="Link">Interview Link:</label>
-        <input type="text" class="form-control-file" id="Link" formControlName="Link" >
-
+        <input type="text" class="form-control-file" id="Link" formControlName="Link">
       </div>
 
       
   <div>
-    <button type="button" (click)="saveChanges()">Save Changes</button>
+    <button type="button" (click)="saveChanges()" [disabled]="addForm.invalid">Save Changes</button>
     <button type="button" (click)="closeDialog()">Cancel</button>
   </div>
 </form>

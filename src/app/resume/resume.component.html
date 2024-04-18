@@ -125,7 +125,58 @@
                 <div class="stepper-navigation">
                     <button matStepperPrevious class="stepper-navigation-button">←</button>
                     <button class="stepper-navigation-button" (click)="addLanguage()" [disabled]="!areAllLanguagesValid()" >+</button>
-                    <button type="submit" mat-button (click)="generateResumePDF()">Generate PDF</button>
+                    <button matStepperNext class="stepper-navigation-button" >→</button>
+                </div>
+              </mat-step> 
+             
+             
+              <mat-step style="background-color: rgba(208, 0, 0, 0.85);" label="Template">
+                <div >
+                  <div class="ag-format-container">
+                    <div class="ag-courses_box">
+                      <div class="ag-courses_item" type="submit" mat-button (click)="generateResumePDF()" >
+                        <a class="ag-courses-item_link">
+                          <div class="ag-courses-item_bg">
+                          </div>
+                          <div class="ag-courses-item_title">
+                            <img src="assets/img/templates/template(vert).png" alt="Image Description" width="200" height="200" style="display: block; margin: auto; border-radius: 5%;">
+                          </div>
+                          <div class="ag-courses-item_date-box">
+                            Blue & Green
+                            
+                          </div>
+                        </a>
+                      </div>
+                  
+                      <div class="ag-courses_item" type="submit" mat-button (click)="generateResumePDF()" >
+                        <a class="ag-courses-item_link" >
+                           <div class="ag-courses-item_bg">
+                          </div>
+                          <div class="ag-courses-item_title">
+                            <img src="assets/img/templates/template(rose).png" alt="Image Description" width="200" height="200" style="display: block; margin: auto; border-radius: 5%;">
+                          </div>
+                          <div class="ag-courses-item_date-box">
+                            Pink
+                            
+                          </div>
+                        </a>
+                      </div>
+                  
+                      <div class="ag-courses_item" type="submit" mat-button (click)="generateResumePDF()" >
+                        <a class="ag-courses-item_link">
+                          <div class="ag-courses-item_bg">
+                          </div>
+                          <div class="ag-courses-item_title">
+                            <img src="assets/img/templates/template(beige)modified.png" alt="Image Description" width="200" height="200" style="display: block; margin: auto; border-radius: 5%;">
+                          </div>
+                          <div class="ag-courses-item_date-box">
+                            Light Brown
+                            
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </mat-step> 
              

@@ -135,6 +135,7 @@ export class ApplicationComponent implements OnInit {
   }
 
   addInterview(interview : Interview): void {
+    app: Application;
     // Open a dialog to get new values
     const dialogRef = this.dialog.open(MakeinterviewComponent, {
       data: {
@@ -142,6 +143,7 @@ export class ApplicationComponent implements OnInit {
         Date: interview.interviewDate,
          Class: interview.classRoom,
          Link: interview.link,
+         
          //application: interview.idApplication
          // loc: request.location,
 
@@ -164,7 +166,7 @@ export class ApplicationComponent implements OnInit {
           interviewDate: result.Date,
           classRoom: result.Class,
           link: result.Link,
-          applicationId: result.idApplication,
+          application: result.application,
 
         
         };

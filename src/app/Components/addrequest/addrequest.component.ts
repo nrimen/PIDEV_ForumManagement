@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { SupabaseClient, createClient } from '@supabase/supabase-js';
-import { supabase } from 'src/app/utils/supabase';
 
 @Component({
   selector: 'app-addrequest',
@@ -13,18 +11,17 @@ import { supabase } from 'src/app/utils/supabase';
 })
 export class AddrequestComponent {
   myForm: FormGroup;
-
   private fileupload: File = {} as File;
 
-
+  
   constructor(private formBuilder: FormBuilder, private http: HttpClient, private snackBar: MatSnackBar, private router: Router) {
     this.myForm = this.formBuilder.group({
       requestTitle: ['', [Validators.required, Validators.minLength(5)]],
       requestContent: ['', [Validators.required, Validators.minLength(15)]],
       location: ['', Validators.required],
       cv: ['', Validators.required],
-      requestField: ['', Validators.required],
-      otherField: [''],
+      requestField: [ '', Validators.required ], 
+      otherField: [''], 
     });
   }
 
@@ -34,55 +31,32 @@ export class AddrequestComponent {
   //    this.fileupload = file;
   //    this.uploadFile(file);
   //  }
-  async uploadFile(file: File) {
-    const { data, error } = await supabase.storage.from('images').upload(`${Date.now()}_${file.name}`, file, { cacheControl: '3600', upsert: false });
-
-    console.log('Upload Data:', data);
-    console.error('Upload Error:', error);
-
-    if (error) {
-      console.error(error);
-      return;
-    } else {
-      return data.path;
-    }
-  }
-
+  //  async uploadFile(file: File) {
+  //    const { data, error } = await this.supabase.storage.from('resumes').upload(`${Date.now()}_${file.name}`, file, { cacheControl: '3600', upsert: false });
+   
+  //    console.log('Upload Data:', data);
+  //    console.error('Upload Error:', error);
+   
+  //    if (error) {
+  //      console.error(error);
+  //      return;
+  //    } else {
+  //      return data.path;
+  //    }
+  //  }
+ 
 
   async onSubmit() {
-
-    if (this.myForm.valid) {
+   
+    if ( this.myForm.valid) {
 
 
 
       let formData = this.myForm.value;
-      let filename = await this.uploadFile(this.fileupload);
-      formData.cv = filename;
+      // let filename = await this.uploadFile(this.fileupload);
+      // formData.cv = filename;
       console.log(formData)
-      // this.blogservice.addArticle(article).subscribe();
-      // this.router.navigate(['/blog']);
-
-      // } else {
-      //   // Form validation failed
-      //   console.error('Form is invalid');
-      // }
-
-
-
-      // let formData = this.myForm.value;
-      //   this.uploadFile(this.fileupload)
-      // .then((filename: string | undefined) => {
-      //   if (filename) {
-      //     formData.cv = filename;
-      //     // Continue with any additional logic using the updated formData
-      //   } else {
-      //     console.error('File upload failed.');
-      //   }
-      // })
-      // .catch(error => {
-      //   console.error('Error during file upload:', error);
-      // });
-
+      
 
       formData.postingDate = new Date();
       // Add the "Other" field value to the requestField array
@@ -91,7 +65,9 @@ export class AddrequestComponent {
       }
 
       // Directly use the array as a comma-separated string
-      formData.requestField = formData.requestField.join(',');
+      if (Array.isArray(formData.requestField)) {
+        formData.requestField = formData.requestField.join(',');
+      }
 
 
       this.http.post('http://localhost:8089/ForumManagement/request/add-request', formData)
@@ -102,7 +78,7 @@ export class AddrequestComponent {
     } else {
       console.error('Form data is undefined.');
     }
-
+      
   }
 
 
@@ -127,7 +103,7 @@ export class AddrequestComponent {
     });
   }
 
-  onFileChanged = (event: any) => {
+  onFileChanged = (event :any) => {
     console.log("here")
     const file = event.target.files[0];
     this.fileupload = file;
@@ -143,5 +119,5 @@ export class AddrequestComponent {
 
   // }
 
-
+ 
 }

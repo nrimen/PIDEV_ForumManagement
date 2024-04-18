@@ -1,3 +1,4 @@
+import { UserModuleModule } from "../Modules/user-module/user-module.module";
 import { Application } from "./Application";
 import { InterviewType } from "./InterviewType";
 

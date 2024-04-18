@@ -2,7 +2,7 @@ import { Blog } from "./blog";
 
 export interface User {
 nickname: any;
-    idUser: number;
+    idUser: string;
   firstName: string;
   lastName: string;
   email: string;

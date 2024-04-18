@@ -20,10 +20,10 @@ export class MakeinterviewComponent {
     private formBuilder: FormBuilder
   ) {
     this.addForm = this.formBuilder.group({
-      Type: [data.Title, Validators.required],
+      Type: [data.Type, Validators.required],
       Date: [data.Date, Validators.required],
-      Class: [data.Class, Validators.required],
-      Link: [data.Class, Validators.required],
+      Class: [data.Class],
+      Link: [data.Link],
     });
   }
 
@@ -34,9 +34,47 @@ export class MakeinterviewComponent {
   closeDialog() {
     this.dialogRef.close();
   }
+isInPersonInterview(): boolean {
+  const typeControl = this.addForm.get('Type');
+  return typeControl ? typeControl.value === this.InterviewType.INPERSON : false;
+}
 
-  onInterviewTypeChange(event: Event): void {
-    const selectedType = (event.target as HTMLSelectElement).value;
-    this.isInPerson = selectedType === 'INPERSON';
+isOnlineInterview(): boolean {
+  const typeControl = this.addForm.get('Type');
+  return typeControl ? typeControl.value === this.InterviewType.ONLINE : false;
+}
+
+ randomID(len:number) {
+  let result = '';
+  if (result) return result;
+  var chars = '12345qwertyuiopasdfgh67890jklmnbvcxzMNBVCZXASDQWERTYHGFUIOLKJP',
+    maxPos = chars.length,
+    i;
+  len = len || 5;
+  for (i = 0; i < len; i++) {
+    result += chars.charAt(Math.floor(Math.random() * maxPos));
   }
+  return result;
+}
+
+ngOnInit() {
+  const typeControl = this.addForm.get('Type');
+  const linkControl = this.addForm.get('Link');
+
+  if (!typeControl || !linkControl) {
+    // Handle the case where form controls are null
+    return;
+  }
+
+  typeControl.valueChanges.subscribe(() => {
+    if (this.isOnlineInterview()) {
+      const ID = this.randomID(5);
+      const link = `http://localhost:4200/videocall?roomID=${ID}`;
+      linkControl.setValue(link);
+    } else {
+      linkControl.setValue(null);
+    }
+  });
+}
+ 
 }

@@ -146,7 +146,7 @@ export class ReserverStandComponent implements OnInit{
   }
 
   assignUserToStands() {
-    const userId = 1; // Assuming you have the user's ID
+    const userId = "AegAA"; // Assuming you have the user's ID
     const userName = "samar"; // Assuming you have the user's name
 
     if (userId !== undefined) {

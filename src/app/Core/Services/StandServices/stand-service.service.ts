@@ -41,7 +41,7 @@ export class StandServiceService {
     return this.httpClient.get<Stand[]>(`${this.baseURL}retrieve-all-stands-with-users`);
   }
 
-  assignStandToUser(standId: number | undefined, userId: number): Observable<string> {
+  assignStandToUser(standId: number | undefined, userId: string): Observable<string> {
     return this.httpClient.post<string>(`${this.baseURL}assign/${standId}/user/${userId}`, {});
   }
 

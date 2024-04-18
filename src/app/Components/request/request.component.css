@@ -68,41 +68,38 @@ h2 {
 
 
 
-/* search bar */
-
+/* Style for the search container */
 .search-container {
-  text-align: center;
-  overflow: hidden;
   position: relative;
-  justify-content: center; 
+  display: flex;
   align-items: center;
+  justify-content: center;
+  margin: 10px;
 }
 
+/* Style for the search input */
 .search-input {
-  border: none;
-  outline: none;
-  padding: 8px;
-  font-size: 16px;
-  width: 0;
-  transition: width 0.5s, padding 0.5s;
-  border-radius: 5px;
-  background: rgba(2, 0, 36, 1);
-  background: linear-gradient(360deg, rgba(2, 0, 36, 1) 0%, rgba(54, 54, 167, 0.208) 10%, rgba(251, 254, 255, 1) 100%);
-  /* Background color of the input field */
-  color: #1f1f1f;
-  vertical-align: middle;
-}
-
-
-.search-container.expanded .search-icon {
-  transform: translateX(-50%);
-}
-
-.search-container.expanded .search-input {
-  margin: 15px;
-  width: 400px;
-  /* or any desired width */
+  width: 200px; /* Adjust width as needed */
   padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: width 0.3s ease-in-out; /* Smooth transition for width change */
+}
+
+/* Style for the expanded search */
+.search-container.expanded .search-input {
+  width: 400px; /* Expanded width */
+}
+
+/* Placeholder color */
+.search-input::placeholder {
+  color: #999;
+}
+
+/* Focus styles */
+.search-input:focus {
+  outline: none;
+  border-color: #007bff; /* Example color for focus */
 }
 
 

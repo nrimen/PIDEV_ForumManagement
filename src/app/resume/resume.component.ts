@@ -43,11 +43,12 @@ export class ResumeComponent implements OnInit {
     });
 
     // Add initial form controls for education, experience, and achievements
-   // this.addEducation();
-   // this.addExperience();
+    // this.addEducation();
+    // this.addExperience();
     this.addSkill();
     this.addLanguage();
   }
+
 
 
   submitForm(): void {
@@ -55,10 +56,12 @@ export class ResumeComponent implements OnInit {
       const currentStep = this.matStepper.selectedIndex;
       if (currentStep < this.matStepper.steps.length - 1) {
         this.matStepper.next();
-      } else {
-        // If it's the last step, you can call the generateResumePDF function or any other finalization logic.
-        this.generateResumePDF();
       }
+      //  else {
+      //  // console.log(templateId);
+      //   // If it's the last step, you can call the generateResumePDF function or any other finalization logic.
+      //   this.generateResumePDF();
+      // }
     }
   }
 
@@ -83,28 +86,53 @@ export class ResumeComponent implements OnInit {
 
   wrapTextSimple(text: string, maxWidth: number) {
     if (text.length <= maxWidth) {
-        return text;
+      return text;
     } else {
-        let wrappedText = '';
-        for (let i = 0; i < text.length; i += maxWidth) {
-            wrappedText += text.substring(i, i + maxWidth) + '\n';
-        }
-        return wrappedText;
+      let wrappedText = '';
+      for (let i = 0; i < text.length; i += maxWidth) {
+        wrappedText += text.substring(i, i + maxWidth) + '\n';
+      }
+      return wrappedText;
     }
-}
+  }
+
+  selectTemplate(): Promise<string | null> {
+    return new Promise((resolve) => {
+      // Find all image elements by their class name
+      const imageElements = document.querySelectorAll<HTMLImageElement>('.ag-courses-item_title img');
+
+      // Add click event listener to each image element
+      imageElements.forEach(imageElement => {
+        imageElement.addEventListener('click', function () {
+          // Retrieve the value of the src attribute when clicked
+          const src = this.getAttribute('src');
+          if (src) {
+            console.log("Image path:", src);
+            resolve(src); // Resolve the promise with the image path
+          } else {
+            console.log("Image source not found.");
+            resolve(null); // Resolve the promise with null if src is not found
+          }
+        });
+      });
+    });
+  }
 
 
 
   // Submit form
-  generateResumePDF(): void {
-    // Create a new instance of jsPDF
+  async generateResumePDF() {
+    // Retrieve the image source from the corresponding template ID
+    //const imagePath = document.getElementById(Id)?.querySelector('img')?.getAttribute('src');
+
+
+    const imageElement = await this.selectTemplate();
     const doc = new jsPDF();
-
-    const imagePath = 'assets/img/templates/template(vert).png';
-
-// Add the PNG image to the PDF document
-    doc.addImage(imagePath, 'PNG', 0, 0, doc.internal.pageSize.width, doc.internal.pageSize.height);
-
+    if (imageElement) {
+      // Add the PNG image to the PDF document
+      doc.addImage(imageElement, 'PNG', 0, 0, doc.internal.pageSize.width, doc.internal.pageSize.height);
+    }
+    // console.log("Image path In generatepdf:", imageElement);
 
     const fullName = this.resumeForm.get('fullName')?.value ?? '';
     const phoneNumber = this.resumeForm.get('phoneNumber')?.value ?? '';
@@ -125,7 +153,7 @@ export class ResumeComponent implements OnInit {
     const wrappedschoolName = this.wrapTextSimple(this.resumeForm.get('schoolName')?.value ?? '', 30);
     const wrappedstudyField = this.wrapTextSimple(this.resumeForm.get('studyField')?.value ?? '', 30);
     const wrappeddegree = this.wrapTextSimple(this.resumeForm.get('degree')?.value ?? '', 30);
-    
+
     const expstartDate = this.resumeForm.get('expstartDate')?.value ?? '';
     const expendDate = this.resumeForm.get('expendDate')?.value ?? '';
     const exstartYear = expstartDate.substring(0, 4);
@@ -142,85 +170,85 @@ export class ResumeComponent implements OnInit {
     doc.text(`Phone Number: ${phoneNumber}`, 10, 25);
     doc.text(`LinkedIn Profile: ${profileUrl}`, 10, 35);
     doc.text(`Email: ${email}`, 10, 45);
-  
-  
-      let xPosition = 90;
+
+
+    let xPosition = 90;
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(14);
+    doc.text(`About Me:`, xPosition, 70);
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(10);
+    doc.text(`${wrappedabout}`, xPosition + 5, 80);
+
+    const lineHeight = 4; // Assuming each line of text occupies 10 units vertically
+
+    // Calculate the height occupied by the wrapped text
+    const wrappedaboutHeight = wrappedabout.split('\n').length * lineHeight;
+
+    // Adjust educationPosition based on the wrappedabout height
+    let educationPosition = wrappedaboutHeight + 85;
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(14); // Set text color to black
+    doc.text(`Education: `, xPosition, educationPosition);
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(10);
+    doc.text(`School Name: ${wrappedschoolName} (${edstartYear}-${edendYear})`, xPosition + 5, educationPosition + 10);
+
+    doc.text(`Study Field: ${wrappedstudyField}`, xPosition + 5, educationPosition + 20);
+    doc.text(`Degree: ${wrappeddegree}`, xPosition + 5, educationPosition + 30);
+
+    // Add other education fields as needed
+
+
+    // Increment the vertical position for the next section
+    let experiencePosition = educationPosition + 40; // Adjust as needed
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(14); // Set text color to black
+    doc.text(`Experience:`, xPosition, experiencePosition);
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(10);
+    doc.text(`Experience Title: ${wrappedexperienceTitle} (${exstartYear}-${exendYear})`, xPosition + 5, experiencePosition + 10);
+    doc.text(`Company Name: ${wrappedcompanyName}`, xPosition + 5, experiencePosition + 20);
+    doc.text(`Experience Field: ${wrappedexperienceField}`, xPosition + 5, experiencePosition + 30);
+
+
+    let skillPosition = 70;
+    let SkillDisplayed = false;
+
+    this.skills.forEach((skill, index) => {
+      const skillTitle = skill.get('skillTitle')?.value ?? '';
       doc.setTextColor(255, 255, 255);
       doc.setFontSize(14);
-      doc.text(`About Me:`, xPosition, 70);
+
+      if (!SkillDisplayed) {
+        doc.text(`Skills:`, 10, skillPosition);
+        SkillDisplayed = true;
+      }
       doc.setTextColor(0, 0, 0);
       doc.setFontSize(10);
-      doc.text(`${wrappedabout}`, xPosition+5, 80);
+      doc.text(`° ${skill.value}`, 15, skillPosition + 10);
 
-      const lineHeight = 4; // Assuming each line of text occupies 10 units vertically
+      skillPosition += 5;
+    });
 
-      // Calculate the height occupied by the wrapped text
-      const wrappedaboutHeight = wrappedabout.split('\n').length * lineHeight;
-
-      // Adjust educationPosition based on the wrappedabout height
-      let educationPosition =  wrappedaboutHeight + 85; 
+    let languagePosition = skillPosition + 20;
+    let languageDisplayed = false;
+    this.languages.forEach((language, index) => {
+      const languageName = language.get('languageName')?.value ?? '';
       doc.setTextColor(255, 255, 255);
-      doc.setFontSize(14); // Set text color to black
-      doc.text(`Education: `, xPosition, educationPosition );
+      doc.setFontSize(14);
+      if (!languageDisplayed) {
+        doc.text(`Languages:`, 10, languagePosition);
+        languageDisplayed = true;
+      }
       doc.setTextColor(0, 0, 0);
       doc.setFontSize(10);
-      doc.text(`School Name: ${wrappedschoolName} (${edstartYear}-${edendYear})`, xPosition+5, educationPosition+10);
+      doc.text(`° ${language.value}`, 15, languagePosition + 10);
 
-      doc.text(`Study Field: ${wrappedstudyField}`, xPosition+5, educationPosition+20);
-      doc.text(`Degree: ${wrappeddegree}`, xPosition+5, educationPosition+30);
-    
-      // Add other education fields as needed
-      
-    
-      // Increment the vertical position for the next section
-      let  experiencePosition = educationPosition+40; // Adjust as needed
-      doc.setTextColor(255, 255, 255);
-      doc.setFontSize(14); // Set text color to black
-      doc.text(`Experience:`, xPosition, experiencePosition);
-      doc.setTextColor(0, 0, 0);
-      doc.setFontSize(10);
-      doc.text(`Experience Title: ${wrappedexperienceTitle} (${exstartYear}-${exendYear})`, xPosition+5, experiencePosition+10);
-      doc.text(`Company Name: ${wrappedcompanyName}`, xPosition+5, experiencePosition+20);
-      doc.text(`Experience Field: ${wrappedexperienceField}`, xPosition+5, experiencePosition+30);
-      
-    
-      let skillPosition = 70;
-      let SkillDisplayed = false;
-    
-      this.skills.forEach((skill, index) => {
-        const skillTitle = skill.get('skillTitle')?.value ?? '';
-        doc.setTextColor(255, 255, 255);
-        doc.setFontSize(14);
+      languagePosition += 5;
+    });
 
-        if (!SkillDisplayed) {
-          doc.text(`Skills:`, 10, skillPosition);
-          SkillDisplayed = true;
-        }
-        doc.setTextColor(0, 0, 0);
-        doc.setFontSize(10);
-        doc.text(`° ${skill.value}`, 15, skillPosition+10);
-        
-        skillPosition += 5; 
-      });
-    
-      let languagePosition= skillPosition+20;
-      let languageDisplayed = false;
-      this.languages.forEach((language, index) => {
-        const languageName = language.get('languageName')?.value ?? '';
-        doc.setTextColor(255, 255, 255);
-        doc.setFontSize(14);
-        if (!languageDisplayed) {
-          doc.text(`Languages:`, 10, languagePosition);
-          languageDisplayed = true;
-        }
-        doc.setTextColor(0, 0, 0);
-        doc.setFontSize(10);
-        doc.text(`° ${language.value}`, 15, languagePosition + 10);
-        
-        languagePosition += 5; 
-      });
-  
-  
+
     // Save the PDF
     doc.save((this.resumeForm.get('fullName')?.value ?? '') + 'Resume.pdf');
     console.log('Form Values:', this.resumeForm.value);
@@ -235,14 +263,12 @@ export class ResumeComponent implements OnInit {
     //     });
     // });
   }
-  
 
-  
- 
-  
-  
-  
-  
 
- 
+
+
+
+
+
+
 }

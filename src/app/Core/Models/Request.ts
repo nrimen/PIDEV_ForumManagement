@@ -1,3 +1,7 @@
+import { UserModuleModule } from "../Modules/user-module/user-module.module";
+
+
+
 export class Request {
     idRequest!: number;
     requestTitle: string | undefined;
@@ -6,5 +10,6 @@ export class Request {
     location: string | undefined;
     cv: string | undefined;
     requestField: string | undefined;
+    userRequest: UserModuleModule | null | undefined;
     //userRequest: User;
 }
