@@ -10,6 +10,8 @@ import { Subscription, interval } from 'rxjs';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  event: Event | undefined;
+
   daysLeft: number = 0;
   hoursLeft: number = 0;
   minutesLeft: number = 0;
