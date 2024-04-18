@@ -64,6 +64,7 @@ import { ApplyComponent } from './Components/apply/apply.component';
 import { EditrequestComponent } from './Components/editrequest/editrequest.component';
 import { ZegocloudComponent } from './Components/zegocloud/zegocloud.component';
 import { MakeinterviewComponent } from './Components/makeinterview/makeinterview.component';
+import { AboutComponent } from './Components/about/about.component';
 
 
 
@@ -102,6 +103,7 @@ import { MakeinterviewComponent } from './Components/makeinterview/makeinterview
     EditrequestComponent,
     ZegocloudComponent,
     MakeinterviewComponent,
+    AboutComponent,
   ],
   imports: [
     AppRoutingModule,
