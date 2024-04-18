@@ -23,6 +23,7 @@ import { AddroomComponent } from './Components/addroom/addroom.component';
 import { ChatroomComponent } from './Components/chatroom/chatroom.component';
 import { UpdateBlogComponent } from './Components/update-blog/update-blog.component';
 import { ChatbotComponent } from './Components/chatbot/chatbot.component';
+import {AboutComponent} from "./Components/about/about.component";
 
 
 const r: Routes = [
@@ -51,6 +52,7 @@ const r: Routes = [
   { path: 'resume', component: ResumeComponent },
   { path: 'apply', component: ApplyComponent },
   { path: 'videocall', component: ZegocloudComponent },
+  { path: 'about-us', component: AboutComponent },
 
   { path: '**', component: NotFoundComponent }
 

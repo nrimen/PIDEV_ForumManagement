@@ -21,11 +21,12 @@ const config = {
 export class AppComponent implements OnInit {
   title = 'ForumManagement';
   isReserverStandRoute: boolean = false;
-
+  isAbout : boolean = false ;
   constructor(private router: Router  ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.isReserverStandRoute = event.url.includes('/ReserverStand');
+        this.isAbout=event.url.includes('/about-us');
       }
     });
   }
