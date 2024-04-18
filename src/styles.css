@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
+
 /**
 * Template Name: Nova
 * Updated: Jan 29 2024 with Bootstrap v5.3.2
@@ -640,37 +641,37 @@ section {
   font-family: var(--font-secondary);
 }
 
-.why-us .swiper {
-  margin: 140px 140px 120px 140px;
-  overflow: hidden;
-}
+/*.why-us .swiper {*/
+/*  margin: 140px 140px 120px 140px;*/
+/*  overflow: hidden;*/
+/*}*/
 
-.why-us .swiper-button-prev:after,
-.why-us .swiper-button-next:after {
-  font-size: 24px;
-  color: var(--color-secondary);
-}
+/*.why-us .swiper-button-prev:after,*/
+/*.why-us .swiper-button-next:after {*/
+/*  font-size: 24px;*/
+/*  color: var(--color-secondary);*/
+/*}*/
 
-.why-us .swiper-button-prev {
-  left: 80px;
-}
+/*.why-us .swiper-button-prev {*/
+/*  left: 80px;*/
+/*}*/
 
-.why-us .swiper-button-next {
-  right: 80px;
-}
+/*.why-us .swiper-button-next {*/
+/*  right: 80px;*/
+/*}*/
 
-.why-us .swiper-pagination {
-  margin-top: 30px;
-  position: relative;
-}
+/*.why-us .swiper-pagination {*/
+/*  margin-top: 30px;*/
+/*  position: relative;*/
+/*}*/
 
-.why-us .swiper-pagination .swiper-pagination-bullet {
-  background-color: var(--color-secondary);
-}
+/*.why-us .swiper-pagination .swiper-pagination-bullet {*/
+/*  background-color: var(--color-secondary);*/
+/*}*/
 
-.why-us .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: var(--color-primary);
-}
+/*.why-us .swiper-pagination .swiper-pagination-bullet-active {*/
+/*  background-color: var(--color-primary);*/
+/*}*/
 
 @media (max-width: 1200px) {
   .why-us .swiper {

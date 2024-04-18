@@ -28,37 +28,31 @@ export class AddrequestComponent {
     });
   }
 
-  // onFileChanged = (event :any) => {
-  //   console.log("here")
-  //    const file = event.target.files[0];
-  //    this.fileupload = file;
-  //    this.uploadFile(file);
-  //  }
-  async uploadFile(file: File) {
-    const { data, error } = await supabase.storage.from('images').upload(`${Date.now()}_${file.name}`, file, { cacheControl: '3600', upsert: false });
+ // async uploadFile(file: File) {
+   // const { data, error } = await supabase.storage.from('images').upload(`${Date.now()}_${file.name}`, file, { cacheControl: '3600', upsert: false });
 
-    console.log('Upload Data:', data);
-    console.error('Upload Error:', error);
+   // console.log('Upload Data:', data);
+    // console.error('Upload Error:', error);
 
-    if (error) {
-      console.error(error);
-      return;
-    } else {
-      return data.path;
-    }
-  }
+   // if (error) {
+   //   console.error(error);
+     // return;
+   // } else {
+     // return data.path;
+   // }
+  //}
 
 
-  async onSubmit() {
+   onSubmit() {
 
     if (this.myForm.valid) {
 
 
 
       let formData = this.myForm.value;
-      let filename = await this.uploadFile(this.fileupload);
-      formData.cv = filename;
-      console.log(formData)
+      //let filename = await this.uploadFile(this.fileupload);
+      //formData.cv = filename;
+      //console.log(formData)
       // this.blogservice.addArticle(article).subscribe();
       // this.router.navigate(['/blog']);
 
